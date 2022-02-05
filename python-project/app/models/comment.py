@@ -6,9 +6,9 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    post_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     comment = db.Column(db.Text, nullable=False)
     edited = db.Column(db.Boolean, nullable=False)
 
-    users = relationship("User", back_populates='users')
-    posts = relationship("Post", back_populates='posts')
+    users = relationship("User", foreign_keys=[user_id])
+    posts = relationship("Post", foreign_keys=[post_id])

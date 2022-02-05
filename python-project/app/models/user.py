@@ -15,11 +15,11 @@ class User(db.Model, UserMixin):
     biography = db.Column(db.String())
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    likes = relationship("Like", back_populates="user")
-    follows=relationship("Follow", back_populates="following")
-    follower=relationship("Follow", back_populates="follower")
-    posts = relationship("Post", back_populates='user')
-    users = relationship("User", back_populates='users')
+    followers = relationship("Follow", foreign_keys='Follow.followers_id')
+    following = relationship("Follow", foreign_keys='Follow.following_id')
+    like = relationship("Like", foreign_keys='Like.user_id')
+    posts = relationship("Post", foreign_keys="Post.user_id")
+    comment = relationship("Comment", foreign_keys="Comment.user_id")
 
     @property
     def password(self):
@@ -46,5 +46,5 @@ class Follow(db.Model):
     following_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     followers_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    follower = relationship('User', foreign_keys=[followers_id])
-    following = relationship('User', foreign_keys=[following_id])
+    follower = relationship("User", foreign_keys=[followers_id])
+    following = relationship("User", foreign_keys=[following_id])
