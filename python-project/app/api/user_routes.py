@@ -17,3 +17,23 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/<int:id>/followers')
+@login_required
+def userFollowers(id):
+    return
+
+@user_routes.route('/<int:id>/followers', methods=["DELETE"])
+@login_required
+def deleteFollower(id):
+    return
+
+@user_routes.route('/<int:id>/following')
+@login_required
+def userFollowing(id):
+    return
+
+@user_routes.route('/<int:id>/following', methods=["DELETE"])
+@login_required
+def deleteFollowing(id):
+    return
