@@ -6,7 +6,6 @@ like_routes = Blueprint('likes', __name__)
 
 
 @like_routes.route('/p/<int:postId>/likes')
-@login_required
 def getLike():
     return
 
