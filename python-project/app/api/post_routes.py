@@ -11,6 +11,11 @@ def photoFeed():
     return
 
 
+@post_routes.route('/<int:id>')
+def getOnePost():
+    return
+
+
 @post_routes.route('/create', methods=["POST"])
 @login_required
 def newPost():

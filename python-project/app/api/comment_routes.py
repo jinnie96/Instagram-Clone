@@ -5,13 +5,12 @@ from flask_login import current_user, login_required
 comment_routes = Blueprint('comments', __name__)
 
 
-@comment_routes.route('/p/<int:postId>/comments')
-@login_required
+@comment_routes.route('/posts/<int:postId>/comments')
 def getComment():
     return
 
 
-@comment_routes.route('/p/<int:postId>/comments', methods=["POST"])
+@comment_routes.route('/posts/<int:postId>/comments', methods=["POST"])
 @login_required
 def newComment():
     return
