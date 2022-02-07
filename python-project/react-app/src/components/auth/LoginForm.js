@@ -32,37 +32,43 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='login-container'>
-      <form className='login-form' onSubmit={onLogin}>
-        <div className='login-form' className='errors'>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
-        <div className='login-form'>
-          {/* <label className='login-labels' htmlFor='email'>Email</label> */}
-          <input
-            className='login-inputs'
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          />
-        </div>
-        <div className='login-form'>
-          {/* <label className='login-labels' htmlFor='password'>Password</label> */}
-          <input
-            className='login-inputs'
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
-        </div>
-        <button className='login-form' className='login-submit' type='submit'>Log In</button>
-      </form>
+    <div className='login-page'>
+      <div className='login-container'>
+        <form className='login-form' onSubmit={onLogin}>
+          <div className='login-form' className='errors'>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className='login-form'>
+            {/* <label className='login-labels' htmlFor='email'>Email</label> */}
+            <input
+              className='login-inputs'
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div className='login-form'>
+            {/* <label className='login-labels' htmlFor='password'>Password</label> */}
+            <input
+              className='login-inputs'
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+          </div>
+          <button className='login-form' className='login-submit' type='submit'>Log In</button>
+        </form>
+      </div>
+      <div className='login-below-container'>
+        <div>Don't have an account?</div>
+        <a href='/sign-up'>Sign up</a>
+      </div>
     </div>
   );
 };
