@@ -27,8 +27,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
 
-    posts = relationship("Post", foreign_keys="Post.user_id")
-    comment = relationship("Comment", foreign_keys="Comment.user_id")
+    posts = relationship("Post", foreign_keys="Post.user_id", back_populates='user')
+    comment = relationship("Comment", foreign_keys="Comment.user_id", back_populates='users')
     followers = relationship(
         "User",
         secondary=follows,
