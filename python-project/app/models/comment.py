@@ -1,3 +1,4 @@
+from click import edit
 from .db import db
 from sqlalchemy.orm import relationship
 
@@ -12,3 +13,12 @@ class Comment(db.Model):
 
     users = relationship("User", foreign_keys=[user_id], overlaps="comment")
     posts = relationship("Post", foreign_keys=[post_id])
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "post_id": self.post_id,
+            "comment": self.comment,
+            "edited": self.edited
+        }
