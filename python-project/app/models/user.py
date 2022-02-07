@@ -11,7 +11,7 @@ follows = db.Table(
 
 likes = db.Table(
     "likes",
-    db.Column("likes_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("users_id", db.Integer, db.ForeignKey("users.id")),
     db.Column("posts_id", db.Integer, db.ForeignKey("posts.id")),
 )
 
@@ -26,12 +26,10 @@ class User(db.Model, UserMixin):
     biography = db.Column(db.String())
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    # followers = relationship("Follow", foreign_keys='Follow.followers_id')
-    # following = relationship("Follow", foreign_keys='Follow.following_id')
-    # like = relationship("Like", foreign_keys='Like.user_id')
+
     posts = relationship("Post", foreign_keys="Post.user_id")
     comment = relationship("Comment", foreign_keys="Comment.user_id")
-    followers = db.relationship(
+    followers = relationship(
         "User",
         secondary=follows,
         primaryjoin=(follows.c.follower_id == id),
@@ -39,13 +37,10 @@ class User(db.Model, UserMixin):
         backref=db.backref("following", lazy="dynamic"),
         lazy="dynamic"
     )
-    likes = db.relationship(
-        "User",
+    users = relationship(
+        "Post",
         secondary=likes,
-        primaryjoin=(likes.c.likes_id == id),
-        secondaryjoin=(likes.c.posts_id == id),
-        backref=db.backref("likes", lazy="dynamic"),
-        lazy="dynamic"
+        back_populates="post"
     )
 
     @property
@@ -65,13 +60,3 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
-
-# class Follow(db.Model):
-#     __tablename__ = "follows"
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     following_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-#     followers_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-#     follower = relationship("User", foreign_keys=[followers_id])
-#     following = relationship("User", foreign_keys=[following_id])

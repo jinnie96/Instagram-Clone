@@ -10,5 +10,5 @@ class Comment(db.Model):
     comment = db.Column(db.Text, nullable=False)
     edited = db.Column(db.Boolean, nullable=False)
 
-    users = relationship("User", foreign_keys=[user_id])
+    users = relationship("User", foreign_keys=[user_id], overlaps="comment")
     posts = relationship("Post", foreign_keys=[post_id])
