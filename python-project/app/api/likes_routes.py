@@ -1,17 +1,23 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db
-from flask_login import current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_required
 
-like_routes = Blueprint('likes', __name__, url_prefix='/likes')
+like_routes = Blueprint('likes', __name__)
 
-@like_routes.route('/<int:id>')
+
+@like_routes.route('/p/<int:postId>/likes')
+@login_required
 def getLike():
     return
 
-@like_routes.route('/<int:id>', methods=["POST"])
+
+@like_routes.route('/p/<int:postId>/likes', methods=["POST"])
+@login_required
 def newLike():
     return
 
+
 @like_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
 def deleteLike():
     return
