@@ -8,14 +8,14 @@ post_routes = Blueprint('posts', __name__)
 def photoFeed():
     return
 
-@post_routes.route('/create', methods=["POST"])
+@post_routes.route('/create', methods=["GET", "POST"])
 def newPost():
     return
 
-@post_routes.route('/<int:id>', methods=["PUT"])
+@post_routes.route('/p/<int:id>', methods=["PUT"])
 def editPost():
     return
 
-@post_routes.route('/<int:id>', methods=["DELETE"])
+@post_routes.route('/p/<int:id>', methods=["DELETE"])
 def deletePost():
     return
