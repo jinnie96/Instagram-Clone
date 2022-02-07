@@ -1,14 +1,19 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from itsdangerous import json
+from app.models import Comment
 from flask_login import current_user, login_required
 
 comment_routes = Blueprint('comments', __name__)
 
 
 @comment_routes.route('/p/<int:postId>/comments')
-@login_required
-def getComment():
-    return
+# @login_required
+def getComment(postId):
+    res = Comment.query.filter(Comment.post_id == postId).all()
+
+    return {
+        "comments": [comment.serialize() for comment in res]
+    }
 
 
 @comment_routes.route('/p/<int:postId>/comments', methods=["POST"])
