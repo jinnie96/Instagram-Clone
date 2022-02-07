@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User
 
-user_routes = Blueprint('users', __name__, url_prefix='/users')
+user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/')
@@ -18,22 +18,8 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-@user_routes.route('/<int:id>/followers')
-@login_required
-def userFollowers(id):
-    return
 
-@user_routes.route('/<int:id>/followers', methods=["DELETE"])
+@user_routes.route('/<username>/account/edit', methods=["PUT"])
 @login_required
-def deleteFollower(id):
-    return
-
-@user_routes.route('/<int:id>/following')
-@login_required
-def userFollowing(id):
-    return
-
-@user_routes.route('/<int:id>/following', methods=["DELETE"])
-@login_required
-def deleteFollowing(id):
+def editProfile():
     return
