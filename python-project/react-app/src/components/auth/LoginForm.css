@@ -1,0 +1,51 @@
+/* ------------------- Login Container ------------------- */
+.login-container {
+    width: 350px;
+    height: 380px;
+    border: 1.75px solid #DBDBDB;
+    border-radius: 1px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+}
+
+/* ------------------- Login elements ------------------- */
+.login-form {
+    background-color: white;
+}
+
+/* .login-labels {
+    color: #8E8E8E;
+} */
+
+.login-inputs {
+    overflow: auto;
+    width: 258px;
+    margin: 3px;
+    padding: 8px;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    background-color: #FAFAFA;
+    font-size: 12px;
+    color: black;
+}
+
+.login-submit {
+    width: 276px;
+    margin: 6px 3px 3px 3px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(38, 148, 252);
+    font-size: 12px;
+    color: white;
+}
+
+input::placeholder {
+    font-size: 12px;
+    color: #8E8E8E;
+}
