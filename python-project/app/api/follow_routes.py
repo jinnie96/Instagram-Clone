@@ -9,6 +9,7 @@ follow_routes = Blueprint('follow', __name__)
 @follow_routes.route('/following')
 @login_required
 def getFollow():
+    print("@@@@@@@")
     return
 
 
