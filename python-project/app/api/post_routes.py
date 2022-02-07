@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, Post, db
 from flask_login import current_user, login_required
+from sqlalchemy.orm import joinedload, selectinload
 
 post_routes = Blueprint('posts', __name__)
 
@@ -8,11 +9,23 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/photofeed/<int:id>')
 # @login_required
 def photoFeed(id):
-    print("@@@@@@@")
-    user=User.query.get(id)
-    user_follower = User.query(user).join(user.follows).join(Post).filter(user.follows.C.follower_id == Post.user_id).all()
-    print(user_follower)
-    return
+    current_user = User.query.get(id)
+    # followers = db.session.query(User).options(joinedload(User.followers)).all()
+
+    # print("@@@@@@@@", followers.followed_posts())
+    # res = {}
+
+    # for follow in followers:
+    #     res[follow.id] = follow.to_dict()
+    res = {}
+    posts = current_user.followed_posts()
+
+    for post in posts:
+        print(post)
+        res[post.id] = post.to_dict()
+
+    return jsonify(res)
+
 @post_routes.route('/<int:id>')
 def getOnePost(id):
     post = Post.query.get(id)

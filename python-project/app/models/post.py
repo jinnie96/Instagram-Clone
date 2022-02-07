@@ -1,6 +1,11 @@
 from .db import db
 from sqlalchemy.orm import relationship
-from .user import likes
+
+likes = db.Table(
+    "likes",
+    db.Column("users_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("posts_id", db.Integer, db.ForeignKey("posts.id")),
+)
 
 class Post(db.Model):
     __tablename__ = 'posts'
