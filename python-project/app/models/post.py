@@ -10,16 +10,16 @@ class Post(db.Model):
     caption = db.Column(db.Text)
 
     user = relationship("User", foreign_keys=[user_id])
-    likes = relationship("Like", foreign_keys="Like.post_id")
     comment = relationship("Comment", foreign_keys="Comment.post_id")
+    # likes = relationship("Like", foreign_keys="Like.post_id")
 
 
-class Like(db.Model):
-    __tablename__ = "likes"
+# class Like(db.Model):
+#     __tablename__ = "likes"
 
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
 
-    user = relationship('User', foreign_keys=[user_id])
-    post = relationship('Post', foreign_keys=[post_id])
+#     user = relationship('User', foreign_keys=[user_id])
+#     post = relationship('Post', foreign_keys=[post_id])
