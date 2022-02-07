@@ -1,0 +1,13 @@
+/* ------------------- Navbar Container ------------------- */
+.navbar-list {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-list li {
+    padding: 10px;
+}

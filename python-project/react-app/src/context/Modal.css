@@ -1,0 +1,25 @@
+/* ------------------- Modal Container ------------------- */
+#modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    margin-top: -237.5px;
+    margin-left: -237.5px;
+}
+
+#modal-background {
+    position: fixed;
+    /* z-index: 3; */
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#modal-content {
+    /* z-index: 3; */
+    position: absolute;
+    border-radius: 20px;
+}

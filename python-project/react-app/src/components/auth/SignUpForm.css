@@ -1,0 +1,79 @@
+/* ------------------- Signup Container ------------------- */
+.signup-container {
+    width: 350px;
+    height: 380px;
+    border: 1.75px solid #DBDBDB;
+    border-radius: 1px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+}
+
+/* ------------------- Signup elements ------------------- */
+.signup-form {
+    background-color: white;
+}
+
+.signup-inputs {
+    overflow: auto;
+    width: 258px;
+    margin: 3px;
+    padding: 8px;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    background-color: #FAFAFA;
+    font-size: 12px;
+    color: black;
+}
+
+.signup-submit {
+    width: 276px;
+    margin: 6px 3px 3px 3px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(38, 148, 252);
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.signup-policies {
+    padding-top: 10px;
+    background-color: white;
+    font-size: 13px;
+    color: #8E8E8E;
+}
+
+/* ------------------- Below signup container ------------------- */
+.signup-below-container {
+    width: 350px;
+    height: 70px;
+    margin-top: 10px;
+    border: 1.75px solid #DBDBDB;
+    border-radius: 1px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    font-size: 16px;
+}
+
+.signup-below-container div {
+    margin-right: 2px;
+    background-color: white;
+    color: black;
+}
+
+.signup-below-container a {
+    margin-left: 2px;
+    text-decoration: none;
+    background-color: white;
+    color: rgb(38, 148, 252);
+}

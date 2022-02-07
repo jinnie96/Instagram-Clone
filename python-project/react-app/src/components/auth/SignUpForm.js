@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './SignUpForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -43,51 +44,68 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className='signup-page'>
+      <div className='signup-container'>
+        <form className='signup-form' onSubmit={onSignUp}>
+          <div className='signup-form' className='errors'>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className='signup-form'>
+            {/* <label>User Name</label> */}
+            <input
+              className='signup-inputs'
+              type='text'
+              name='username'
+              placeholder='Username'
+              value={username}
+              onChange={updateUsername}
+            ></input>
+          </div>
+          <div className='signup-form'>
+            {/* <label>Email</label> */}
+            <input
+              className='signup-inputs'
+              type='text'
+              name='email'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            ></input>
+          </div>
+          <div className='signup-form'>
+            {/* <label>Password</label> */}
+            <input
+              className='signup-inputs'
+              type='password'
+              name='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            ></input>
+          </div>
+          <div className='signup-form'>
+            {/* <label>Confirm Password</label> */}
+            <input
+              className='signup-inputs'
+              type='password'
+              name='repeat_password'
+              placeholder='Confirm Password'
+              value={repeatPassword}
+              onChange={updateRepeatPassword}
+              required={true}
+            ></input>
+          </div>
+          <button className='signup-form' className='signup-submit' type='submit'>Sign Up</button>
+        </form>
+        <div className='signup-policies'>By signing up, you agree to no policies.</div>
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
+      <div className='signup-below-container'>
+        <div>Have an account?</div>
+        <a href='/login'>Log in</a>
       </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    </div>
   );
 };
 
