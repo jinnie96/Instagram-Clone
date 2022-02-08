@@ -3,7 +3,8 @@ from sqlalchemy import alias
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from sqlalchemy.orm import relationship, object_session
+from sqlalchemy.orm import relationship
+
 from .post import Post, likes
 
 follows = db.Table(
@@ -43,16 +44,6 @@ class User(db.Model, UserMixin):
         secondary=likes,
         back_populates="post"
     )
-
-    # def followed_posts(self):
-    #     res = list(Post.query.filter(Post.user_id in ([f.id for f in self.followers if f.is_following(self)])))
-    #     print("!!!!!!!!!!!!", res)
-    #     return res
-
-    # def is_following(self, user):
-    #     res = self.followers.filter(follows.c.follower_id == user.id).count() > 0
-    #     print("-------------", res)
-    #     return res
 
 
     @property
