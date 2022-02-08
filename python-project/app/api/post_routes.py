@@ -53,16 +53,12 @@ def newPost():
     if "image" not in files:
         return {"errors": "image required"}, 400
 
-    print('----------- break?')
-
     image = files["image"]
 
     if not allowed_file(image.filename):
         return {"errors": "file type not permitted"}, 400
 
-
     image.filename = get_unique_filename(image.filename)
-
 
     upload = upload_file_to_s3(image)
 
@@ -70,8 +66,6 @@ def newPost():
         return upload, 400
 
     url = upload["url"]
-
-    print('+++++++++++ HEYYYYYYYYYY', form.data)
 
     post = Post(user_id=current_user.id, image=url, caption=form.data['caption'])
 

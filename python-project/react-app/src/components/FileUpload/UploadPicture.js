@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom";
-import { addOnePost } from '../../store/post';
+import * as postActions from '../../store/post';
 
 
 
@@ -12,47 +12,34 @@ const UploadPicture = () => {
     const [imageLoading, setImageLoading] = useState(false);
     const dispatch = useDispatch();
 
-    // const handleSubmit = async (e) => {
-    //     console.log("++++++++ inside handle submit")
-    //     e.preventDefault();
-    //     const data = await dispatch(addOnePost(image, caption));
-    //     if (data) {
-    //         history.push("/");
-    //     } else {
-    //         console.log("ERRORRRRRRRRRRRRR")
-    //     }
-    // };
-
     const handleSubmit = async (e) => {
-        console.log("WE'RE INSIDE HANDLE SUBMIT")
-
         e.preventDefault();
         const formData = new FormData();
         formData.append("image", image);
-        // formData.append("caption", caption);
+        formData.append("caption", caption);
 
         setImageLoading(true);
 
+        // const res = await fetch('/api/posts/create', {
+        //     method: "POST",
+        //     body: formData
+        // });
+        // if (res.ok) {
+        //     await res.json();
+        //     setImageLoading(false);
+        //     history.push("/");
+        // }
+        // else {
+        //     setImageLoading(false);
+        //     // a real app would probably use more advanced
+        //     // error handling
+        //     console.log("error");
+        // }
 
-        const res = await fetch('/api/posts/create', {
-            method: "POST",
-            body: formData
-        });
+        // await dispatch(addOnePost(image, caption))
 
-        // const data = await dispatch(addOnePost(image, caption));
+        dispatch(postActions.addOnePost({formData}))
 
-
-        if (res.ok) {
-            await res.json();
-            setImageLoading(false);
-            history.push("/");
-        }
-        else {
-            setImageLoading(false);
-            // a real app would probably use more advanced
-            // error handling
-            console.log("error");
-        }
     }
 
     const updateImage = (e) => {
