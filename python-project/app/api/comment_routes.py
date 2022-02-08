@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from itsdangerous import json
-from app.models import Comment
+from app.models import Comment, db
 from flask_login import current_user, login_required
 
 comment_routes = Blueprint('comments', __name__)
@@ -18,17 +18,44 @@ def getComment(postId):
 
 @comment_routes.route('/posts/<int:postId>/comments', methods=["POST"])
 @login_required
-def newComment():
-    return
+def new_comment(id):
+    data = request.json
+    form = NewCommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        commentN = Comment(
+            user_id=data['user_id'],
+            post_id=data['post_id'],
+            comment=form.data['comment']
+        )
+        db.session.add(commentN)
+        db.session.commit()
+        return commentN.to_dict()
+    return (form.errors)
+
 
 
 @comment_routes.route('/<int:id>', methods=["PUT"])
 @login_required
-def editComment():
-    return
+def update_comment(id):
+    form = NewCommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        comment = Comment.query.get(id)
+        comment.comment = form.data['comment']
+        db.session.commit()
+        return {'comment': comment.to_dict()}
+    return "comment updated"
+
 
 
 @comment_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
-def deleteComment():
-    return
+def delete_comment(id):
+    comment = Comment.query.get(id)
+    db.session.delete(comment)
+    db.session.commit()
+    return "Comment deleted"
+
+
+
