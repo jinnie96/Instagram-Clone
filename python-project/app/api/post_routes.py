@@ -11,8 +11,6 @@ post_routes = Blueprint('posts', __name__)
 def photoFeed(id):
     current_user = User.query.get(id)
 
-    print("++++++++++++++++++", current_user.to_dict())
-
     res = {}
 
     posts = [post for user in current_user.followers for post in user.posts]
