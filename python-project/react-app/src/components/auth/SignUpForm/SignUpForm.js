@@ -7,6 +7,8 @@ import './SignUpForm.css'
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -16,7 +18,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, firstName, lastName, email, password));
       if (data) {
         setErrors(data)
       }
@@ -25,6 +27,14 @@ const SignUpForm = () => {
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
+  };
+
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -61,6 +71,28 @@ const SignUpForm = () => {
               placeholder='Username'
               value={username}
               onChange={updateUsername}
+            ></input>
+          </div>
+          <div className='signup-form'>
+            {/* <label>User Name</label> */}
+            <input
+              className='signup-inputs'
+              type='text'
+              name='firstName'
+              placeholder='First Name'
+              value={firstName}
+              onChange={updateFirstName}
+            ></input>
+          </div>
+          <div className='signup-form'>
+            {/* <label>User Name</label> */}
+            <input
+              className='signup-inputs'
+              type='text'
+              name='lastName'
+              placeholder='Last Name'
+              value={lastName}
+              onChange={updateLastName}
             ></input>
           </div>
           <div className='signup-form'>
