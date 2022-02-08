@@ -22,6 +22,15 @@ def photoFeed(id):
     return jsonify(res)
 
 
+@post_routes.route('/user/<int:userId>')
+def getUserPosts(userId):
+    posts = Post.query.filter(userId == Post.user_id).all()
+    print('POOOOOOST', posts)
+    return {
+        "posts": [post.to_dict() for post in posts]
+    }
+
+
 @post_routes.route('/<int:id>')
 def getOnePost(id):
     post = Post.query.get(id)
