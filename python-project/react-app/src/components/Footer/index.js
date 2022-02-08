@@ -28,8 +28,8 @@ function Footer() {
                 </li>
             </ul>
             <div className='footer-about'>
-                <img id="footer-logo" src="/logo.png"/>
-                <a id='footer-text' href="https://github.com/jinnie96/Instagram-Clone" target="_blank">Insta-Clone © 2022</a>
+                <img id="footer-logo" alt="instagram logo" src="/logo.png"/>
+                <a id='footer-text' href="https://github.com/jinnie96/Instagram-Clone" target="_blank" rel="noreferrer">Insta-Clone © 2022</a>
             </div>
         </div>
     );
