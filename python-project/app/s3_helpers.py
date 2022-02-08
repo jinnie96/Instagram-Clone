@@ -40,4 +40,4 @@ def upload_file_to_s3(file, acl="public-read"):
         # in case the our s3 upload fails
         return {"errors": str(e)}
 
-    return {"url": f"{S3_LOCATION}{file.filename}"}
+    return {"image": f"{S3_LOCATION}{file.filename}"}

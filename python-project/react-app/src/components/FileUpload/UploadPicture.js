@@ -7,7 +7,6 @@ const UploadPicture = () => {
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();

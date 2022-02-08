@@ -51,7 +51,10 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
         <Route path='/create/select'>
-          <UploadPicture/>
+          <UploadPicture />
+        </Route>
+        <Route path='/create/view'>
+          <ViewImages />
         </Route>
       </Switch>
       <Footer />
