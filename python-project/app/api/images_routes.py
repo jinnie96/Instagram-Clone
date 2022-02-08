@@ -12,6 +12,7 @@ def upload_image():
     if "image" not in request.files:
         return {"errors": "image required"}, 400
 
+    print('HEYYYYYYYYY', request.files['image'])
     image = request.files["image"]
 
     if not allowed_file(image.filename):

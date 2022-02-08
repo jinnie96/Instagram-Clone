@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, session, request
 from app.models import User, Post, db
 from flask_login import current_user, login_required
 from sqlalchemy.orm import joinedload, selectinload
+from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename)
+from app.forms import AddPostForm
 
 post_routes = Blueprint('posts', __name__)
 
@@ -41,14 +43,45 @@ def getOnePost(id):
 @post_routes.route('/create', methods=["POST"])
 # @login_required
 def newPost():
+    form = AddPostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-    # form = AddPostForm()
-    # post = Post(user_id=current_user.id, image="form.data['image'], caption=form.data['post'])
-    # print('HAYYYYYY', request.json)
-    post = Post(user_id=request.json['user_id'], image=request.json['image'], caption=request.json['caption'])
+    # if form.validate_on_submit():
+
+    files = request.files.to_dict()
+
+    if "image" not in files:
+        return {"errors": "image required"}, 400
+
+    print('----------- break?')
+
+    image = files["image"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+
+
+    image.filename = get_unique_filename(image.filename)
+
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        return upload, 400
+
+    url = upload["url"]
+
+    print('+++++++++++ HEYYYYYYYYYY', form.data)
+
+    post = Post(user_id=current_user.id, image=url, caption=form.data['caption'])
+
+    print('++++++++++ post', post)
+
+    # post = Post(user_id=request.json['user_id'], image=request.json['image'], caption=request.json['caption'])
     db.session.add(post)
     db.session.commit()
     return post.to_dict()
+    # return (form.errors)
 
 
 

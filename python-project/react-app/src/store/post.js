@@ -50,8 +50,8 @@ export const getAllPosts = () => async dispatch => {
     }
 }
 
-export const getOnePost = (postId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/posts/${postId}`);
+export const getSinglePost = (postId) => async (dispatch) => {
+    const response = await fetch(`/api/posts/${postId}`);
 
     if (response.ok) {
         const data = await response.json();
