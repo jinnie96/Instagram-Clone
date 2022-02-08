@@ -23,12 +23,12 @@ def new_comment(id):
     form = NewCommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        commentN = Comment(
+        commentNew = Comment(
             user_id=data['user_id'],
             post_id=data['post_id'],
             comment=form.data['comment']
         )
-        db.session.add(commentN)
+        db.session.add(commentNew)
         db.session.commit()
         return commentN.to_dict()
     return (form.errors)
@@ -56,6 +56,3 @@ def delete_comment(id):
     db.session.delete(comment)
     db.session.commit()
     return "Comment deleted"
-
-
-
