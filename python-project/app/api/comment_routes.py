@@ -7,7 +7,7 @@ comment_routes = Blueprint('comments', __name__)
 
 
 @comment_routes.route('/posts/<int:postId>/comments')
-# @login_required
+@login_required
 def getComment(postId):
     res = Comment.query.filter(Comment.post_id == postId).all()
 
