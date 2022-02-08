@@ -62,7 +62,7 @@ const SignUpForm = () => {
     <div className='signup-page'>
       <div className='signup-container'>
         <form className='signup-form' onSubmit={onSignUp}>
-          <div className='signup-form' className='errors'>
+          <div className='signup-form errors'>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
@@ -134,7 +134,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <button className='signup-form' className='signup-submit' type='submit'>Sign Up</button>
+          <button className='signup-form signup-submit' type='submit'>Sign Up</button>
         </form>
         <div className='signup-policies'>By signing up, you agree to no policies.</div>
       </div>
