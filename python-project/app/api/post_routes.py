@@ -34,7 +34,7 @@ def getOnePost(id):
 def newPost():
 
     # form = AddPostForm()
-    # post = Post(user_id=current_user.id, image="aws", caption=form.data['post'])
+    # post = Post(user_id=current_user.id, image="form.data['image'], caption=form.data['post'])
     # print('HAYYYYYY', request.json)
     post = Post(user_id=request.json['user_id'], image=request.json['image'], caption=request.json['caption'])
     db.session.add(post)
