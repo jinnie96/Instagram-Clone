@@ -9,19 +9,15 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/photofeed/<int:id>')
 # @login_required
 def photoFeed(id):
+
     current_user = User.query.get(id)
-    # followers = db.session.query(User).options(joinedload(User.followers)).all()
 
-    # print("@@@@@@@@", followers.followed_posts())
-    # res = {}
+    print("++++++++++++++++++", current_user.to_dict())
 
-    # for follow in followers:
-    #     res[follow.id] = follow.to_dict()
     res = {}
-    posts = current_user.followed_posts()
 
+    posts = [post for user in current_user.followers for post in user.posts]
     for post in posts:
-        print(post)
         res[post.id] = post.to_dict()
 
     return jsonify(res)
