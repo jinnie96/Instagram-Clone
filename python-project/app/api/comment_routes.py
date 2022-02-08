@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from itsdangerous import json
 from app.models import Comment, db
 from flask_login import current_user, login_required
+from app.forms.comment_form import NewCommentForm
 
 comment_routes = Blueprint('comments', __name__)
 

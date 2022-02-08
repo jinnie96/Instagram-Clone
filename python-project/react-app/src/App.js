@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
+import NewCommentForm from './components/comments/NewComment';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/posts/:id/new-comment' exact={true}>
+          <NewCommentForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
