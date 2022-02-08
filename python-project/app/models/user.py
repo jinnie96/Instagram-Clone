@@ -1,7 +1,10 @@
+from operator import and_
+from sqlalchemy import alias
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
+
 from .post import Post, likes
 
 follows = db.Table(
@@ -35,17 +38,13 @@ class User(db.Model, UserMixin):
         backref=db.backref("follows"),
         lazy='dynamic'
     )
+
     users = relationship(
         "Post",
         secondary=likes,
         back_populates="post"
     )
 
-    def followed_posts(self):
-        return Post.query.filter(Post.user_id.in_([f.id for f in self.followers if f.is_following(self)]))
-
-    def is_following(self, user):
-        return self.followers.filter(follows.c.followed_id == user.id).count() > 0
 
     @property
     def password(self):
@@ -63,5 +62,5 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            # 'followers': self.followers
+            'followers': self.followers
         }

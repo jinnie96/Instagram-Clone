@@ -22,6 +22,7 @@ class Post(db.Model):
         back_populates="users"
     )
 
+    
     def to_dict(self):
         return {
             "id": self.id,
