@@ -30,7 +30,7 @@ def new_comment(id):
         )
         db.session.add(commentNew)
         db.session.commit()
-        return commentN.to_dict()
+        return commentNew.to_dict()
     return (form.errors)
 
 
