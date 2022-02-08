@@ -14,18 +14,17 @@ follows = db.Table(
 )
 
 
-
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
-    firstName = db.Column(db.String(40), nullable=False)
-    lastName = db.Column(db.String(40), nullable=False)
+    first_name = db.Column(db.String(40), nullable=False)
+    last_name = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    biography = db.Column(db.String())
+    biography = db.Column(db.String(), nullable=True)
+    profile_picture = db.Column(db.Text(), nullable=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-
 
     posts = relationship("Post", foreign_keys="Post.user_id", back_populates='user')
     comment = relationship("Comment", foreign_keys="Comment.user_id", back_populates='users')
@@ -61,5 +60,9 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
             'email': self.email,
+            'biography': self.biography,
+            'profile_picture': self.profile_picture
         }

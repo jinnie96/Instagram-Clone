@@ -10,6 +10,7 @@ const SignUpForm = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [biography, setBiography] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -39,6 +40,10 @@ const SignUpForm = () => {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updateBiography = (e) => {
+    setBiography(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -104,6 +109,17 @@ const SignUpForm = () => {
               placeholder='Email'
               value={email}
               onChange={updateEmail}
+            ></input>
+          </div>
+          <div className='signup-form'>
+            {/* <label>User Name</label> */}
+            <input
+              className='signup-inputs'
+              type='text'
+              name='biography'
+              placeholder='Biography (optional)'
+              value={biography}
+              onChange={updateBiography}
             ></input>
           </div>
           <div className='signup-form'>
