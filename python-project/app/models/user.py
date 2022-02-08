@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 
-from .post import Post, likes
+from .post import likes
 
 follows = db.Table(
     "follows",
@@ -38,10 +38,19 @@ class User(db.Model, UserMixin):
         lazy='dynamic'
     )
 
+    following = relationship(
+        "User",
+        secondary=follows,
+        primaryjoin=(follows.c.followed_id == id),
+        secondaryjoin=(follows.c.follower_id == id),
+        lazy='dynamic'
+    )
+
     users = relationship(
         "Post",
         secondary=likes,
-        back_populates="post"
+        primaryjoin=(likes.c.users_id == id),
+        lazy='dynamic'
     )
 
 
