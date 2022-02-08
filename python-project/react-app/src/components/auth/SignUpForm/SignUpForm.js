@@ -7,7 +7,10 @@ import './SignUpForm.css'
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [biography, setBiography] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -27,8 +30,20 @@ const SignUpForm = () => {
     setUsername(e.target.value);
   };
 
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updateBiography = (e) => {
+    setBiography(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -64,6 +79,28 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='signup-form'>
+            {/* <label>User Name</label> */}
+            <input
+              className='signup-inputs'
+              type='text'
+              name='firstName'
+              placeholder='First Name'
+              value={firstName}
+              onChange={updateFirstName}
+            ></input>
+          </div>
+          <div className='signup-form'>
+            {/* <label>User Name</label> */}
+            <input
+              className='signup-inputs'
+              type='text'
+              name='lastName'
+              placeholder='Last Name'
+              value={lastName}
+              onChange={updateLastName}
+            ></input>
+          </div>
+          <div className='signup-form'>
             {/* <label>Email</label> */}
             <input
               className='signup-inputs'
@@ -72,6 +109,17 @@ const SignUpForm = () => {
               placeholder='Email'
               value={email}
               onChange={updateEmail}
+            ></input>
+          </div>
+          <div className='signup-form'>
+            {/* <label>User Name</label> */}
+            <input
+              className='signup-inputs'
+              type='text'
+              name='biography'
+              placeholder='Biography (optional)'
+              value={biography}
+              onChange={updateBiography}
             ></input>
           </div>
           <div className='signup-form'>
