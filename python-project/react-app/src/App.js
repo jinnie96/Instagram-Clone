@@ -10,6 +10,8 @@ import User from './components/User';
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
+import UploadPicture from './components/FileUpload/UploadPicture';
+import ViewImages from './components/FileUpload/ViewImages';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +50,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <Route path='/create/select'>
+          <UploadPicture/>
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>
