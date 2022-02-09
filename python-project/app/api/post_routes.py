@@ -45,11 +45,12 @@ def getOnePost(id):
 def newPost():
     form = AddPostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print(request.args)
     # if form.validate_on_submit():
 
-    files = request.files.to_dict()
-
+    print("@@@@@@@@@@@@", form.data)
+    files = request.files
+    print("$$$$$$$$$$$$$$$$$", files)
     if "image" not in files:
         return {"errors": "image required"}, 400
 

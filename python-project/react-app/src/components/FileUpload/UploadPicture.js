@@ -11,15 +11,15 @@ const UploadPicture = () => {
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
     const dispatch = useDispatch();
-
+    const current_user = useSelector(state => state.session.user)
+    const user_id = current_user.id
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("image", image);
         formData.append("caption", caption);
-
+        formData.append("user_id", user_id)
         setImageLoading(true);
-
         // const res = await fetch('/api/posts/create', {
         //     method: "POST",
         //     body: formData
@@ -37,9 +37,10 @@ const UploadPicture = () => {
         // }
 
         // await dispatch(addOnePost(image, caption))
+        console.log(image);
+        await dispatch(postActions.addOnePost({user_id, caption, image}))
 
-        dispatch(postActions.addOnePost({formData}))
-
+        setImageLoading(false)
     }
 
     const updateImage = (e) => {
@@ -50,11 +51,13 @@ const UploadPicture = () => {
     return (
         <form onSubmit={handleSubmit}>
             <input
+                name='image'
                 type="file"
                 accept="image/*"
                 onChange={updateImage}
             />
             <textarea
+                name='caption'
                 rows="5"
                 type="text"
                 value={caption}

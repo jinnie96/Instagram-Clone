@@ -65,15 +65,19 @@ export const getSinglePost = (postId) => async (dispatch) => {
 };
 
 export const addOnePost = (post) => async dispatch => {
-    const {image, caption} = post;
+    const {user_id, caption, image} = post;
+    console.log(image);
     const response = await fetch(`/api/posts/create`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         },
-        body: JSON.stringify({image, caption})
+        body: JSON.stringify({
+            user_id,
+            caption,
+            image
+        })
     })
-    console.log(response)
     if (response.ok) {
         console.log('++++++++++ hello?')
         const data = await response.json();
