@@ -9,13 +9,23 @@ import json
 
 post_routes = Blueprint('posts', __name__)
 
+@post_routes.route('/photofeed')
+# @login_required
+def allPhotosFeed():
+    print("IN API ROUTE")
+    posts = Post.query.all()
+    res = {}
+    print(posts)
+    for post in posts:
+        print("ALLPOST SINGLE POST", post)
+        res[post.id] = post.to_dict()
+    return res
 
 @post_routes.route('/photofeed/<int:id>')
 # @login_required
 def photoFeed(id):
     print("INSIDE FETCH@@@@@@@@@@@@@")
     current_user = User.query.get(id)
-
     res = {}
     print("USERFOLLOWERS", current_user.followers)
     posts = [post for user in current_user.followers for post in user.posts]

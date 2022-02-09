@@ -8,7 +8,9 @@ const ViewFollowedPosts = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
-    // console.log("STATE@@@@@", state)
+    console.log("UserSTATE@@@@@", user)
+    const state = useSelector(state => state)
+    console.log("STATE@@@@@@", state)
     const id = user.id
     useEffect(() => {
         console.log("USEEFFECTTTTTTT")

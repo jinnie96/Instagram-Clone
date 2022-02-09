@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
 import UploadPost from './components/Posts/UploadPosts/UploadPost';
 import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
+import ViewAllPosts from './components/Posts/ViewAllPosts';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,7 +53,8 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
-          <ViewFollowedPosts />
+          {/* <ViewFollowedPosts /> */}
+          <ViewAllPosts />
         </ProtectedRoute>
         <Route path='/create' exact={true}>
           <UploadPost />
