@@ -2,11 +2,11 @@ from app.models import db, Post
 
 def seed_posts():
     post1 = Post(
-        user_id = 1, image = 's3://python-group-project-insta-clone/Images/User1/Photo1.jpeg', caption = 'Test Post'
+        user_id = 1, image = 'https://python-group-project-insta-clone.s3.amazonaws.com/69ef0da56ca24091a2a712ab7b5281c9.jpeg', caption = 'Test Post'
     )
 
     post2 = Post(
-        user_id = 2, image = 's3://python-group-project-insta-clone/Images/User1/Photo4.jpeg', caption = "Test Post 12"
+        user_id = 2, image = 'https://python-group-project-insta-clone.s3.amazonaws.com/2703be206de64f77bc836b39cc619f30.png', caption = "Test Post 12"
     )
 
     db.session.add(post1)

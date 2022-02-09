@@ -10,14 +10,20 @@ import User from './components/User';
 // import Footer from './components/Footer';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
-import UploadPicture from './components/FileUploadModal/UploadPicture';
-import ViewImages from './components/FileUploadModal/ViewImages';
-// import Handle404 from './components/Handle404';
-import ProfilePage from './components/ProfilePage';
+
+import UploadPost from './components/Posts/UploadPosts/UploadPost';
+import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
+import ViewAllPosts from './components/Posts/ViewAllPosts';
+// Do we need the below?
+import UploadPicture from './components/FileUpload/UploadPicture';
+import ViewImages from './components/FileUpload/ViewImages';
+import Handle404 from './components/Handle404';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const loggedIn = useSelector(state => state.session.user)
 
   // const user = useSelector(state => state.session.user)
 
@@ -53,12 +59,11 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
+          {/* <ViewFollowedPosts /> */}
+          <ViewAllPosts />
         </ProtectedRoute>
-        <Route path='/create'>
-          <UploadPicture />
-        </Route>
-        <Route path='/create/view'>
-          <ViewImages />
+        <Route path='/create' exact={true}>
+          <UploadPost />
         </Route>
         <Route path='/users/:userId'>
           <ProfilePage />
