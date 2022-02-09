@@ -1,9 +1,10 @@
 from .db import db
 from sqlalchemy.orm import relationship
 
+
 likes = db.Table(
     "likes",
-    db.Column("users_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("users_id", db.Integer, db.ForeignKey('users.id')),
     db.Column("posts_id", db.Integer, db.ForeignKey("posts.id")),
 )
 
@@ -14,15 +15,18 @@ class Post(db.Model):
     image = db.Column(db.Text, nullable=False)
     caption = db.Column(db.Text)
 
-    user = relationship("User", foreign_keys=[user_id], overlaps="posts")
+    user = relationship("User", foreign_keys=[user_id], overlaps="like")
     comment = relationship("Comment", foreign_keys="Comment.post_id", overlaps="posts")
-    post = relationship(
+
+    like = relationship(
         "User",
         secondary=likes,
-        back_populates="users"
+        primaryjoin=(likes.c.posts_id == id),
+        backref=db.backref("likes"),
+        lazy='dynamic'
     )
 
-    
+
     def to_dict(self):
         return {
             "id": self.id,
