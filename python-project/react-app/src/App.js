@@ -11,19 +11,17 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
 
-import UploadPost from './components/Posts/UploadPosts/UploadPost';
-import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
+import UploadPost from './components/Posts/UploadPosts';
+// import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
 import ViewAllPosts from './components/Posts/ViewAllPosts';
 // Do we need the below?
-import UploadPicture from './components/FileUpload/UploadPicture';
-import ViewImages from './components/FileUpload/ViewImages';
-import Handle404 from './components/Handle404';
+// import Handle404 from './components/Handle404';
 
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  const loggedIn = useSelector(state => state.session.user)
+  // const loggedIn = useSelector(state => state.session.user)
 
   // const user = useSelector(state => state.session.user)
 
