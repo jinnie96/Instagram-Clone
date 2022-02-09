@@ -52,11 +52,9 @@ function App() {
         <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        {loaded && (
-          <Route path='/create/select'>
-            <UploadPicture />
-          </Route>
-        )}
+        <Route path='/create'>
+          <UploadPicture />
+        </Route>
         <Route path='/create/view'>
           <ViewImages />
         </Route>
