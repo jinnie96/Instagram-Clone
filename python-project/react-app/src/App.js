@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm/LoginForm';
 import SignUpForm from './components/auth/SignUpForm/SignUpForm';
 import NavBar from './components/Navigation';
@@ -17,8 +17,10 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
+  const user = useSelector(state => state.session.user)
+
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -30,7 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar loaded={loaded} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -41,17 +43,17 @@ function App() {
         <Route path='/posts/:id/new-comment' exact={true}>
           <NewCommentForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path='/users' exact={true}>
+          <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path='/users/:userId' exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path='/create/select'>
-          <UploadPicture/>
+        <Route path='/create' exact={true}>
+          <UploadPicture />
         </Route>
       </Switch>
       <Footer />
