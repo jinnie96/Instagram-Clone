@@ -29,7 +29,7 @@ const UploadPicture = () => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("image", image);
-        // formData.append("caption", caption);
+        formData.append("caption", caption);
 
         setImageLoading(true);
 
@@ -39,7 +39,6 @@ const UploadPicture = () => {
             body: formData
         });
 
-        // const data = await dispatch(addOnePost(image, caption));
 
 
         if (res.ok) {
