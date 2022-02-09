@@ -62,7 +62,7 @@ function User() {
         </li>
       </ul>
       <div>
-        <img src={user.profile_picture || noPic} alt='profile-picture'></img>
+        <img src={user.profile_picture || noPic} style={{"height": "50px", "width": "50px"}} alt='profile-picture'></img>
       </div>
       {validated &&
         (
