@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom";
-import { addOnePost } from '../../store/post';
+import * as postActions from '../../store/post';
 
 
 
@@ -11,28 +11,42 @@ const UploadPicture = () => {
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
     const dispatch = useDispatch();
+    const current_user = useSelector(state => state.session.user)
+    const user_id = current_user.id
 
-    // const handleSubmit = async (e) => {
-    //     console.log("++++++++ inside handle submit")
-    //     e.preventDefault();
-    //     const data = await dispatch(addOnePost(image, caption));
-    //     if (data) {
-    //         history.push("/");
-    //     } else {
-    //         console.log("ERRORRRRRRRRRRRRR")
-    //     }
-    // };
+    function stringify(obj) {
+        const replacer = [];
+        for (const key in obj) {
+            replacer.push(key)
+        }
+        return JSON.stringify(obj, replacer);
+    }
 
     const handleSubmit = async (e) => {
-        console.log("WE'RE INSIDE HANDLE SUBMIT")
-
         e.preventDefault();
         const formData = new FormData();
         formData.append("image", image);
         formData.append("caption", caption);
 
         setImageLoading(true);
+        // const res = await fetch('/api/posts/create', {
+        //     method: "POST",
+        //     body: formData
+        // });
+        // if (res.ok) {
+        //     await res.json();
+        //     setImageLoading(false);
+        //     history.push("/");
+        // }
+        // else {
+        //     setImageLoading(false);
+        //     // a real app would probably use more advanced
+        //     // error handling
+        //     console.log("error");
+        // }
 
+        // await dispatch(addOnePost(image, caption))
+        await dispatch(postActions.addOnePost(formData))
 
         const res = await fetch('/api/posts/create', {
             method: "POST",
@@ -55,18 +69,20 @@ const UploadPicture = () => {
     }
 
     const updateImage = (e) => {
-        const file = e.target.files[0];
+        const file = e.target.files;
         setImage(file);
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <input
+                name='image'
                 type="file"
                 accept="image/*"
                 onChange={updateImage}
             />
             <textarea
+                name='caption'
                 rows="5"
                 type="text"
                 value={caption}
