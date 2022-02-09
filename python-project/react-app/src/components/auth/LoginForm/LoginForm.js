@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
-import DemoButton from './DemoUser'
+import DemoButton from './DemoUser';
+import Footer from '../../Footer';
 import './LoginForm.css';
 
 const LoginForm = () => {
@@ -64,13 +65,14 @@ const LoginForm = () => {
             />
           </div>
           <button className='login-form login-submit' type='submit'>Log In</button>
-          <DemoButton/>
         </form>
+        <DemoButton/>
       </div>
       <div className='login-below-container'>
         <div>Don't have an account?</div>
         <a href='/sign-up'>Sign up</a>
       </div>
+      <Footer />
     </div>
   );
 };
