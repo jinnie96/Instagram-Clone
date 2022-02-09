@@ -64,19 +64,15 @@ export const getSinglePost = (postId) => async (dispatch) => {
     }
 };
 
-export const addOnePost = (post) => async dispatch => {
-    const {user_id, caption, image} = post;
-    console.log(image);
+export const addOnePost = (form) => async dispatch => {
+    const {user_id, caption, image} = form;
+    form.forEach((value, key) => {
+            console.log(key, value);
+    })
+    console.log();
     const response = await fetch(`/api/posts/create`, {
         method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            user_id,
-            caption,
-            image
-        })
+        body: form
     })
     if (response.ok) {
         console.log('++++++++++ hello?')
