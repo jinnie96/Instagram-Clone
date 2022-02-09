@@ -1,3 +1,4 @@
+from importlib.metadata import requires
 from flask import Blueprint, jsonify, redirect, session, request
 from app.models import User, Post, db
 from flask_login import current_user, login_required
@@ -45,43 +46,77 @@ def newPost():
     form = AddPostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-
-    # print("@@@@@@@@@@@@@")
-    # print(request.__dict__)
     if form.validate_on_submit():
-    # print("@@@@@@@", request.files)
-        files = form.data
-        data = json.loads(files['image'])
-        if "image" not in files:
+        if "image" not in request.files:
+            print("Error 1")
             return {"errors": "image required"}, 400
 
-        image = data
-        filename = image['name']
-        if not allowed_file(filename):
+        image = request.files['image']
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@", image)
+
+        if not allowed_file(image.filename):
             return {"errors": "file type not permitted"}, 400
 
 
-        image.update(filename = get_unique_filename(image['name']))
-        print(image)
+        image.filename = get_unique_filename(image.filename)
 
         upload = upload_file_to_s3(image)
-        print("@@@@@@@@@@@@@@@", upload)
+
         if "url" not in upload:
-            return print("@@@@@@@@@@@@@@"), upload, 400
+            return upload, 400
 
         url = upload["url"]
-        print("URRRRRRRRRRRL", url)
         post = Post(user_id=current_user.id, image=url, caption=form.data['caption'])
 
-        print('++++++++++ post', post)
-
-        # post = Post(user_id=request.json['user_id'], image=request.json['image'], caption=request.json['caption'])
         db.session.add(post)
         db.session.commit()
         print("POST")
 
         return post.to_dict()
     return (form.errors)
+# @post_routes.route('/create', methods=["POST"])
+# # @login_required
+# def newPost():
+#     form = AddPostForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+
+#     # print("@@@@@@@@@@@@@")
+#     # print(request.__dict__)
+#     if form.validate_on_submit():
+#     # print("@@@@@@@", request.files)
+#         files = form.data
+#         data = json.loads(files['image'])
+#         if "image" not in files:
+#             return {"errors": "image required"}, 400
+
+#         image = data
+#         filename = image['name']
+#         if not allowed_file(filename):
+#             return {"errors": "file type not permitted"}, 400
+
+
+#         image.update(filename = get_unique_filename(image['name']))
+#         print(image)
+
+#         upload = upload_file_to_s3(image)
+#         print("@@@@@@@@@@@@@@@", upload)
+#         if "url" not in upload:
+#             return print("@@@@@@@@@@@@@@"), upload, 400
+
+#         url = upload["url"]
+#         print("URRRRRRRRRRRL", url)
+#         post = Post(user_id=current_user.id, image=url, caption=form.data['caption'])
+
+#         print('++++++++++ post', post)
+
+#         # post = Post(user_id=request.json['user_id'], image=request.json['image'], caption=request.json['caption'])
+#         db.session.add(post)
+#         db.session.commit()
+#         print("POST")
+
+#         return post.to_dict()
+#     return (form.errors)
 
 
 

@@ -13,6 +13,7 @@ import NewCommentForm from './components/comments/NewComment';
 import UploadPicture from './components/FileUpload/UploadPicture';
 import ViewImages from './components/FileUpload/ViewImages';
 import Handle404 from './components/Handle404';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ function App() {
         <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path='/create/select'>
+        <Route path='/create'>
           <UploadPicture />
         </Route>
         <Route path='/create/view'>

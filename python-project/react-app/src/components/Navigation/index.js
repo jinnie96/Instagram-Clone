@@ -2,8 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthNav from './AuthNav';
+import UploadPictureModal from '../FileUploadModal/UploadPicture';
 // import LogoutButton from '../auth/LogoutButton';
 import './Navigation.css'
+import UploadPicture from '../FileUploadModal/UploadPictureModal';
 
 const NavBar = ({ loaded }) => {
   const user = useSelector(state => state.session.user)
@@ -14,7 +16,12 @@ const NavBar = ({ loaded }) => {
       <AuthNav user={user} />
     );
   } else {
-    sessionLinks = null;
+    sessionLinks = (
+      <>
+        <UploadPictureModal />
+        <NavLink to="/create/select">Upload</NavLink>
+      </>
+    )
   }
 
 

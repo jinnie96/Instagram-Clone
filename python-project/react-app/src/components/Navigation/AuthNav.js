@@ -25,34 +25,36 @@ function AuthNav({ user }) {
 
     return (
         <div className="auth-nav-container">
-            <div className="auth-nav-logo">LOGO GOES HERE</div>
-            <div className="auth-nav-components">
-                <div id='navbar-home'>
-                    <NavLink to="/" className='i-navlink'><i class="fas fa-home i-img"></i></NavLink>
-                </div>
-                <div id='navbar-create'>
-                    <NavLink to="/create" className='i-navlink'><i class="fas fa-plus-square i-img"></i></NavLink>
-                </div>
-                <div id='navbar-likes'>
-                    <i class="fas fa-heart i-img"></i>
-                </div>
-                <button onClick={openMenu} id='profile-button'>
-                    <i class="fas fa-user-circle i-img"></i>
-                </button>
-                <div className="dropdown-container">
-                    {showMenu && (
-                        <div className="profile-dropdown">
-                            {/* <div>Welcome, {user.username}!</div> */}
-                            <NavLink to='/profile' id='dropdown-navlink'>
-                                <i class="fas fa-user i-img"></i>
-                                <div>Profile</div>
-                            </NavLink>
-                            <div id='dropdown-logout'>
-                                <i class="fas fa-sign-out-alt i-img"></i>
-                                <LogoutButton />
+            <div className="auth-nav-sub-container">
+                <img src='/text-clone-logo.png' alt='text logo' className="auth-nav-logo"></img>
+                <div className="auth-nav-components">
+                    <div id='navbar-home'>
+                        <NavLink to="/" className='i-navlink'><i class="fas fa-home i-img"></i></NavLink>
+                    </div>
+                    <div id='navbar-create'>
+                        <NavLink to="/create" className='i-navlink'><i class="fas fa-plus-square i-img"></i></NavLink>
+                    </div>
+                    <div id='navbar-likes'>
+                        <i class="fas fa-heart i-img"></i>
+                    </div>
+                    <button onClick={openMenu} id='profile-button'>
+                        <i class="fas fa-user-circle i-img"></i>
+                    </button>
+                    <div className="dropdown-container">
+                        {showMenu && (
+                            <div className="profile-dropdown">
+                                {/* <div>Welcome, {user.username}!</div> */}
+                                <NavLink to='/profile' id='dropdown-navlink'>
+                                    <i class="fas fa-user i-img"></i>
+                                    <div>Profile</div>
+                                </NavLink>
+                                <div id='dropdown-logout'>
+                                    <i class="fas fa-sign-out-alt i-img"></i>
+                                    <LogoutButton />
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
