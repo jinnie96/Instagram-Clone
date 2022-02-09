@@ -12,7 +12,7 @@ const ViewFollowedPosts = () => {
     const state = useSelector(state => state)
     console.log("STATE@@@@@@", state)
     const id = user.id
-    useEffect(() => {
+    useEffect((id) => {
         console.log("USEEFFECTTTTTTT")
         dispatch(getFollowPosts(id))
         // const res = await fetch('/api/photofeed/');

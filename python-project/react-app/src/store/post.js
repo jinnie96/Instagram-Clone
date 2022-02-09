@@ -44,14 +44,14 @@ const deletePost = post => ({
 
 // ------------------- Thunk creators ------------------- //
 export const getAllPosts = () => async dispatch => {
-    console.log('INSIDE THUNK CREATOR++++++++++++')
+    // console.log('INSIDE THUNK CREATOR++++++++++++')
     const response = await fetch(`/api/posts/photofeed`)
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
             return;
         };
-        console.log("GETALLPOSTSDATA", data)
+        // console.log("GETALLPOSTSDATA", data)
         dispatch(getPosts(data));
         return data;
     }
@@ -88,7 +88,7 @@ export const getSinglePost = (postId) => async (dispatch) => {
 };
 
 export const addOnePost = (form) => async dispatch => {
-    const {user_id, caption, image} = form;
+    // const {user_id, caption, image} = form;
     form.forEach((value, key) => {
             console.log(key, value);
     })
@@ -146,7 +146,7 @@ export default function postsReducer(state = initialState, action) {
         case GET_POSTS: {
             newState = {};
             for (const key in action.payload) {
-                console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
+                // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
                 newState[action.payload[key].id] = action.payload[key]
             }
             return newState;
@@ -154,7 +154,7 @@ export default function postsReducer(state = initialState, action) {
         case GET_FOLLOWED_POSTS: {
             newState = {};
             for (const key in action.payload) {
-                console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
+                // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
                 newState[action.payload[key].id] = action.payload[key]
             }
             // newState[action.payload["3"].id] = action.payload["3"]
