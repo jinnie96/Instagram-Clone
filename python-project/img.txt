@@ -1,1 +1,0 @@
-{"name": "Photo3.jpeg", "lastModified": 1643933515921, "lastModifiedDate": "2022-02-04T00:11:55.921Z", "webkitRelativePath": "", "size": 119573, "type": "image/jpeg", "filename": "97b2e94268af4fb9b16b2da69b953fa3.jpeg"}

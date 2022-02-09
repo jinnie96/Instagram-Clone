@@ -33,27 +33,27 @@ const UploadPicture = () => {
         //     console.log(key, value);
         // })
         setImageLoading(true);
-        // const res = await fetch('/api/posts/create', {
-        //     method: "POST",
-        //     body: formData
-        // });
-        // if (res.ok) {
-        //     await res.json();
-        //     setImageLoading(false);
-        //     history.push("/");
-        // }
-        // else {
-        //     setImageLoading(false);
-        //     // a real app would probably use more advanced
-        //     // error handling
-        //     console.log("error");
-        // }
+        const res = await fetch('/api/posts/create', {
+            method: "POST",
+            body: formData
+        });
+        if (res.ok) {
+            await res.json();
+            setImageLoading(false);
+            history.push("/");
+        }
+        else {
+            setImageLoading(false);
+            // a real app would probably use more advanced
+            // error handling
+            console.log("error");
+        }
 
         // await dispatch(addOnePost(image, caption))
-        await dispatch(postActions.addOnePost(formData))
+        // await dispatch(postActions.addOnePost(formData))
 
         setImageLoading(false)
-        history.push('/')
+        // history.push('/')
     }
 
     const updateImage = (e) => {
