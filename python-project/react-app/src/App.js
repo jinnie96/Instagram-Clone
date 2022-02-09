@@ -10,8 +10,9 @@ import User from './components/User';
 // import Footer from './components/Footer';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
-import UploadPicture from './components/FileUploadModal/UploadPicture';
-import ViewImages from './components/FileUploadModal/ViewImages';
+import UploadPicture from './components/FileUpload/UploadPicture';
+import ViewImages from './components/FileUpload/ViewImages';
+import Handle404 from './components/Handle404';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -60,6 +61,7 @@ function App() {
         </Route>
       </Switch>
       {/* <Footer /> */}
+      {/* <Handle404 /> */}
     </BrowserRouter>
   );
 }
