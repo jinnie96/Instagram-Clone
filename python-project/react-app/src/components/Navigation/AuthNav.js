@@ -31,7 +31,8 @@ function AuthNav({ user }) {
                     <NavLink to="/" className='i-navlink'><i class="fas fa-home i-img"></i></NavLink>
                 </div>
                 <div id='navbar-create'>
-                    <NavLink to="/create" className='i-navlink'><i class="fas fa-plus-square i-img"></i></NavLink>
+
+                    <NavLink to="/create/select" className='i-navlink'><i class="fas fa-plus-square i-img"></i></NavLink>
                 </div>
                 <div id='navbar-likes'>
                     <i class="fas fa-heart i-img"></i>
