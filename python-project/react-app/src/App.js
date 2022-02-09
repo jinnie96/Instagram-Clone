@@ -12,7 +12,7 @@ import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
 import UploadPicture from './components/FileUpload/UploadPicture';
 import ViewImages from './components/FileUpload/ViewImages';
-
+import Handle404 from './components/Handle404';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -60,6 +60,7 @@ function App() {
         </Route>
       </Switch>
       {/* <Footer /> */}
+      {/* <Handle404 /> */}
     </BrowserRouter>
   );
 }
