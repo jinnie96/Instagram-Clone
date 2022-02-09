@@ -10,9 +10,15 @@ import User from './components/User';
 // import Footer from './components/Footer';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
+
 import UploadPost from './components/Posts/UploadPosts/UploadPost';
 import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
 import ViewAllPosts from './components/Posts/ViewAllPosts';
+// Do we need the below?
+import UploadPicture from './components/FileUpload/UploadPicture';
+import ViewImages from './components/FileUpload/ViewImages';
+import Handle404 from './components/Handle404';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -61,6 +67,7 @@ function App() {
         </Route>
       </Switch>
       {/* <Footer /> */}
+      {/* <Handle404 /> */}
     </BrowserRouter>
   );
 }
