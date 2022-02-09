@@ -11,16 +11,16 @@ const UploadPicture = () => {
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
     const dispatch = useDispatch();
-    const current_user = useSelector(state => state.session.user)
-    const user_id = current_user.id
+    // const current_user = useSelector(state => state.session.user)
+    // const user_id = current_user.id
 
-    function stringify(obj) {
-        const replacer = [];
-        for (const key in obj) {
-            replacer.push(key)
-        }
-        return JSON.stringify(obj, replacer);
-    }
+    // function stringify(obj) {
+    //     const replacer = [];
+    //     for (const key in obj) {
+    //         replacer.push(key)
+    //     }
+    //     return JSON.stringify(obj, replacer);
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,32 +29,11 @@ const UploadPicture = () => {
         formData.append("caption", caption);
 
         setImageLoading(true);
-        // const res = await fetch('/api/posts/create', {
-        //     method: "POST",
-        //     body: formData
-        // });
-        // if (res.ok) {
-        //     await res.json();
-        //     setImageLoading(false);
-        //     history.push("/");
-        // }
-        // else {
-        //     setImageLoading(false);
-        //     // a real app would probably use more advanced
-        //     // error handling
-        //     console.log("error");
-        // }
-
-        // await dispatch(addOnePost(image, caption))
-        await dispatch(postActions.addOnePost(formData))
 
         const res = await fetch('/api/posts/create', {
             method: "POST",
             body: formData
         });
-
-
-
         if (res.ok) {
             await res.json();
             setImageLoading(false);
@@ -66,10 +45,12 @@ const UploadPicture = () => {
             // error handling
             console.log("error");
         }
+
+        // await dispatch(addOnePost(image, caption))
     }
 
     const updateImage = (e) => {
-        const file = e.target.files;
+        const file = e.target.files[0];
         setImage(file);
     }
 
