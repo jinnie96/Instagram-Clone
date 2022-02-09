@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
+from itsdangerous import json
 from app.models import User
 
 user_routes = Blueprint('users', __name__)
@@ -15,8 +16,9 @@ def users():
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
-    user = User.query.get(id)
-    return user.to_dict()
+    current_user = User.query.get(id)
+
+    return current_user.to_dict()
 
 
 @user_routes.route('/<username>/account/edit', methods=["PUT"])

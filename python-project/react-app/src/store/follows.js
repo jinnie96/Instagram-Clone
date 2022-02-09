@@ -29,8 +29,8 @@ export default function (state = initialState, action) {
     switch (action.type) {
 
       case GET_FOLLOWS:
-        newState = {}
-        action.payload.follows.map((follow) => { newState[follow.id] = follow })
+        newState = { ...state }
+        action.payload.follows.map((follow) => { newState.follows[follow.id] = follow })
         return newState
 
       default:
