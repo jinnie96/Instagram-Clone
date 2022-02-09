@@ -1,9 +1,10 @@
 // ------------------- Action types ------------------- //
-const GET_POSTS = 'listings/GET_POSTS';
-const GET_ONE_POST = 'listings/GET_ONE_POST'
-const ADD_POST = 'listings/ADD_POST';
-const UPDATE_POST = 'listings/UPDATE_POST';
-const DELETE_POST = 'listings/DELETE_POST';
+const GET_POSTS = 'posts/GET_POSTS';
+const GET_FOLLOWED_POSTS = 'posts/GET_FOLLOWED_POSTS'
+const GET_ONE_POST = 'posts/GET_ONE_POST'
+const ADD_POST = 'posts/ADD_POST';
+const UPDATE_POST = 'posts/UPDATE_POST';
+const DELETE_POST = 'posts/DELETE_POST';
 
 
 
@@ -12,6 +13,11 @@ const getPosts = posts => ({
         type: GET_POSTS,
         payload: posts
 });
+
+const getFollowedPosts = posts => ({
+    type:GET_FOLLOWED_POSTS,
+    payload: posts
+})
 
 const getOnePost = post => ({
         type: GET_ONE_POST,
@@ -46,6 +52,22 @@ export const getAllPosts = () => async dispatch => {
         };
 
         dispatch(getPosts(data));
+        return data;
+    }
+}
+
+export const getFollowPosts = (id) => async dispatch => {
+    console.log("IN THUNK CREATOR")
+    const response = await fetch (`/api/posts/photofeed/${id}`)
+    console.log("RESSSS", response)
+    if (response.ok) {
+        const data = await response.json();
+        console.log("DATAAAAAAAA", data)
+        if (data.errors) {
+            return;
+        };
+
+        dispatch(getFollowedPosts(data));
         return data;
     }
 }
@@ -121,6 +143,11 @@ export default function postsReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_POSTS: {
+            newState = {};
+            action.payload.posts.map((post) => newState[post.id] = post);
+            return newState;
+        };
+        case GET_FOLLOWED_POSTS: {
             newState = {};
             action.payload.posts.map((post) => newState[post.id] = post);
             return newState;

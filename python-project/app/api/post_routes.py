@@ -13,21 +13,24 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/photofeed/<int:id>')
 # @login_required
 def photoFeed(id):
+    print("INSIDE FETCH@@@@@@@@@@@@@")
     current_user = User.query.get(id)
 
     res = {}
-
+    print("USERFOLLOWERS", current_user.followers)
     posts = [post for user in current_user.followers for post in user.posts]
+    print("FOLLOWEDPOSTSAPI", posts)
     for post in posts:
+        print("SINGLEPOST", post)
         res[post.id] = post.to_dict()
-
-    return jsonify(res)
+    print("POSTRESSSSSS", res)
+    return res
 
 
 @post_routes.route('/user/<int:userId>')
 def getUserPosts(userId):
     posts = Post.query.filter(userId == Post.user_id).all()
-    print('POOOOOOST', posts)
+    # print('POOOOOOST', posts)
     return {
         "posts": [post.to_dict() for post in posts]
     }

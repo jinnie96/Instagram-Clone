@@ -10,12 +10,13 @@ import User from './components/User';
 // import Footer from './components/Footer';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
-import UploadPicture from './components/FileUpload/UploadPicture';
-import ViewImages from './components/FileUpload/ViewImages';
+import UploadPost from './components/Posts/UploadPosts/UploadPost';
+import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const loggedIn = useSelector(state => state.session.user)
 
   // const user = useSelector(state => state.session.user)
 
@@ -51,12 +52,10 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
+          <ViewFollowedPosts />
         </ProtectedRoute>
-        <Route path='/create'>
-          <UploadPicture />
-        </Route>
-        <Route path='/create/view'>
-          <ViewImages />
+        <Route path='/create' exact={true}>
+          <UploadPost />
         </Route>
       </Switch>
       {/* <Footer /> */}
