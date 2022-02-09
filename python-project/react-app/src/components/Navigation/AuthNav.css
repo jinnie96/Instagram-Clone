@@ -30,12 +30,12 @@
 
 /* ------------------- Navbar components ------------------- */
 .auth-nav-logo {
-    height: 30px;
+    height: 21px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    padding-top: 3px;
+    padding-bottom: 1px;
 }
 
 .auth-nav-components {
