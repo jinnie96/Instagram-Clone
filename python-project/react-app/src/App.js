@@ -7,7 +7,7 @@ import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
 import UploadPicture from './components/FileUpload/UploadPicture';
@@ -17,7 +17,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
 
   useEffect(() => {
     (async () => {
@@ -56,7 +56,7 @@ function App() {
           <UploadPicture />
         </Route>
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

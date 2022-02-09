@@ -1,0 +1,105 @@
+/* ------------------- Navbar Container ------------------- */
+.auth-nav-container {
+    /* z-index: 1; */
+    /* position: sticky; */
+    width: 100vw;
+    top: 0;
+    margin: 0px;
+    padding: 18px;
+
+    display: flex;
+    justify-content: center;
+
+    border-bottom: 1.75px solid #DBDBDB;
+    background-color: white;
+}
+
+.auth-nav-container > * {
+    font-size: 13px;
+}
+
+
+
+/* ------------------- Navbar components ------------------- */
+.auth-nav-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 0;
+}
+
+.auth-nav-components {
+    min-width: 650px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: transparent;
+    padding: 0;
+}
+
+.i-img, .i-navlink {
+    background-color: transparent;
+}
+
+#navbar-home, #navbar-create, #navbar-likes, #profile-button {
+    background-color: transparent;
+    padding: 0 10px 0 10px;
+    border: none;
+    font-size: 24px;
+    color: black;
+}
+
+#navbar-home a, #navbar-create a {
+    color: black;
+}
+
+#profile-button:hover {
+    cursor: pointer;
+}
+
+
+/* ------------------- Dropdown components ------------------- */
+.dropdown-container {
+    position: absolute;
+    top: 60px;
+    right: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px #DBDBDB;
+    background-color:white;
+}
+
+.profile-dropdown {
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    /* margin: 40px; */
+    list-style-type: none;
+    background-color: transparent;
+}
+
+.profile-dropdown div, #dropdown-navlink {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    text-decoration: none;
+    background-color: transparent;
+    color: black;
+}
+
+.profile-dropdown i {
+    padding-right: 10px;
+}
+
+#dropdown-navlink {
+    padding-bottom: 5px;
+}
+
+#dropdown-logout {
+    padding-top: 5px;
+}

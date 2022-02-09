@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthNav from './AuthNav';
-import LogoutButton from '../auth/LogoutButton';
+// import LogoutButton from '../auth/LogoutButton';
 import './Navigation.css'
 
 const NavBar = ({ loaded }) => {
@@ -11,7 +11,7 @@ const NavBar = ({ loaded }) => {
   let sessionLinks;
   if (user) {
     sessionLinks = (
-      <AuthNav />
+      <AuthNav user={user} />
     );
   } else {
     sessionLinks = null;
