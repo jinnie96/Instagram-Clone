@@ -44,6 +44,7 @@ const deletePost = post => ({
 
 // ------------------- Thunk creators ------------------- //
 export const getAllPosts = () => async dispatch => {
+    console.log('INSIDE THUNK CREATOR++++++++++++')
     const response = await fetch(`/api/posts/photofeed`)
     if (response.ok) {
         const data = await response.json();

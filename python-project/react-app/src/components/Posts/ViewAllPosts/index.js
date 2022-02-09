@@ -6,11 +6,12 @@ import { useHistory } from "react-router-dom";
 
 const ViewAllPosts = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
     const user = useSelector(state => state.session.user)
     console.log("UserSTATE@@@@@", user)
-    const statePosts = useSelector(state => state.posts)
-    console.log("STATE@@@@@@", statePosts)
+    // const state = useSelector(state => state)
+    // console.log('++++STATE ONLY', state)
+    const statePosts = useSelector(state => state.post)
+    console.log("+++STATE@@@@@@", statePosts)
     const id = user.id
     useEffect(() => {
         console.log("USEEFFECTTTTTTT")
@@ -23,13 +24,17 @@ const ViewAllPosts = () => {
             // } else {
                 //     console.log("error")
                 // }
-            }, [dispatch])
-            const followedPosts = useSelector(state => state.posts)
-            // console.log("FOLLOWED@@@@@@", followedPosts)
-    console.log("FOLLLOWED POST@@@@@@", followedPosts)
-    const followedArr = Object.values(followedPosts)
-    console.log(followedArr)
-    followedArr.map(im => console.log(im.image, im.id))
+    }, [dispatch])
+
+    const allPosts = useSelector(state => state.post)
+
+    console.log("ALLLLL POST@@@@@@", allPosts)
+
+    const allPostsArr = Object.values(allPosts)
+    console.log(allPostsArr)
+    allPostsArr.map(im => console.log(im.image, im.id))
+
+
     return (
         <div style={{
             display:"flex",
@@ -38,7 +43,7 @@ const ViewAllPosts = () => {
             alignItems: "center"
         }}>
             <h1>Images</h1>
-            {followedArr.map(im => (
+            {allPostsArr.map(im => (
                 <div
                     key={im.id}
                     style={{
