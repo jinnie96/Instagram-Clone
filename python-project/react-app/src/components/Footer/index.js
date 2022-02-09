@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import logo from './logo.png'
 
 function Footer() {
 
@@ -28,7 +29,7 @@ function Footer() {
                 </li>
             </ul>
             <div className='footer-about'>
-                <img id="footer-logo" alt="instagram logo" src="/logo.png"/>
+                <img id="footer-logo" alt="instagram logo" src={logo} />
                 <a id='footer-text' href="https://github.com/jinnie96/Instagram-Clone" target="_blank" rel="noreferrer">Insta-Clone © 2022</a>
             </div>
         </div>
