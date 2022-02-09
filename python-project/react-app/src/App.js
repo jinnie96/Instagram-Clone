@@ -52,8 +52,11 @@ function App() {
         <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path='/create' exact={true}>
+        <Route path='/create/select'>
           <UploadPicture />
+        </Route>
+        <Route path='/create/view'>
+          <ViewImages />
         </Route>
       </Switch>
       {/* <Footer /> */}
