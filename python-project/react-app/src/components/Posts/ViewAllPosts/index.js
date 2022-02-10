@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { getAllPosts, getFollowPosts } from "../../../store/post";
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from "react";
+import { getAllPosts } from "../../../store/post";
+import { useDispatch, useSelector } from 'react-redux';
+import './ViewAllPosts.css';
 
 
 const ViewAllPosts = () => {
@@ -24,30 +24,36 @@ const ViewAllPosts = () => {
     // allPostsArr.map(post => console.log(post.image, post.id))
 
 
+
+
+
+    {/* {allPostsArrReverse.map(post => {
+        return <div key={post.id}>
+            <div>{post.user_id}</div>
+            <img src={post.image}/>
+            <div>{post.caption}</div>
+        </div>
+    })} */}
+
     return (
-        <div style={{
-            display:"flex",
-            flexDirection: "column",
-            width: "100vw",
-            alignItems: "center"
-            }}>
-            <h1>Images</h1>
+        <div className='all-post-container'>
+            {/* <h1>Images</h1> */}
             {allPostsArrReverse.map(post => (
-                <div
-                    key={post.id}
-                    style={{
-                        backgroundImage: `url(${post.image})`,
-                        backgroundSize: "contain",
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center",
-                        width: "50%",
-                        height: 250,
-                        margin: 10,
-                        // width: "auto",
-                    }} />
+                <div className='post-container'>
+                    <div id='post-id'>User id: {post.user_id}</div>
+                    <div id='post-image'
+                        key={post.id}
+                        style={{
+                            backgroundImage: `url(${post.image})`,
+                            backgroundSize: "cover",
+                            // backgroundSize: "contain",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center"
+                        }}></div>
+                    <div id='post-caption'>{post.user_id} {post.caption}</div>
+                </div>
             ))}
         </div>
-        // <div>All Posts Page</div>
     )
 }
 
