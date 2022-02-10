@@ -1,44 +1,35 @@
 import React, { useEffect } from "react";
 import { getAllPosts } from "../../../store/post";
 import { useDispatch, useSelector } from 'react-redux';
-import './ViewAllPosts.css';
+import './ViewPosts.css'
 
-
-const ViewAllPosts = () => {
+const ViewPosts = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     // console.log("UserSTATE@@@@@", user)
 
-    const allPosts = useSelector(state => state.post)
+    const viewPosts = useSelector(state => state.post)
     // console.log("ALLLLL POST@@@@@@", allPosts)
 
     useEffect(() => {
         // console.log("USEEFFECTTTTTTT")
-        dispatch(getFollowPosts(user.id))
+        dispatch(getAllPosts(user.id))
     }, [dispatch])
 
-    const allPostsArr = Object.values(allPosts)
-    const allPostsArrReverse = allPostsArr.reverse()
+    const viewPostsArr = Object.values(viewPosts)
+    const viewPostsArrReverse = viewPostsArr.reverse()
+    // console.log("REVERSE@@@@@", viewPostsArrReverse)
     // console.log(allPostsArr)
 
     // allPostsArr.map(post => console.log(post.image, post.id))
 
 
-
-
-
-    {/* {allPostsArrReverse.map(post => {
-        return <div key={post.id}>
-            <div>{post.user_id}</div>
-            <img src={post.image}/>
-            <div>{post.caption}</div>
-        </div>
-    })} */}
-
     return (
         <div className='all-post-container'>
-            {/* <h1>Images</h1> */}
-            {allPostsArrReverse.map(post => (
+            <div className='post-welcome-container'>
+                <h1>Welcome, {user.username}</h1>
+            </div>
+            {viewPostsArrReverse.map(post => (
                 <div className='post-container'>
                     <div id='post-id'>User id: {post.user_id}</div>
                     <div id='post-image'
@@ -57,4 +48,4 @@ const ViewAllPosts = () => {
     )
 }
 
-export default ViewAllPosts;
+export default ViewPosts;

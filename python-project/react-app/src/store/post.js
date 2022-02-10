@@ -1,6 +1,6 @@
 // ------------------- Action types ------------------- //
 const GET_POSTS = 'posts/GET_POSTS';
-const GET_FOLLOWED_POSTS = 'posts/GET_FOLLOWED_POSTS'
+// const GET_FOLLOWED_POSTS = 'posts/GET_FOLLOWED_POSTS'
 const GET_ONE_POST = 'posts/GET_ONE_POST'
 const ADD_POST = 'posts/ADD_POST';
 const UPDATE_POST = 'posts/UPDATE_POST';
@@ -9,13 +9,13 @@ const GET_USER_POST = 'posts/GET_USER_POST'
 
 
 // ------------------- Action creators ------------------- //
-const getPosts = posts => ({
-        type: GET_POSTS,
-        payload: posts
-});
+// const getPosts = posts => ({
+//         type: GET_POSTS,
+//         payload: posts
+// });
 
-const getFollowedPosts = posts => ({
-    type:GET_FOLLOWED_POSTS,
+const getPosts = posts => ({
+    type:GET_POSTS,
     payload: posts
 })
 
@@ -46,21 +46,21 @@ const getUserPost = post => ({
 
 
 // ------------------- Thunk creators ------------------- //
-export const getAllPosts = () => async dispatch => {
-    // console.log('INSIDE THUNK CREATOR++++++++++++')
-    const response = await fetch(`/api/posts/photofeed`)
-    if (response.ok) {
-        const data = await response.json();
-        if (data.errors) {
-            return;
-        };
-        // console.log("GETALLPOSTSDATA", data)
-        dispatch(getPosts(data));
-        return data;
-    }
-}
+// export const getAllPosts = () => async dispatch => {
+//     // console.log('INSIDE THUNK CREATOR++++++++++++')
+//     const response = await fetch(`/api/posts/photofeed`)
+//     if (response.ok) {
+//         const data = await response.json();
+//         if (data.errors) {
+//             return;
+//         };
+//         // console.log("GETALLPOSTSDATA", data)
+//         dispatch(getPosts(data));
+//         return data;
+//     }
+// }
 
-export const getFollowPosts = (id) => async dispatch => {
+export const getAllPosts = (id) => async dispatch => {
     console.log("IN THUNK CREATOR")
     const response = await fetch (`/api/posts/photofeed/${id}`)
     console.log("RESSSS", response)
@@ -71,7 +71,7 @@ export const getFollowPosts = (id) => async dispatch => {
             return;
         };
 
-        dispatch(getFollowedPosts(data));
+        dispatch(getPosts(data));
         return data;
     }
 }
@@ -162,7 +162,7 @@ export default function postsReducer(state = initialState, action) {
             }
             return newState;
         };
-        case GET_FOLLOWED_POSTS: {
+        case GET_POSTS: {
             newState = { ...state };
             for (const key in action.payload) {
                 // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")

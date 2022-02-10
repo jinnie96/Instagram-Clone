@@ -10,8 +10,7 @@ import User from './components/User';
 // import Footer from './components/Footer';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
-
-import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
+import ViewPosts from './components/Posts/ViewPosts';
 // Do we need the below?
 // import Handle404 from './components/Handle404';
 
@@ -19,9 +18,9 @@ import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  // const loggedIn = useSelector(state => state.session.user)
 
-  const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user);
+
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -55,9 +54,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true}>
-          <h1>My Home Page</h1>
-          <ViewFollowedPosts />
-          {/* <ViewAllPosts /> */}
+          <ViewPosts />
         </ProtectedRoute>
       </Switch>
       {/* <Footer /> */}
