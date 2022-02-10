@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux'
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as postActions from '../../../store/post';
 
 
@@ -12,7 +12,7 @@ const UploadPostModals = ({ setShowModal }) => {
     const history = useHistory(); // so that we can redirect after the image upload is successful
     const dispatch = useDispatch();
 
-    window.history.replaceState(null, 'Upload Post', '/create');
+    // window.history.replaceState(null, 'Upload Post', '/create');
 
     // const current_user = useSelector(state => state.session.user)
     // const user_id = current_user.id
