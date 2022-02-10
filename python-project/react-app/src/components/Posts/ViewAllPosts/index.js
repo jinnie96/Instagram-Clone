@@ -6,14 +6,14 @@ import { useHistory } from "react-router-dom";
 
 const ViewAllPosts = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
     const user = useSelector(state => state.session.user)
-    console.log("UserSTATE@@@@@", user)
-    const statePosts = useSelector(state => state.posts)
-    console.log("STATE@@@@@@", statePosts)
-    const id = user.id
+    // console.log("UserSTATE@@@@@", user)
+
+    const allPosts = useSelector(state => state.post)
+    // console.log("ALLLLL POST@@@@@@", allPosts)
+
     useEffect(() => {
-        console.log("USEEFFECTTTTTTT")
+        // console.log("USEEFFECTTTTTTT")
         dispatch(getAllPosts())
         // const res = await fetch('/api/photofeed/');
         // if (res.ok) {
@@ -23,13 +23,14 @@ const ViewAllPosts = () => {
             // } else {
                 //     console.log("error")
                 // }
-            }, [dispatch])
-            const followedPosts = useSelector(state => state.posts)
-            // console.log("FOLLOWED@@@@@@", followedPosts)
-    console.log("FOLLLOWED POST@@@@@@", followedPosts)
-    const followedArr = Object.values(followedPosts)
-    console.log(followedArr)
-    followedArr.map(im => console.log(im.image, im.id))
+    }, [dispatch])
+
+    const allPostsArr = Object.values(allPosts)
+    // console.log(allPostsArr)
+
+    // allPostsArr.map(post => console.log(post.image, post.id))
+
+
     return (
         <div style={{
             display:"flex",
@@ -38,11 +39,11 @@ const ViewAllPosts = () => {
             alignItems: "center"
         }}>
             <h1>Images</h1>
-            {followedArr.map(im => (
+            {allPostsArr.map(post => (
                 <div
-                    key={im.id}
+                    key={post.id}
                     style={{
-                        backgroundImage: `url(${im.image})`,
+                        backgroundImage: `url(${post.image})`,
                         backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
