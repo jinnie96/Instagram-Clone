@@ -28,7 +28,10 @@ function AuthNav() {
     return (
         <div className="auth-nav-container">
             <div className="auth-nav-sub-container">
-                <img src={textLogo} alt='text logo' className="auth-nav-logo"></img>
+                <a href="/">
+                    <img src={textLogo} alt='text logo' className="auth-nav-logo"></img>
+
+                </a>
                 <div className="auth-nav-components">
                     <div id='navbar-home'>
                         <NavLink to="/" className='i-navlink'><i className="fas fa-home i-img"></i></NavLink>
