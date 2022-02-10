@@ -12,28 +12,24 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/photofeed')
 # @login_required
 def allPhotosFeed():
-    print("IN API ROUTE")
     posts = Post.query.all()
     res = {}
     print(posts)
     for post in posts:
-        print("ALLPOST SINGLE POST", post)
         res[post.id] = post.to_dict()
     return res
 
 @post_routes.route('/photofeed/<int:id>')
 # @login_required
 def photoFeed(id):
-    print("INSIDE FETCH@@@@@@@@@@@@@")
     current_user = User.query.get(id)
+    current_user_posts = Post.query.filter(Post.user_id == id).all()
     res = {}
-    print("USERFOLLOWERS", current_user.followers)
     posts = [post for user in current_user.followers for post in user.posts]
-    print("FOLLOWEDPOSTSAPI", posts)
     for post in posts:
-        print("SINGLEPOST", post)
         res[post.id] = post.to_dict()
-    print("POSTRESSSSSS", res)
+    for post in current_user_posts:
+        res[post.id] = post.to_dict()
     return res
 
 
