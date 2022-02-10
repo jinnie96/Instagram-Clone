@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import UploadPostModal from "../Posts/UploadPostModal";
 import LogoutButton from '../auth/LogoutButton';
-import './AuthNav.css'
 import textLogo from './text-clone-logo.png'
+import './AuthNav.css'
 
 
-function AuthNav({ user }) {
+function AuthNav() {
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {
@@ -33,7 +34,7 @@ function AuthNav({ user }) {
                         <NavLink to="/" className='i-navlink'><i className="fas fa-home i-img"></i></NavLink>
                     </div>
                     <div id='navbar-create'>
-                        <NavLink to="/create" className='i-navlink'><i className="fas fa-plus-square i-img"></i></NavLink>
+                        <UploadPostModal className='i-navlink' />
                     </div>
                     <div id='navbar-likes'>
                         <i className="fas fa-heart i-img"></i>

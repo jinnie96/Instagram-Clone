@@ -1,26 +1,22 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom";
-// import * as postActions from '../../store/post';
+import * as postActions from '../../../store/post';
 
 
 
-const UploadPicture = () => {
-    const history = useHistory(); // so that we can redirect after the image upload is successful
+const UploadPostModals = ({ setShowModal }) => {
     const [image, setImage] = useState(null);
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
+    const history = useHistory(); // so that we can redirect after the image upload is successful
     const dispatch = useDispatch();
+
+    // window.history.replaceState(null, 'Upload Post', '/create');
+
     // const current_user = useSelector(state => state.session.user)
     // const user_id = current_user.id
 
-    // function stringify(obj) {
-    //     const replacer = [];
-    //     for (const key in obj) {
-    //         replacer.push(key)
-    //     }
-    //     return JSON.stringify(obj, replacer);
-    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,8 +31,10 @@ const UploadPicture = () => {
             body: formData
         });
         if (res.ok) {
+            dispatch(postActions.getAllPosts()); // returns state unaltered, but triggers dispatch!
             await res.json();
             setImageLoading(false);
+            setShowModal(false);
             history.push("/");
         }
         else {
@@ -46,7 +44,6 @@ const UploadPicture = () => {
             console.log("error");
         }
 
-        // await dispatch(addOnePost(image, caption))
     }
 
     const updateImage = (e) => {
@@ -76,4 +73,4 @@ const UploadPicture = () => {
     )
 }
 
-export default UploadPicture;
+export default UploadPostModals;

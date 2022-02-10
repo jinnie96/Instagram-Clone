@@ -5,7 +5,7 @@ const GET_ONE_POST = 'posts/GET_ONE_POST'
 const ADD_POST = 'posts/ADD_POST';
 const UPDATE_POST = 'posts/UPDATE_POST';
 const DELETE_POST = 'posts/DELETE_POST';
-
+const RETURN_POST = 'posts/RETURN_POST'
 
 
 // ------------------- Action creators ------------------- //
@@ -144,7 +144,7 @@ export default function postsReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_POSTS: {
-            newState = {};
+            newState = { ...state };
             for (const key in action.payload) {
                 // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
                 newState[action.payload[key].id] = action.payload[key]
@@ -152,7 +152,7 @@ export default function postsReducer(state = initialState, action) {
             return newState;
         };
         case GET_FOLLOWED_POSTS: {
-            newState = {};
+            newState = { ...state };
             for (const key in action.payload) {
                 // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
                 newState[action.payload[key].id] = action.payload[key]

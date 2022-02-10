@@ -11,7 +11,6 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
 
-import UploadPost from './components/Posts/UploadPosts';
 // import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
 import ViewAllPosts from './components/Posts/ViewAllPosts';
 // Do we need the below?
@@ -60,9 +59,6 @@ function App() {
           {/* <ViewFollowedPosts /> */}
           <ViewAllPosts />
         </ProtectedRoute>
-        <Route path='/create' exact={true}>
-          <UploadPost />
-        </Route>
       </Switch>
       {/* <Footer /> */}
       {/* <Handle404 /> */}
