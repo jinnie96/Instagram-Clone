@@ -38,18 +38,25 @@ def photoFeed(id):
     # else:
     print("HAS FOLLOWING!@#!@#!@#!@#!#")
     posts = [post for user in current_user.followers for post in user.posts]
-    if not posts:
+    if not posts and not current_user_posts:
+        print("CURRENT1", current_user.username)
         posts = Post.query.all()
         res = {}
         print("NO FOLLOWING", posts)
         for post in posts:
+            print("POOOOOOOOST1", post)
             res[post.id] = post.to_dict()
         return res
     else:
+        print("CURRENT2", current_user.username)
         for post in posts:
             res[post.id] = post.to_dict()
         for post in current_user_posts:
+            # print("USERID@@@", post.user.id)
+            # user = User.query.get(post.user.id)
+            print("POOOOOOOOST2", post.to_dict())
             res[post.id] = post.to_dict()
+            # res["user"] = user
         return res
 
     # for post in current_user_posts:

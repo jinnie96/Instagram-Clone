@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getFollowPosts } from "../../../store/post";
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom";
-
+import './index.css'
 
 const ViewFollowedPosts = () => {
     const dispatch = useDispatch()
@@ -19,6 +19,7 @@ const ViewFollowedPosts = () => {
 
     const followedPostsArr = Object.values(followedPosts)
     const followedPostsArrRev = followedPostsArr.reverse()
+    console.log("REVERSE@@@@@", followedPostsArrRev)
     // console.log(allPostsArr)
 
     // allPostsArr.map(post => console.log(post.image, post.id))
@@ -34,14 +35,15 @@ const ViewFollowedPosts = () => {
             <h1>Images</h1>
             {followedPostsArrRev.map(post => (
                 <div
+                    id="feedPost"
                     key={post.id}
                     style={{
                         backgroundImage: `url(${post.image})`,
                         backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
-                        width: "50%",
-                        height: 250,
+                        // width: "50%",
+                        // height: 250,
                         margin: 10,
                         // width: "auto",
                     }} />
