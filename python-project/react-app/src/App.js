@@ -57,8 +57,8 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
-          {}
-          <ViewFollowedPosts />
+          {/* <ViewFollowedPosts /> */}
+          <ViewAllPosts />
         </ProtectedRoute>
       </Switch>
       {/* <Footer /> */}
