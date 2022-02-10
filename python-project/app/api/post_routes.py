@@ -41,15 +41,19 @@ def photoFeed(id):
     if not posts:
         posts = Post.query.all()
         res = {}
-        print(posts)
+        print("NO FOLLOWING", posts)
         for post in posts:
             res[post.id] = post.to_dict()
+        return res
     else:
         for post in posts:
             res[post.id] = post.to_dict()
+        for post in current_user_posts:
+            res[post.id] = post.to_dict()
+        return res
+
     # for post in current_user_posts:
     #     res[post.id] = post.to_dict()
-    return res
 
 
 @post_routes.route('/user/<int:userId>')

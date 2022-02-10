@@ -12,7 +12,6 @@ import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
 
 import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
-import ViewAllPosts from './components/Posts/ViewAllPosts';
 // Do we need the below?
 // import Handle404 from './components/Handle404';
 
@@ -60,7 +59,6 @@ function App() {
           <h1>My Home Page</h1>
           {}
           <ViewFollowedPosts />
-          {/* <ViewAllPosts /> */}
         </ProtectedRoute>
       </Switch>
       {/* <Footer /> */}

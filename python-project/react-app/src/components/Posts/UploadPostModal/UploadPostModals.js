@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import * as postActions from '../../../store/post';
 
@@ -14,8 +14,8 @@ const UploadPostModals = ({ setShowModal }) => {
 
     // window.history.replaceState(null, 'Upload Post', '/create');
 
-    // const current_user = useSelector(state => state.session.user)
-    // const user_id = current_user.id
+    const current_user = useSelector(state => state.session.user)
+    const id = current_user.id
 
 
     const handleSubmit = async (e) => {
@@ -31,7 +31,7 @@ const UploadPostModals = ({ setShowModal }) => {
             body: formData
         });
         if (res.ok) {
-            dispatch(postActions.getAllPosts()); // returns state unaltered, but triggers dispatch!
+            dispatch(postActions.getFollowPosts(id)); // returns state unaltered, but triggers dispatch!
             await res.json();
             setImageLoading(false);
             setShowModal(false);
