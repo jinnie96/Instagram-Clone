@@ -47,7 +47,7 @@ export const followUser = (followerId, followedId) => async (dispatch) => {
 };
 
 export const unfollowUser = (followerId, followedId) => async (dispatch) => {
-  const res = await fetch(`/api/follow/${followerId}/followers/${followedId}`, {
+  const res = await fetch(`/api/follow/${followerId}/following/${followedId}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ followerId, followedId }),

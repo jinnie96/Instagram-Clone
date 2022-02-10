@@ -50,7 +50,13 @@ function User() {
   }
 
   const handleUnfollow = async () => {
-    dispatch(followingActions.unfollowUser)
+    dispatch(followingActions.unfollowUser(current_user, +userId))
+    const res = await dispatch(followingActions.getAllFollowers(userId))
+    if (res.ok) {
+      const data = res.json()
+      setFollowers(data)
+      return data
+    }
   }
 
   if (!user) {
