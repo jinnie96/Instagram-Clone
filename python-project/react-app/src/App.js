@@ -22,8 +22,8 @@ function App() {
   const dispatch = useDispatch();
   // const loggedIn = useSelector(state => state.session.user)
 
-  // const user = useSelector(state => state.session.user)
-
+  const user = useSelector(state => state.session.user)
+  console.log("USER@@@@@@", user)
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -34,6 +34,8 @@ function App() {
   if (!loaded) {
     return null;
   }
+  // console.log("!@#!#@!#!@#!#!#", user.followers)
+  // user.followers.forEach(user => console.log(user))
 
   return (
     <BrowserRouter>
@@ -56,6 +58,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
+          {}
           <ViewFollowedPosts />
           {/* <ViewAllPosts /> */}
         </ProtectedRoute>
