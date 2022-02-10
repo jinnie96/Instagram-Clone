@@ -76,7 +76,7 @@ export default function (state = initialState, action) {
 
     case GET_LIKES:
       newState = { ...state }
-      action.payload.likes.map((like) => { newState[like.id] = like })
+      action.payload.likes.map((like) => newState[like.id] = like)
       return newState
 
     case ADD_LIKE:

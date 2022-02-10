@@ -22,7 +22,6 @@ function App() {
   // const loggedIn = useSelector(state => state.session.user)
 
   const user = useSelector(state => state.session.user)
-  console.log("USER@@@@@@", user)
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -52,13 +51,13 @@ function App() {
         <ProtectedRoute path='/users' exact={true}>
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true}>
+        <ProtectedRoute path='/profile/:userId' exact={true}>
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true}>
           <h1>My Home Page</h1>
-          {/* <ViewFollowedPosts /> */}
-          <ViewAllPosts />
+          <ViewFollowedPosts />
+          {/* <ViewAllPosts /> */}
         </ProtectedRoute>
       </Switch>
       {/* <Footer /> */}

@@ -10,7 +10,7 @@ const getFollows = follows => ({
 
 // ------------------- Thunk creators ------------------- //
 export const getAllFollows = (id) => async dispatch => {
-    const res = await fetch(`/api/follows/${id}`)
+    const res = await fetch(`/api/follow/${id}/following`)
     if (res.ok) {
       const data = await res.json();
       if (data.errors) {
@@ -29,8 +29,8 @@ export default function (state = initialState, action) {
     switch (action.type) {
 
       case GET_FOLLOWS:
-        newState = {}
-        action.payload.follows.map((follow) => { newState[follow.id] = follow })
+        newState = { ...state }
+        action.payload.follows.map((follow) => newState.follows[follow.id] = follow)
         return newState
 
       default:
