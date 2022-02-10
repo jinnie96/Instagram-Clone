@@ -27,12 +27,12 @@ export function ModalProvider({ children }) {
 export function Modal({ onClose, children }) {
     const modalNode = useContext(ModalContext);
     const history = useHistory();
-    const path = history.location.pathname;
+    // const path = history.location.pathname;
     // window.history.replaceState(null, 'Insta-clone', path)
 
     if (!modalNode) return null;
 
-    console.log('+++++++++history', history)
+    // console.log('+++++++++history', history)
 
     return ReactDOM.createPortal(
         <div id="modal">
