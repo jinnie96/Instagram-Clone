@@ -47,6 +47,7 @@
 }
 
 .i-img, .i-navlink {
+    cursor: pointer;
     background-color: transparent;
 }
 

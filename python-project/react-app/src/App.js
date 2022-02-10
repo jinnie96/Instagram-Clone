@@ -11,9 +11,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
 
-import UploadPost from './components/Posts/UploadPosts';
-// import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
-import ViewAllPosts from './components/Posts/ViewAllPosts';
+import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
 // Do we need the below?
 // import Handle404 from './components/Handle404';
 
@@ -23,8 +21,8 @@ function App() {
   const dispatch = useDispatch();
   // const loggedIn = useSelector(state => state.session.user)
 
-  // const user = useSelector(state => state.session.user)
-
+  const user = useSelector(state => state.session.user)
+  console.log("USER@@@@@@", user)
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -35,6 +33,8 @@ function App() {
   if (!loaded) {
     return null;
   }
+  // console.log("!@#!#@!#!@#!#!#", user.followers)
+  // user.followers.forEach(user => console.log(user))
 
   return (
     <BrowserRouter>
@@ -60,9 +60,6 @@ function App() {
           {/* <ViewFollowedPosts /> */}
           <ViewAllPosts />
         </ProtectedRoute>
-        <Route path='/create' exact={true}>
-          <UploadPost />
-        </Route>
       </Switch>
       {/* <Footer /> */}
       {/* <Handle404 /> */}

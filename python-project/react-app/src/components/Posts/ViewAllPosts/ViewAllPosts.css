@@ -1,0 +1,34 @@
+/* ------------------- All posts container ------------------- */
+.all-post-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ------------------- Individual post containers ------------------- */
+.post-container {
+    max-width: 575px;
+    width: 60%;
+    height: auto;
+    margin: 10px;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.post-container div {
+    background-color: white;
+}
+
+#post-id, #post-caption {
+    padding: 10px;
+}
+
+#post-image {
+    width: 100%;
+    height: 600px;
+    /* margin: 0; */
+}
