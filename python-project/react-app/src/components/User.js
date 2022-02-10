@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import noPic from './no-profile-alt.jpg'
 import { Modal } from '../context/Modal'
-import * as userActions from '../store/users'
 import * as followingActions from '../store/followers'
-import * as followerActions from '../store/follows'
-import * as postActions from '../store/post'
+import EditProfileModal from './UserEditModal';
 
 
 function User() {
@@ -17,7 +15,7 @@ function User() {
   const [followers, setFollowers] = useState([])
   const [posts, setPosts] = useState([])
   const [showModal, setShowModal] = useState(false)
-
+  const [update, setUpdate] = useState(false)
   const current_user = useSelector((state) => state.session.user.id)
 
 
@@ -37,11 +35,14 @@ function User() {
       setFollowing(following);
       setFollowers(followers);
       setPosts(posts)
-  }, [dispatch, followers]);
+      setUpdate(false)
+  }, [update]);
+
 
   const handleFollow = async () => {
     dispatch(followingActions.followUser(current_user, +userId))
     const res = await dispatch(followingActions.getAllFollowers(userId))
+    setUpdate(true)
     if (res.ok) {
       const data = res.json()
       setFollowers(data)
@@ -52,6 +53,7 @@ function User() {
   const handleUnfollow = async () => {
     dispatch(followingActions.unfollowUser(current_user, +userId))
     const res = await dispatch(followingActions.getAllFollowers(userId))
+    setUpdate(true)
     if (res.ok) {
       const data = res.json()
       setFollowers(data)
@@ -99,6 +101,12 @@ function User() {
       </div>
       <div>
         {follow}
+        {showModal &&
+        (
+          <Modal onClose={() => setShowModal(false)}>
+            <EditProfileModal setShowModal={setShowModal} user={user} setUpdate={setUpdate}/>
+          </Modal>
+        )}
       </div>
 
     </>

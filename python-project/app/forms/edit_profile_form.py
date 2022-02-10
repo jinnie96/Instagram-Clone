@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms import StringField, TextAreaField
+from wtforms.validators import DataRequired, ValidationError, Email
 from app.models import User
 
 def username_exists(form, field):
@@ -10,9 +10,9 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 class EditProfileForm(FlaskForm):
-    username = StringField('username', validators=[DataRequired()])
-    first_name = StringField('first name')
-    last_name = StringField('last name')
+    username = StringField('username')
+    first_name = StringField('first_name')
+    last_name = StringField('last_name')
     email= StringField('email')
-    biography = StringField('bio')
-    profile_picture = StringField('profileURL')
+    biography = TextAreaField('biography')
+    # profile_picture = StringField('profileURL')
