@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { getAllPosts } from "../../../store/post";
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useDispatch } from 'react-redux';
 import '../ViewPosts/ViewPosts.css';
 import './ViewSinglePost.css';
 

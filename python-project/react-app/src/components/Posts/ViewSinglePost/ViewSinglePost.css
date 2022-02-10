@@ -1,5 +1,6 @@
 /* ------------------- Post modal ------------------- */
 .single-post-container {
+    min-width: 500px;
     max-width: 750px;
     border-radius: 10px;
 }

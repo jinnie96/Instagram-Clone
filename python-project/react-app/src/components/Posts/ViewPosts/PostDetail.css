@@ -1,5 +1,6 @@
 /* ------------------- Individual post containers ------------------- */
 .post-welcome-container, .post-detail-container {
+    min-width: 450px;
     max-width: 575px;
     width: 60%;
     height: auto;
