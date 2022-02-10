@@ -9,15 +9,7 @@ import json
 
 post_routes = Blueprint('posts', __name__)
 
-# @post_routes.route('/photofeed')
-# # @login_required
-# def allPhotosFeed():
-#     posts = Post.query.all()
-#     res = {}
-#     print(posts)
-#     for post in posts:
-#         res[post.id] = post.to_dict()
-#     return res
+
 
 @post_routes.route('/photofeed/<int:id>')
 # @login_required
@@ -25,42 +17,45 @@ def photoFeed(id):
     current_user = User.query.get(id)
     current_user_posts = Post.query.filter(Post.user_id == id).all()
     res = {}
-    print("CURRENT USER@@@@@", current_user)
-    print("CURRENT USER FOLLOWERS@@@@@", current_user.followers)
-    # if not current_user.followers:
-    #     print("IN NOT FOLLOW@!#!@#@!#!@#!@#!@#")
-    #     posts = Post.query.all()
-    #     res = {}
-    #     print(posts)
-    #     for post in posts:
-    #         res[post.id] = post.to_dict()
-    #     return res
-    # else:
-    print("HAS FOLLOWING!@#!@#!@#!@#!#")
+
     posts = [post for user in current_user.followers for post in user.posts]
+
+    # User does not follow anyone, and does not have posts
     if not posts and not current_user_posts:
-        print("CURRENT1", current_user.username)
+        print('--------- first')
         posts = Post.query.all()
         res = {}
-        print("NO FOLLOWING", posts)
         for post in posts:
-            print("POOOOOOOOST1", post)
+            user = User.query.get(post.user.id)
+            username = user.username
             res[post.id] = post.to_dict()
+            res[post.id]["username"] = f'{username}'
         return res
-    else:
-        print("CURRENT2", current_user.username)
-        for post in posts:
-            res[post.id] = post.to_dict()
+    # User does not follow anyone, and has their own posts
+    elif not posts and current_user_posts:
+        print('--------- second')
+        res = {}
         for post in current_user_posts:
-            # print("USERID@@@", post.user.id)
-            # user = User.query.get(post.user.id)
-            print("POOOOOOOOST2", post.to_dict())
+            user = User.query.get(post.user.id)
+            username = user.username
             res[post.id] = post.to_dict()
-            # res["user"] = user
+            res[post.id]["username"] = f'{username}'
+        return res
+    # User follows + do/do not have their own posts
+    else:
+        print('--------- third')
+        for post in posts:
+            user = User.query.get(post.user.id)
+            username = user.username
+            res[post.id] = post.to_dict()
+            res[post.id]["username"] = f'{username}'
+        for post in current_user_posts:
+            user = User.query.get(post.user.id)
+            username = user.username
+            res[post.id] = post.to_dict()
+            res[post.id]["username"] = f'{username}'
         return res
 
-    # for post in current_user_posts:
-    #     res[post.id] = post.to_dict()
 
 
 @post_routes.route('/user/<int:userId>')

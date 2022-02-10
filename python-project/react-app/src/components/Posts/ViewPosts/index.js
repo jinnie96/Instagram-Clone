@@ -9,7 +9,7 @@ const ViewPosts = () => {
     // console.log("UserSTATE@@@@@", user)
 
     const viewPosts = useSelector(state => state.post)
-    // console.log("ALLLLL POST@@@@@@", allPosts)
+    console.log("-------ALLLLL POST@@@@@@", viewPosts)
 
     useEffect(() => {
         // console.log("USEEFFECTTTTTTT")
@@ -30,10 +30,9 @@ const ViewPosts = () => {
                 <h1>Welcome, {user.username}</h1>
             </div>
             {viewPostsArrReverse.map(post => (
-                <div className='post-container'>
-                    <div id='post-id'>User id: {post.user_id}</div>
+                <div className='post-container' key={post.id}>
+                    <div id='post-username'>{post.username}</div>
                     <div id='post-image'
-                        key={post.id}
                         style={{
                             backgroundImage: `url(${post.image})`,
                             backgroundSize: "cover",
@@ -41,7 +40,10 @@ const ViewPosts = () => {
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "center"
                         }}></div>
-                    <div id='post-caption'>{post.user_id} {post.caption}</div>
+                    <div className='post-caption'>
+                        <div id='caption-username'>{post.username}</div>
+                        <div id='caption-caption'>{post.caption}</div>
+                    </div>
                 </div>
             ))}
         </div>
