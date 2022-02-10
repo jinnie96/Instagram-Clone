@@ -12,7 +12,6 @@ function User() {
   const [followers, setFollowers] = useState([])
   const [posts, setPosts] = useState([])
   const [showModal, setShowModal] = useState(false)
-  //
 
   const current_user = useSelector((state) => state.session.user.id)
   useEffect(() => {
