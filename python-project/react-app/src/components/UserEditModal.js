@@ -13,13 +13,30 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
 
-    const handleSubmit = async(e) => {
+    // const validate = () => {
+    //     let errors = []
+    //     if (!username) errors.push('Please provide a username.')
+
+    //     if(!firstName) errors.push('Please provide a first name.')
+
+    //     if(!lastName) errors.push('Please provide a last name.')
+
+    //     if(!email) errors.push('Please provide an email')
+    //     return errors
+    // }
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
+
         const info = {username, firstName, lastName, email, biography}
-        console.log(info);
-        dispatch(userActions.updateUserProfile(user.id, info))
-        setUpdate(true)
-        return setShowModal(false)
+        const data = await dispatch(userActions.updateUserProfile(user.id, info))
+        if(data) {
+            console.log("DATA", data);
+            setErrors(data)
+        } else {
+            setUpdate(true)
+            setShowModal(true)
+        }
     }
 
     const handleCancel = (e) => {
@@ -31,8 +48,9 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
         <>
             <form onSubmit={handleSubmit}>
                 <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
+                    {console.log("########################", errors)}
+                    {errors.map((error, ind) => (
+                        <li key={ind}>{error}</li>
                     ))}
                 </ul>
                 <input

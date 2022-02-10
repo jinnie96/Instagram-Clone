@@ -36,7 +36,6 @@ def user(id):
 @login_required
 def editProfile(id):
     form = EditProfileForm()
-    print("Testing @@@@@@@@@@@@@@@@@", form)
     user_id = id
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -51,4 +50,5 @@ def editProfile(id):
         db.session.commit()
 
         return user.to_dict()
+    print("TEST ERRORS @@@@@@@@@@@@@@",form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

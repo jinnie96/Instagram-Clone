@@ -26,20 +26,22 @@ export const getUserProfile = (id) => async (dispatch) => {
 
 export const updateUserProfile = (id, form) => async dispatch => {
     const {username, firstName, lastName, email, biography} = form
-    console.log(firstName, lastName)
+    const post = {
+        user_id: id,
+        username,
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        biography
+    }
     const res = await fetch(`/api/users/${id}/account/edit`, {
         method: "PUT",
         headers: {
             "Content-Type": 'application/json'
         },
-        body: {
-            username,
-            first_name: firstName,
-            last_name: lastName,
-            email,
-            biography
-        }
+        body: JSON.stringify(post)
     })
+    console.log("TEST @@@@@@@@@@@@@@@@@@@@@", res);
     if (res.ok) {
         const data = await res.json()
         dispatch(updateUser(data))
