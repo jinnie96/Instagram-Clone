@@ -13,21 +13,19 @@ const ViewSinglePost = ({ post }) => {
     // }, [dispatch])
 
     return (
-        <div className='single-post-container'>
-            <div className='single-post-container' key={post.id}>
-                <div className='post-username'>{post.username}</div>
-                <div className='post-image'
-                    style={{
-                        backgroundImage: `url(${post.image})`,
-                        backgroundSize: "cover",
-                        // backgroundSize: "contain",
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center"
-                    }}></div>
-                <div className='post-caption'>
-                    <div className='caption-username'>{post.username}</div>
-                    <div className='caption-caption'>{post.caption}</div>
-                </div>
+        <div className='single-post-container' key={post.id}>
+            <div className='post-username'>{post.username}</div>
+            <div className='post-image'
+                style={{
+                    backgroundImage: `url(${post.image})`,
+                    backgroundSize: "cover",
+                    // backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center"
+                }}></div>
+            <div className='post-caption'>
+                <div className='caption-username'>{post.username}</div>
+                <div className='caption-caption'>{post.caption}</div>
             </div>
         </div>
     )
