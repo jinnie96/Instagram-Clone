@@ -43,7 +43,7 @@ const getUserPost = post => ({
 export const getAllPosts = (id) => async dispatch => {
     // console.log("IN THUNK CREATOR")
     const response = await fetch (`/api/posts/photofeed/${id}`)
-    console.log("=======RESSSS", response)
+    // console.log("=======RESSSS", response)
     if (response.ok) {
         const data = await response.json();
         // console.log("DATAAAAAAAA", data)
@@ -137,7 +137,7 @@ export default function postsReducer(state = initialState, action) {
         case GET_POSTS: {
             newState = { ...state };
             for (const key in action.payload) {
-                console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
+                // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
                 newState[action.payload[key].id] = action.payload[key]
             }
             return newState;

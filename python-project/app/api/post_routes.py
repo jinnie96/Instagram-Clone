@@ -22,7 +22,7 @@ def photoFeed(id):
 
     # User does not follow anyone, and does not have posts
     if not posts and not current_user_posts:
-        print('--------- first')
+        # print('--------- first')
         posts = Post.query.all()
         res = {}
         for post in posts:
@@ -33,7 +33,7 @@ def photoFeed(id):
         return res
     # User does not follow anyone, and has their own posts
     elif not posts and current_user_posts:
-        print('--------- second')
+        # print('--------- second')
         res = {}
         for post in current_user_posts:
             user = User.query.get(post.user.id)
@@ -43,7 +43,7 @@ def photoFeed(id):
         return res
     # User follows + do/do not have their own posts
     else:
-        print('--------- third')
+        # print('--------- third')
         for post in posts:
             user = User.query.get(post.user.id)
             username = user.username
