@@ -2,19 +2,20 @@ import React, { useEffect } from "react";
 import { getAllPosts } from "../../../store/post";
 import PostDetail from "./PostDetail";
 import { useDispatch, useSelector } from 'react-redux';
-import './ViewPosts.css'
+import './ViewPosts.css';
+
 
 const ViewPosts = () => {
-    const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user)
-    const viewPosts = useSelector(state => state.post)
+    const user = useSelector(state => state.session.user);
+    const viewPosts = useSelector(state => state.post);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllPosts(user.id))
+        dispatch(getAllPosts(user.id));
     }, [dispatch])
 
-    const viewPostsArr = Object.values(viewPosts)
-    const viewPostsArrReverse = viewPostsArr.reverse()
+    const viewPostsArr = Object.values(viewPosts);
+    const viewPostsArrReverse = viewPostsArr.reverse();
 
 
     return (
@@ -23,7 +24,7 @@ const ViewPosts = () => {
                 <h1>Welcome, {user.username}</h1>
             </div>
             {viewPostsArrReverse.map(post => (
-                <PostDetail post={post} />
+                <PostDetail post={post} key={post.id} />
             ))}
         </div>
     )

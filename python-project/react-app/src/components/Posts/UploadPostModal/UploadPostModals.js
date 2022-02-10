@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import * as postActions from '../../../store/post';
 
 
-
 const UploadPostModals = ({ setShowModal }) => {
     const [image, setImage] = useState(null);
     const [caption, setCaption] = useState('');
@@ -32,6 +31,7 @@ const UploadPostModals = ({ setShowModal }) => {
         });
         if (res.ok) {
             dispatch(postActions.getAllPosts(id)); // returns state unaltered, but triggers dispatch!
+
             await res.json();
             setImageLoading(false);
             setShowModal(false);
