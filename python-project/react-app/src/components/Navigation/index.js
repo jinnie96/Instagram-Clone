@@ -5,7 +5,7 @@ import AuthNav from './AuthNav';
 import UploadPictureModal from '../FileUploadModal/UploadPicture';
 // import LogoutButton from '../auth/LogoutButton';
 import './Navigation.css'
-import UploadPicture from '../FileUploadModal/UploadPictureModal';
+// import UploadPicture from '../FileUploadModal/UploadPictureModal';
 
 const NavBar = ({ loaded }) => {
   const user = useSelector(state => state.session.user)

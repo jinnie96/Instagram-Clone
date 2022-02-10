@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from "react";
+// import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom";
-import * as postActions from '../../store/post';
+// import * as postActions from '../../store/post';
 
 
 
@@ -10,7 +10,7 @@ const UploadPicture = () => {
     const [image, setImage] = useState(null);
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     // const current_user = useSelector(state => state.session.user)
     // const user_id = current_user.id
 
