@@ -14,7 +14,7 @@ const ViewFollowedPosts = () => {
 
     useEffect(() => {
         // console.log("USEEFFECTTTTTTT")
-        dispatch(getFollowPosts())
+        dispatch(getFollowPosts(user.id))
     }, [dispatch])
 
     const followedPostsArr = Object.values(followedPosts)
