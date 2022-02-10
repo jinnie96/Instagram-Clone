@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getFollowPosts } from "../../../store/post";
+import { getAllPosts } from "../../../store/post";
 import { useDispatch, useSelector } from 'react-redux';
 import './ViewPosts.css'
 
@@ -13,7 +13,7 @@ const ViewPosts = () => {
 
     useEffect(() => {
         // console.log("USEEFFECTTTTTTT")
-        dispatch(getFollowPosts(user.id))
+        dispatch(getAllPosts(user.id))
     }, [dispatch])
 
     const viewPostsArr = Object.values(viewPosts)

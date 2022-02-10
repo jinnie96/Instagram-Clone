@@ -31,7 +31,7 @@ const UploadPostModals = ({ setShowModal }) => {
             body: formData
         });
         if (res.ok) {
-            dispatch(postActions.getFollowPosts(id)); // returns state unaltered, but triggers dispatch!
+            dispatch(postActions.getAllPosts(id)); // returns state unaltered, but triggers dispatch!
             await res.json();
             setImageLoading(false);
             setShowModal(false);
