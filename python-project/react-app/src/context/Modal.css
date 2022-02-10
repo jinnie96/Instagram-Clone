@@ -1,16 +1,17 @@
 /* ------------------- Modal Container ------------------- */
-#modal {
+/* #modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 200px;
+    top: 10%;
+    bottom: 10%;
+    left: 20%;
+    right: 20%;
+    width: 70%;
     margin-top: -237.5px;
     margin-left: -237.5px;
 }
 
 #modal-background {
     position: fixed;
-    /* z-index: 3; */
     top: 0;
     right: 0;
     left: 0;
@@ -19,7 +20,32 @@
 }
 
 #modal-content {
-    /* z-index: 3; */
     position: absolute;
     border-radius: 20px;
-}
+} */
+
+
+#modal {
+    position: fixed;
+    top: 0;
+    right: 15%;
+    left: 15%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  #modal-content {
+    position: absolute;
+    background-color:white;
+  }
