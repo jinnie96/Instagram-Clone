@@ -1,19 +1,13 @@
 // ------------------- Action types ------------------- //
 const GET_POSTS = 'posts/GET_POSTS';
-// const GET_FOLLOWED_POSTS = 'posts/GET_FOLLOWED_POSTS'
-const GET_ONE_POST = 'posts/GET_ONE_POST'
+const GET_ONE_POST = 'posts/GET_ONE_POST';
 const ADD_POST = 'posts/ADD_POST';
 const UPDATE_POST = 'posts/UPDATE_POST';
 const DELETE_POST = 'posts/DELETE_POST';
-const GET_USER_POST = 'posts/GET_USER_POST'
+const GET_USER_POST = 'posts/GET_USER_POST';
 
 
 // ------------------- Action creators ------------------- //
-// const getPosts = posts => ({
-//         type: GET_POSTS,
-//         payload: posts
-// });
-
 const getPosts = posts => ({
     type:GET_POSTS,
     payload: posts
@@ -46,27 +40,13 @@ const getUserPost = post => ({
 
 
 // ------------------- Thunk creators ------------------- //
-// export const getAllPosts = () => async dispatch => {
-//     // console.log('INSIDE THUNK CREATOR++++++++++++')
-//     const response = await fetch(`/api/posts/photofeed`)
-//     if (response.ok) {
-//         const data = await response.json();
-//         if (data.errors) {
-//             return;
-//         };
-//         // console.log("GETALLPOSTSDATA", data)
-//         dispatch(getPosts(data));
-//         return data;
-//     }
-// }
-
 export const getAllPosts = (id) => async dispatch => {
-    console.log("IN THUNK CREATOR")
+    // console.log("IN THUNK CREATOR")
     const response = await fetch (`/api/posts/photofeed/${id}`)
-    console.log("RESSSS", response)
+    console.log("=======RESSSS", response)
     if (response.ok) {
         const data = await response.json();
-        console.log("DATAAAAAAAA", data)
+        // console.log("DATAAAAAAAA", data)
         if (data.errors) {
             return;
         };
@@ -157,22 +137,22 @@ export default function postsReducer(state = initialState, action) {
         case GET_POSTS: {
             newState = { ...state };
             for (const key in action.payload) {
-                // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
+                console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
                 newState[action.payload[key].id] = action.payload[key]
             }
             return newState;
         };
-        case GET_POSTS: {
-            newState = { ...state };
-            for (const key in action.payload) {
-                // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
-                newState[action.payload[key].id] = action.payload[key]
-            }
-            // newState[action.payload["3"].id] = action.payload["3"]
+        // case GET_POSTS: {
+        //     newState = { ...state };
+        //     for (const key in action.payload) {
+        //         // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
+        //         newState[action.payload[key].id] = action.payload[key]
+        //     }
+        //     // newState[action.payload["3"].id] = action.payload["3"]
 
-            // action.payload.posts.map((post) => newState[post.id] = post);
-            return newState;
-        };
+        //     // action.payload.posts.map((post) => newState[post.id] = post);
+        //     return newState;
+        // };
         case GET_ONE_POST: {
             newState = {
                 ...state,
