@@ -5,7 +5,7 @@ const GET_ONE_POST = 'posts/GET_ONE_POST'
 const ADD_POST = 'posts/ADD_POST';
 const UPDATE_POST = 'posts/UPDATE_POST';
 const DELETE_POST = 'posts/DELETE_POST';
-const RETURN_POST = 'posts/RETURN_POST'
+const GET_USER_POST = 'posts/GET_USER_POST'
 
 
 // ------------------- Action creators ------------------- //
@@ -39,7 +39,10 @@ const deletePost = post => ({
     payload: post
 })
 
-
+const getUserPost = post => ({
+    type: GET_USER_POST,
+    payload: post
+})
 
 
 // ------------------- Thunk creators ------------------- //
@@ -130,7 +133,15 @@ export const deleteOnePost = postId => async dispatch => {
     }
 }
 
+export const getUserPosts = userId => async dispatch => {
+    const res = await fetch(`/api/posts/user/${userId}`)
 
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(getUserPost(data))
+        return data
+    }
+}
 
 
 // ------------------- Initial state ------------------- //
@@ -188,6 +199,13 @@ export default function postsReducer(state = initialState, action) {
             delete newState[action.payload.post.id];
             return newState;
         };
+        case GET_USER_POST:
+            newState = {
+                ...state,
+                userpost: action.payload
+            }
+            return newState
+
         default:
             return state;
     };

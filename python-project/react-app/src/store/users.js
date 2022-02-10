@@ -18,11 +18,11 @@ export const getUserProfile = (id) => async (dispatch) => {
     }
 }
 
-const initialState = { user: null }
+const initialState = {}
 export default function reducer(state = initialState, action) {
     switch(action.type) {
         case GET_USER:
-            return { ...state, user: action.payload }
+            return state = { ...state, users: action.payload }
         default:
             return state
     }

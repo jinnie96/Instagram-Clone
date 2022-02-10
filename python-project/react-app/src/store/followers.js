@@ -19,7 +19,7 @@ const removeFollow = follow => ({
 
 
 export const getAllFollowers = (id) => async dispatch => {
-  const res = await fetch(`/api/follows/${id}/followers`)
+  const res = await fetch(`/api/follow/${id}/followers`)
   if (res.ok) {
     const data = await res.json();
     if (data.errors) {
@@ -31,7 +31,7 @@ export const getAllFollowers = (id) => async dispatch => {
 }
 
 export const followUser = (followerId, followedId) => async (dispatch) => {
-  const res = await fetch(`/api/follows/${followedId}/new-follow`, {
+  const res = await fetch(`/api/follow/${followerId}/following/${followedId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ followerId, followedId }),
@@ -47,8 +47,8 @@ export const followUser = (followerId, followedId) => async (dispatch) => {
 };
 
 export const unfollowUser = (followerId, followedId) => async (dispatch) => {
-  const res = await fetch(`/api/follows/${followedId}/new-follow`, {
-    method: "POST",
+  const res = await fetch(`/api/follow/${followerId}/followers/${followedId}`, {
+    method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ followerId, followedId }),
   });
@@ -68,23 +68,22 @@ const initialState = {};
 
 // ------------------- Reducer ------------------- //
 
-export default function (state = initialState, action) {
+export default function followerReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
 
     case GET_FOLLOWERS:
-      newState = {}
-      action.payload.followers.map((follow) => { newState[follow.id] = follow })
+      newState = { ...state }
+      newState.follow = { ...action.payload }
       return newState;
 
     case ADD_FOLLOW:
-      newState = { ...state, [action.payload.id]: action.payload };
+      newState = { ...state }
+      newState.following = action.payload
       return newState;
 
     case REMOVE_FOLLOW:
-      newState = { ...state };
-      delete newState[action.payload.id];
-      return newState;
+      return { ...state }
 
     default:
       return state;
