@@ -14,7 +14,7 @@ const ViewAllPosts = () => {
 
     useEffect(() => {
         // console.log("USEEFFECTTTTTTT")
-        dispatch(getAllPosts())
+        dispatch(getFollowPosts(user.id))
     }, [dispatch])
 
     const allPostsArr = Object.values(allPosts)

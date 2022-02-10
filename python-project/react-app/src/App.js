@@ -12,7 +12,6 @@ import { authenticate } from './store/session';
 import NewCommentForm from './components/comments/NewComment';
 
 import ViewFollowedPosts from './components/Posts/ViewAllFollowedPosts';
-import ViewAllPosts from './components/Posts/ViewAllPosts';
 // Do we need the below?
 // import Handle404 from './components/Handle404';
 
@@ -22,8 +21,8 @@ function App() {
   const dispatch = useDispatch();
   // const loggedIn = useSelector(state => state.session.user)
 
-  // const user = useSelector(state => state.session.user)
-
+  const user = useSelector(state => state.session.user)
+  console.log("USER@@@@@@", user)
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -34,6 +33,8 @@ function App() {
   if (!loaded) {
     return null;
   }
+  // console.log("!@#!#@!#!@#!#!#", user.followers)
+  // user.followers.forEach(user => console.log(user))
 
   return (
     <BrowserRouter>

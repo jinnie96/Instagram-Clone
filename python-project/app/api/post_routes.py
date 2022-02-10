@@ -9,15 +9,15 @@ import json
 
 post_routes = Blueprint('posts', __name__)
 
-@post_routes.route('/photofeed')
-# @login_required
-def allPhotosFeed():
-    posts = Post.query.all()
-    res = {}
-    print(posts)
-    for post in posts:
-        res[post.id] = post.to_dict()
-    return res
+# @post_routes.route('/photofeed')
+# # @login_required
+# def allPhotosFeed():
+#     posts = Post.query.all()
+#     res = {}
+#     print(posts)
+#     for post in posts:
+#         res[post.id] = post.to_dict()
+#     return res
 
 @post_routes.route('/photofeed/<int:id>')
 # @login_required
@@ -25,12 +25,35 @@ def photoFeed(id):
     current_user = User.query.get(id)
     current_user_posts = Post.query.filter(Post.user_id == id).all()
     res = {}
+    print("CURRENT USER@@@@@", current_user)
+    print("CURRENT USER FOLLOWERS@@@@@", current_user.followers)
+    # if not current_user.followers:
+    #     print("IN NOT FOLLOW@!#!@#@!#!@#!@#!@#")
+    #     posts = Post.query.all()
+    #     res = {}
+    #     print(posts)
+    #     for post in posts:
+    #         res[post.id] = post.to_dict()
+    #     return res
+    # else:
+    print("HAS FOLLOWING!@#!@#!@#!@#!#")
     posts = [post for user in current_user.followers for post in user.posts]
-    for post in posts:
-        res[post.id] = post.to_dict()
-    for post in current_user_posts:
-        res[post.id] = post.to_dict()
-    return res
+    if not posts:
+        posts = Post.query.all()
+        res = {}
+        print("NO FOLLOWING", posts)
+        for post in posts:
+            res[post.id] = post.to_dict()
+        return res
+    else:
+        for post in posts:
+            res[post.id] = post.to_dict()
+        for post in current_user_posts:
+            res[post.id] = post.to_dict()
+        return res
+
+    # for post in current_user_posts:
+    #     res[post.id] = post.to_dict()
 
 
 @post_routes.route('/user/<int:userId>')
