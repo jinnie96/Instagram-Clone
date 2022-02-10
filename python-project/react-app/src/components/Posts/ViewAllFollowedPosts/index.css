@@ -1,9 +1,0 @@
-/* ------------------- Homepage Post components ------------------- */
-#feedPost:hover {
-    cursor: pointer;
-}
-
-#feedPost{
-    height:600px;
-    width: 700px;
-}

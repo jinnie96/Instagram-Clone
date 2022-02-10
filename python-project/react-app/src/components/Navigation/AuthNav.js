@@ -30,7 +30,6 @@ function AuthNav() {
             <div className="auth-nav-sub-container">
                 <a href="/">
                     <img src={textLogo} alt='text logo' className="auth-nav-logo"></img>
-
                 </a>
                 <div className="auth-nav-components">
                     <div id='navbar-home'>
