@@ -32,13 +32,13 @@ def user(id):
     return current_user.to_dict()
 
 
-@user_routes.route('/<username>/account/edit', methods=["PUT"])
+@user_routes.route('/<int:id>/account/edit', methods=["PUT"])
 @login_required
-def editProfile():
+def editProfile(id):
     form = EditProfileForm()
-    user_id = request.json['id']
+    user_id = id
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.validate_on_submit())
+
     if form.validate_on_submit():
         user = User.query.get(user_id)
         if form.data['username'] != user.username:
@@ -47,8 +47,8 @@ def editProfile():
         user.last_name = form.data['last_name']
         user.email = form.data['email']
         user.biography = form.data['biography']
-        user.profile_picture = form.data['profile_picture']
         db.session.commit()
 
         return user.to_dict()
+    print("TEST ERRORS @@@@@@@@@@@@@@",form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
