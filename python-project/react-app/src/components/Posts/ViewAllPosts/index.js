@@ -15,17 +15,10 @@ const ViewAllPosts = () => {
     useEffect(() => {
         // console.log("USEEFFECTTTTTTT")
         dispatch(getAllPosts())
-        // const res = await fetch('/api/photofeed/');
-        // if (res.ok) {
-            //     const data = await res.json();
-            //     console.log(data.images, "@@@@@@@@@@")
-            //     setImages(data.images)
-            // } else {
-                //     console.log("error")
-                // }
     }, [dispatch])
 
     const allPostsArr = Object.values(allPosts)
+    const allPostsArrReverse = allPostsArr.reverse()
     // console.log(allPostsArr)
 
     // allPostsArr.map(post => console.log(post.image, post.id))
@@ -37,9 +30,9 @@ const ViewAllPosts = () => {
             flexDirection: "column",
             width: "100vw",
             alignItems: "center"
-        }}>
+            }}>
             <h1>Images</h1>
-            {allPostsArr.map(post => (
+            {allPostsArrReverse.map(post => (
                 <div
                     key={post.id}
                     style={{
