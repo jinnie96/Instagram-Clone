@@ -32,7 +32,6 @@ function User() {
       const following = await res_following.json();
       const followers = await res_followers.json();
       const posts = await res_posts.json();
-      const count = 0
 
       setUser(user);
       setFollowing(following);

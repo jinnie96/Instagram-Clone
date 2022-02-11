@@ -6,7 +6,7 @@ import './ViewSinglePost.css';
 const ViewSinglePost = ({ post }) => {
     const dispatch = useDispatch()
     // const user = useSelector(state => state.session.user)
-
+    console.log(post, "PROFILEPOST%%%%%%%%%%%%%%")
     // useEffect(() => {
     //     dispatch(getAllPosts(user.id))
     // }, [dispatch])
