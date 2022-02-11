@@ -13,9 +13,8 @@
     display:grid;
     /* justify-items: center; */
     grid-template-columns: 1fr 1fr 1fr;
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-bottom: 30%;
+    /* grid-gap: 15px; */
+    /* grid */
 }
 
 .userphotos > :not(.profile-post-detail-container) {
@@ -66,3 +65,18 @@
     padding-left: 5px;
     font-size: 12px;
 }
+
+/* ------------------- Profile Post Info ------------------- */
+/* .profileUserInfo {
+    display: flex;
+    align-self: flex-start;
+}
+
+.profilePostFollows {
+    display: flex;
+}
+
+.unorderedlist {
+    display: flex;
+    width: 500px
+} */

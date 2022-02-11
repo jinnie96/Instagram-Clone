@@ -84,19 +84,21 @@ function User() {
 
   return (
     <>
-      <ul>
-        <li>
+      <ul className="unorderedlist">
+        <li className="profileUserInfo">
           <strong>Username</strong> {user.username}
         </li>
-        <li>
-          <strong>Posts:</strong> {posts.posts?.length || 0}
-        </li>
-        <li>
-          <strong>Followers:</strong> {Object.keys(followers).length || 0}
-        </li>
-        <li>
-          <strong>Following:</strong> {Object.keys(following).length || 0}
-        </li>
+        <div className="profilePostsFollows">
+          <li>
+            <strong>Posts:</strong> {posts.posts?.length || 0}
+          </li>
+          <li>
+            <strong>Followers:</strong> {Object.keys(followers).length || 0}
+          </li>
+          <li>
+            <strong>Following:</strong> {Object.keys(following).length || 0}
+          </li>
+        </div>
       </ul>
       <div>
         <img src={user.profile_picture || noPic} style={{"height": "50px", "width": "50px"}} alt='profile-picture'></img>
