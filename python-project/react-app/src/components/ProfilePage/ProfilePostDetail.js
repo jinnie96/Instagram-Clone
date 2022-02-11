@@ -18,7 +18,7 @@ const ProfilePostDetail = ({ post }) => {
     return (
         <>
             <div className='profile-post-detail-container'>
-                <div className='profile-post-image'
+                <div className='profile-post-image' onClick={() => setShowModal(true)}
                     style={{
                         backgroundImage: `url(${post.image})`,
                         backgroundSize: "cover",

@@ -4,12 +4,22 @@
     max-width: 575px;
     width: 60%;
     height: auto;
-    border: 1px solid #DBDBDB;
+    /* border: 1px solid #DBDBDB; */
     border-radius: 3px;
-    background-color: white;
+    /* background-color: white; */
 }
 
+.userphotos {
+    display:grid;
+    /* justify-items: center; */
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-gap: 15px; */
+    /* grid */
+}
 
+.userphotos > :not(.profile-post-detail-container) {
+    display:none;
+}
 
 /* ------------------- Individual post components ------------------- */
 .post-container div {
@@ -18,8 +28,16 @@
 
 .profile-post-image {
     width: 100%;
-    height: 600px;
+    height: 400px;
+    margin-bottom: 25px;
+    /* margin-right: 15px; */
+    margin-left: 25px;
+    /* margin: 15px 15px; */
     /* margin: 0; */
+}
+
+.profile-post-image:hover {
+    cursor: pointer;
 }
 
 .profile-post-username {
@@ -47,3 +65,18 @@
     padding-left: 5px;
     font-size: 12px;
 }
+
+/* ------------------- Profile Post Info ------------------- */
+/* .profileUserInfo {
+    display: flex;
+    align-self: flex-start;
+}
+
+.profilePostFollows {
+    display: flex;
+}
+
+.unorderedlist {
+    display: flex;
+    width: 500px
+} */

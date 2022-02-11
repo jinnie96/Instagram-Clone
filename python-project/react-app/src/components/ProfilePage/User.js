@@ -6,7 +6,9 @@ import { Modal } from '../../context/Modal'
 import * as followingActions from '../../store/followers'
 import EditProfileModal from './UserEditModal';
 import ProfilePostDetail from './ProfilePostDetail';
+import './ProfilePostDetail.css';
 import './User.css';
+
 
 
 function User() {
@@ -115,6 +117,7 @@ function User() {
         </div>
       </div>
       <div className='userphotos'>
+        {console.log("POST$$$$$$$$$", posts.posts)}
         {posts.posts !== undefined && (
           posts.posts.map(post => {
             console.log(post, "POST!@!#!!")

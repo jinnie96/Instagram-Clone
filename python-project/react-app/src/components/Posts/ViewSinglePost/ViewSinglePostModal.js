@@ -5,6 +5,7 @@ import CommentDetails from "./CommentDetails";
 import CreateComment from "./CreateComment";
 import './ViewSinglePost.css';
 
+
 const ViewSinglePost = ({ post, comments }) => {
     console.log("Post and Comment", post, comments);
     return (

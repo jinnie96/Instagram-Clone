@@ -3,12 +3,15 @@ import { NavLink } from "react-router-dom";
 import UploadPostModal from "../Posts/UploadPostModal";
 import LogoutButton from '../auth/LogoutButton';
 import textLogo from './text-clone-logo.png'
+// import current_user from flask_login
 import './AuthNav.css'
+import { useSelector } from "react-redux";
 
 
 function AuthNav() {
     const [showMenu, setShowMenu] = useState(false);
-
+    const user = useSelector(state => state.session.user)
+    console.log("USER^^^^^^^^^^^^^^^", user)
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -48,9 +51,11 @@ function AuthNav() {
                         {showMenu && (
                             <div className="profile-dropdown">
                                 {/* <div>Welcome, {user.username}!</div> */}
-                                <NavLink to='/profile' id='dropdown-navlink'>
+                                <NavLink to={'/profile/' + user.id} id='dropdown-navlink'>
                                     <i className="fas fa-user i-img"></i>
-                                    <div>Profile</div>
+                                    <NavLink to={'/profile/' + user.id}>
+                                        <div>Profile</div>
+                                    </NavLink>
                                 </NavLink>
                                 <div id='dropdown-logout'>
                                     <i className="fas fa-sign-out-alt i-img"></i>
