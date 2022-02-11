@@ -116,12 +116,11 @@ function User() {
           </span>
         </div>
       </div>
-      <div className='userphotos'>
+      <div className='profile-grid-container'>
         {posts.posts !== undefined && (
           posts.posts.map(post => {
             return <ProfilePostDetail post={post} key={post.id}/>
-        }))
-      }
+        }))}
       </div>
     </>
   );
