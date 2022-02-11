@@ -26,18 +26,15 @@
 .post-username {
     padding: 10px;
     font-size: 14px;
-}
-
-.post-username, .caption-username {
     font-weight: bold;
 }
 
 .post-caption {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px;
-    font-size: 13px;
+    font-size: 12px;
+}
+
+.post-caption p {
+    margin: 0;
 }
 
 .post-caption:hover {

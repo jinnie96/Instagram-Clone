@@ -1,6 +1,54 @@
-/* ------------------- Post modal ------------------- */
-.single-post-container {
-    min-width: 500px;
-    max-width: 750px;
-    border-radius: 10px;
+/* ------------------- Post modal container (home feed) ------------------- */
+.home-single-container {
+    /* min-width: 500px; */
+    width: 750px;
+    height: auto;
+    min-height: 500px;
+    display: flex;
 }
+
+
+
+/* ------------------- Post modal info (home feed) ------------------- */
+.home-single-image {
+    width: 70%;
+}
+
+.home-single-span {
+    width: 30%;
+
+}
+
+#home-single-username {
+    padding: 16px;
+    border-bottom: 1px solid #DBDBDB;
+    font-size: 16px;
+}
+
+#home-single-caption {
+    padding: 16px;
+    font-size: 13px;
+}
+
+#home-single-caption p {
+    margin: 0;
+}
+
+
+
+/* ------------------- Post modal comments + likes (home feed) ------------------- */
+.home-single-comments {
+    padding: 16px;
+    font-size: 13px;
+}
+
+.home-single-create {
+    /* height: 53px; */
+    padding: 16px;
+    border-top: 1px solid #DBDBDB;
+
+}
+
+/* #home-single-create-comment {
+    margin-top: 14px;
+} */

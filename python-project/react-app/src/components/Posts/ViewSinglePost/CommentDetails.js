@@ -20,8 +20,7 @@ const CommentDetails = ({ comment }) => {
         return (
             <>
                 <div>
-                    <p>{user.username}</p>
-                    <p>{comment.comment} <button>Edit</button></p>
+                    <p><b>{user.username}</b> {comment.comment} <button>Edit</button></p>
                 </div>
             </>
         )
@@ -29,8 +28,7 @@ const CommentDetails = ({ comment }) => {
     return (
         <>
             <div>
-                <p>{user.username}</p>
-                <p>{comment.comment}</p>
+                <p><b>{user.username}</b> {comment.comment}</p>
             </div>
         </>
     )

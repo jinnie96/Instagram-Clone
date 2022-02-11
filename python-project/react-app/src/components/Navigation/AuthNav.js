@@ -36,7 +36,7 @@ function AuthNav() {
                 </a>
                 <div className="auth-nav-components">
                     <div id='navbar-home'>
-                        <NavLink to="/" className='i-navlink'><i className="fas fa-home i-img"></i></NavLink>
+                        <a href="/" className='i-navlink'><i className="fas fa-home i-img"></i></a>
                     </div>
                     <div id='navbar-create'>
                         <UploadPostModal className='i-navlink' />
