@@ -24,7 +24,7 @@ const ViewSinglePost = ({ post, comments }) => {
                 <div className='caption-caption'>{post.caption}</div>
             </div>
             <div>
-                {comments.comments.map(comment => (
+                {comments?.comments?.map(comment => (
                     <CommentDetails comment={comment} key={comment.id}/>
                 ))}
                 <button>Like</button>
