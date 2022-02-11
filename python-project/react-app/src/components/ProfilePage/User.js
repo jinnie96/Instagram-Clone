@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import noPic from './no-profile-alt.jpg'
-import { Modal } from '../context/Modal'
-import * as followingActions from '../store/followers'
+import { Modal } from '../../context/Modal'
+import * as followingActions from '../../store/followers'
 import EditProfileModal from './UserEditModal';
+import ProfilePostDetail from './ProfilePostDetail';
 
 
 function User() {
@@ -98,6 +99,14 @@ function User() {
       </ul>
       <div>
         <img src={user.profile_picture || noPic} style={{"height": "50px", "width": "50px"}} alt='profile-picture'></img>
+      </div>
+      <div className='userphotos'>
+        {posts.posts !== undefined && (
+          posts.posts.map(post => {
+            console.log(post, "POST!@!#!!")
+            return <ProfilePostDetail post={post} key={post.id}/>
+        }))
+       }
       </div>
       <div>
         {follow}
