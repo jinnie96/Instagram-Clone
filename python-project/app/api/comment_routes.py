@@ -12,23 +12,24 @@ comment_routes = Blueprint('comments', __name__)
 def getComment(postId):
     res = Comment.query.filter(Comment.post_id == postId).all()
     for comment in res:
-        print("TEST COMMENT SERIAL", comment.serialize())
+        print("TEST COMMENT SERIAL", comment.to_dict())
     return {
-        "comments": [comment.serialize() for comment in res]
+        "comments": [comment.to_dict() for comment in res]
     }
 
 
 @comment_routes.route('/posts/<int:postId>/comments', methods=["POST"])
 @login_required
 def new_comment(postId):
-    data = request.json
     form = NewCommentForm()
+    print("TESTING FORM")
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         commentNew = Comment(
-            user_id=data['user_id'],
-            post_id=data['post_id'],
-            comment=form.data['comment']
+            user_id= current_user.id,
+            post_id=postId,
+            comment=form.data['comment'],
+            edited= form.data['edited']
         )
         db.session.add(commentNew)
         db.session.commit()

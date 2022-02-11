@@ -14,7 +14,7 @@ class Comment(db.Model):
     users = relationship("User", foreign_keys=[user_id], overlaps="comment")
     posts = relationship("Post", foreign_keys=[post_id])
 
-    def serialize(self):
+    def to_dict(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
