@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllPosts } from "../../store/post";
 import { Modal } from '../../context/Modal';
-import ViewSinglePost from "../Posts/ViewSinglePost/ViewSinglePostModal";
+import ViewSingleProfilePost from "../Posts/ViewSinglePost/ViewSingleProfilePost";
 import { useDispatch, useSelector } from 'react-redux';
 import './ProfilePostDetail.css';
 
@@ -9,10 +9,16 @@ const ProfilePostDetail = ({ post }) => {
     const [showModal, setShowModal] = useState(false);
 
     const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user)
+    const [comments, setComments] = useState([])
 
-    useEffect(() => {
+    const user = useSelector(state => state.session.user)
+    useEffect(async () => {
         dispatch(getAllPosts(user.id))
+        const res = await fetch(`/api/comments/posts/${post.id}/comments`)
+        if (res.ok) {
+            const data = await res.json()
+            setComments(data)
+        }
     }, [dispatch])
 
     return (
@@ -30,7 +36,7 @@ const ProfilePostDetail = ({ post }) => {
             <div>
                 {(showModal) && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <ViewSinglePost post={post} />
+                        <ViewSingleProfilePost post={post} comments={comments} />
                     </Modal>
                 )}
             </div>

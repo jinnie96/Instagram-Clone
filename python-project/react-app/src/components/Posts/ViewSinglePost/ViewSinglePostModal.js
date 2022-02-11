@@ -26,7 +26,7 @@ const ViewSinglePost = ({ post, comments }) => {
                     </div>
                 </div>
                 <div className='home-single-comments'>
-                    {comments.comments.map(comment => (
+                    {comments?.comments?.map(comment => (
                         <CommentDetails comment={comment} key={comment.id}/>
                     ))}
                 </div>

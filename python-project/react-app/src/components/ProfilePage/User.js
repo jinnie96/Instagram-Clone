@@ -123,7 +123,7 @@ function User() {
             console.log(post, "POST!@!#!!")
             return <ProfilePostDetail post={post} key={post.id}/>
         }))
-       }
+      }
       </div>
     </>
   );

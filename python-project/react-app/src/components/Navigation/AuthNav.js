@@ -51,12 +51,12 @@ function AuthNav() {
                         {showMenu && (
                             <div className="profile-dropdown">
                                 {/* <div>Welcome, {user.username}!</div> */}
-                                <NavLink to={'/profile/' + user.id} id='dropdown-navlink'>
+                                <div>
                                     <i className="fas fa-user i-img"></i>
                                     <NavLink to={'/profile/' + user.id}>
-                                        <div>Profile</div>
+                                    <div>Profile</div>
                                     </NavLink>
-                                </NavLink>
+                                </div>
                                 <div id='dropdown-logout'>
                                     <i className="fas fa-sign-out-alt i-img"></i>
                                     <LogoutButton />
