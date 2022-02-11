@@ -17,11 +17,10 @@ def getLike(postId):
     return jsonify(res)
 
 
-@like_routes.route('/p/<int:postId>/likes/<int:userId>', methods=["POST"])
+@like_routes.route('/p/<int:postId>/likes', methods=["POST"])
 # @login_required
-def newLike(postId, userId):
+def newLike(postId):
     target_post = Post.query.get(postId)
-    current_user = User.query.get(userId)
 
     target_post.like.append(current_user)
     db.session.commit()

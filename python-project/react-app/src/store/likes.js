@@ -19,8 +19,8 @@ const addLike = like => ({
 });
 
 // SELECTORS
-export const getAllLikes = () => async dispatch => {
-  const res = await fetch('/api/likes/')
+export const getAllLikes = (postId) => async dispatch => {
+  const res = await fetch(`/api/likes/p/${postId}/likes`)
   if (res.ok) {
     const data = await res.json();
     if (data.errors) {
@@ -32,7 +32,7 @@ export const getAllLikes = () => async dispatch => {
 }
 
 export const likePost = (userId, postId) => async (dispatch) => {
-  const res = await fetch(`/api/posts/${postId}/likes`, {
+  const res = await fetch(`/api/likes/p/${postId}/likes`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userId, postId }),
@@ -50,8 +50,8 @@ export const likePost = (userId, postId) => async (dispatch) => {
 
 export const unlikePost = (userId, postId) => async (dispatch) => {
   if (postId) {
-    const res = await fetch(`/api/posts/${postId}/likes`, {
-      method: "POST",
+    const res = await fetch(`/api/likes/p/${postId}/likes/${userId}`, {
+      method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, postId }),
     });
