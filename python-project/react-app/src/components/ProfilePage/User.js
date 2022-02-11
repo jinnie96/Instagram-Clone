@@ -23,7 +23,6 @@ function User() {
   const current_user = useSelector((state) => state.session.user.id)
 
 
-
   useEffect(async() => {
       const res_user = await fetch(`/api/users/${userId}`);
       const res_following = await fetch(`/api/follow/${userId}/following`);
@@ -88,7 +87,7 @@ function User() {
     <>
       <div className='profile-about-container'>
         <div id='profile-picture'>
-          <img src={user.profile_picture || noPic} style={{"height": "150px", "width": "150px"}} alt='profile-picture'></img>
+          <img src={user.profile_picture || noPic} style={{"height": "130px", "width": "130px"}} alt='profile-picture'></img>
         </div>
         <div id='profile-info'>
           <span id='row-one'>
@@ -116,14 +115,11 @@ function User() {
           </span>
         </div>
       </div>
-      <div className='userphotos'>
-        {console.log("POST$$$$$$$$$", posts.posts)}
+      <div className='profile-grid-container'>
         {posts.posts !== undefined && (
           posts.posts.map(post => {
-            console.log(post, "POST!@!#!!")
             return <ProfilePostDetail post={post} key={post.id}/>
-        }))
-      }
+        }))}
       </div>
     </>
   );

@@ -13,17 +13,6 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
 
-    // const validate = () => {
-    //     let errors = []
-    //     if (!username) errors.push('Please provide a username.')
-
-    //     if(!firstName) errors.push('Please provide a first name.')
-
-    //     if(!lastName) errors.push('Please provide a last name.')
-
-    //     if(!email) errors.push('Please provide an email')
-    //     return errors
-    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -35,7 +24,7 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
             setErrors(data)
         } else {
             setUpdate(true)
-            setShowModal(true)
+            setShowModal(false)
         }
     }
 
@@ -49,7 +38,7 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
             <form onSubmit={handleSubmit}>
                 <ul>
                     {console.log("########################", errors)}
-                    {errors.map((error, ind) => (
+                    {errors?.map((error, ind) => (
                         <li key={ind}>{error}</li>
                     ))}
                 </ul>

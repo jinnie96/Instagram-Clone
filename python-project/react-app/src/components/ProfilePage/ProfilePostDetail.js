@@ -23,23 +23,20 @@ const ProfilePostDetail = ({ post }) => {
 
     return (
         <>
-            <div className='profile-post-detail-container'>
-                <div className='profile-post-image' onClick={() => setShowModal(true)}
-                    style={{
-                        backgroundImage: `url(${post.image})`,
-                        backgroundSize: "cover",
-                        // backgroundSize: "contain",
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center"
-                    }}></div>
-                    </div>
-            <div>
-                {(showModal) && (
-                    <Modal onClose={() => setShowModal(false)}>
-                        <ViewSingleProfilePost post={post} comments={comments} />
-                    </Modal>
-                )}
+            <div className='profile-grid-image' onClick={() => setShowModal(true)}
+                style={{
+                    backgroundImage: `url(${post.image})`,
+                    backgroundSize: "cover",
+                    // backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center"
+                }}>
             </div>
+            {(showModal) && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <ViewSingleProfilePost post={post} comments={comments} />
+                </Modal>
+            )}
         </>
     )
 }
