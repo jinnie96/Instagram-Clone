@@ -7,7 +7,6 @@ import CreateComment from "./CreateComment";
 import './ViewSinglePost.css';
 import { likePost, unlikePost } from "../../../store/likes";
 import { getAllPosts } from "../../../store/post";
-import { BsHeartFill, BsHeart } from "react-icons/bs";
 
 
 

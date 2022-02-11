@@ -98,4 +98,21 @@
 }
 
 
+
 /* ------------------- Profile photo grid ------------------- */
+.userphotos {
+    width: 100vw;
+    max-width: 935px;
+    margin-top: 40px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    /* padding-bottom: 10px; */
+    /* flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+
+    /* display: grid;
+    grid: auto-flow 33.33% / repeat(3, 33.33%); */
+}
