@@ -93,7 +93,7 @@ function User() {
         <div id='profile-info'>
           <span id='row-one'>
             <div id='profile-username'>{user.username}</div>
-            <div id='profile-button'>
+            <div id='prof-button'>
               {follow}
               {showModal &&
               (
@@ -104,12 +104,12 @@ function User() {
             </div>
           </span>
           <span id='row-two'>
-            <div><strong>{posts.posts?.length || 0}</strong> posts</div>
-            <div><strong>{Object.keys(followers).length || 0}</strong> followers</div>
-            <div><strong>{Object.keys(following).length || 0}</strong> following</div>
+            <div><b>{posts.posts?.length || 0}</b> posts</div>
+            <div><b>{Object.keys(followers).length || 0}</b> followers</div>
+            <div><b>{Object.keys(following).length || 0}</b> following</div>
           </span>
           <span id='row-three'>
-            <div><strong>{user.first_name} {user.last_name}</strong></div>
+            <div><b>{user.first_name} {user.last_name}</b></div>
           </span>
           <span id='row-four'>
             <div>{user.biography}</div>
@@ -123,7 +123,7 @@ function User() {
             console.log(post, "POST!@!#!!")
             return <ProfilePostDetail post={post} key={post.id}/>
         }))
-       }
+      }
       </div>
     </>
   );

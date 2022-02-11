@@ -35,8 +35,7 @@ const PostDetail = ({ post }) => {
                         backgroundPosition: "center"
                     }}></div>
                 <div className='post-caption' onClick={() => setShowModal(true)}>
-                    <div className='caption-username'>{post.username}</div>
-                    <div className='caption-caption'>{post.caption}</div>
+                    <p><b>{post.username}</b> {post.caption}</p>
                 </div>
             </div>
             <div>
