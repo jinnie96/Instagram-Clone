@@ -11,7 +11,8 @@ comment_routes = Blueprint('comments', __name__)
 # @login_required
 def getComment(postId):
     res = Comment.query.filter(Comment.post_id == postId).all()
-
+    for comment in res:
+        print("TEST COMMENT SERIAL", comment.serialize())
     return {
         "comments": [comment.serialize() for comment in res]
     }
@@ -19,7 +20,7 @@ def getComment(postId):
 
 @comment_routes.route('/posts/<int:postId>/comments', methods=["POST"])
 @login_required
-def new_comment(id):
+def new_comment(postId):
     data = request.json
     form = NewCommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
