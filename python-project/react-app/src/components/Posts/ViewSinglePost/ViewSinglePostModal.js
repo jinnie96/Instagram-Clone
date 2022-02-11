@@ -7,12 +7,11 @@ import CreateComment from "./CreateComment";
 import './ViewSinglePost.css';
 import { likePost, unlikePost } from "../../../store/likes";
 import { getAllPosts } from "../../../store/post";
-import { BsHeartFill, BsHeart } from "react-icons/bs";
 
 
 
-const ViewSinglePost = ({ post, comments }) => {
-    console.log("Post and Comment", post, comments);
+
+const ViewSinglePost = ({ post }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const userId = useSelector(state => {
@@ -23,11 +22,17 @@ const ViewSinglePost = ({ post, comments }) => {
 
     const [update, setUpdate] = useState(false);
     const [likes, setLikes] = useState([]);
+    const [comments, setComments] = useState([])
 
 
     useEffect(async () => {
         const res_likes = await fetch(`/api/likes/p/${post.id}/likes`);
+        const res = await fetch(`/api/comments/posts/${post.id}/comments`)
+
         const like = await res_likes.json()
+        const data = await res.json()
+
+        setComments(data)
         setLikes(like)
         setUpdate(false)
     }, [update])
@@ -42,28 +47,15 @@ const ViewSinglePost = ({ post, comments }) => {
         setUpdate(true)
     }
     console.log(likes)
-    // const allLikeToThisPost = useSelector(state => {
-    //     if (state.likes) {
-    //         return Object.values(state.likes)
-    //             .filter(like => like?.post_id === +post.id)
-    //     }
-    // })
-    // console.log(allLikeToThisPost)
-
-    // const isLiked = allLikeToThisPost.filter(like => like.user_id === userId).length > 0 ? true : false
-
-    // const handleLike = () => {
-    //     isLiked ? dispatch(unlikePost(userId, post.id)) : dispatch(likePost(userId, post.id))
-    // }
 
     let like;
 
-    if(likes[userId]){
-        like = <button id='unlike' onClick={() => handleUnlike()}>Unlike</button>
+    if(likes[userId]) {
+        like =  <i className="fas fa-heart" style={{"color": "red"}} onClick={() => handleUnlike()}></i>
     } else {
-        like =  <button id='like' onClick={() => handleLike()}>Like</button>
-
+        like =  <i className="far fa-heart" onClick={() => handleLike()}></i>
     }
+
     return (
         <div className='home-single-container' key={post.id}>
             <div className='home-single-image'
@@ -80,16 +72,16 @@ const ViewSinglePost = ({ post, comments }) => {
                     <div id='home-single-caption'>
                         <p><b>{post.username}</b> {post.caption}</p>
                     </div>
-                    {like}
                 </div>
                 <div className='home-single-comments'>
                     {comments?.comments?.map(comment => (
                         <CommentDetails comment={comment} key={comment.id}/>
-                    ))}
+                        ))}
                 </div>
                 <div className='home-single-create'>
-                    <button id='single-post-heart'><i class="far fa-heart"></i></button>
-                    <CreateComment post={post} />
+                    {like}
+                    {/* <button id='single-post-heart'><i class="far fa-heart"></i></button> */}
+                    <CreateComment post={post} setUpdate={setUpdate} />
                 </div>
             </span>
         </div>

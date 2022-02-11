@@ -11,15 +11,11 @@ const PostDetail = ({ post }) => {
 
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const [comments, setComments] = useState([])
+
     console.log("POST DETAILS", post);
+
     useEffect(async () => {
         dispatch(getAllPosts(user.id))
-        const res = await fetch(`/api/comments/posts/${post.id}/comments`)
-        if (res.ok) {
-            const data = await res.json()
-            setComments(data)
-        }
     }, [dispatch])
 
     return (
@@ -41,7 +37,7 @@ const PostDetail = ({ post }) => {
             <div>
                 {(showModal) && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <ViewSinglePost post={post} comments={comments}/>
+                        <ViewSinglePost post={post} />
                     </Modal>
                 )}
             </div>
