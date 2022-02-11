@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as userActions from '../../../store/users'
 
 
-const CommentDetails = ({ comment }) => {
+const CommentDetails = ({ comment, setUpdate }) => {
     const [user, setUser] = useState([])
     const current = useSelector(state => state.session.user)
     const [newComment, setNewComment] = useState(comment.comment)
@@ -19,6 +19,17 @@ const CommentDetails = ({ comment }) => {
 
     const handleEditSubmit = async (e) => {
         e.preventDefault()
+        const res = await fetch(`/api/comments/${comment.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify({
+                comment: newComment,
+                edited: true
+            })
+        })
+        setUpdate(true)
         setEdit(false)
     }
 
@@ -33,6 +44,14 @@ const CommentDetails = ({ comment }) => {
         setEdit(false)
     }
 
+    const handleDelete = async (e) => {
+        e.preventDefault()
+        const res = await fetch(`/api/comments/${comment.id}`, {
+            method: "DELETE"
+        })
+        setUpdate(true)
+    }
+
     let field;
 
     if (edit) {
@@ -44,22 +63,23 @@ const CommentDetails = ({ comment }) => {
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
         />
-        <button type="submit">Post</button>
+        <button type="submit">Submit</button>
         <button onClick={handleCancel}>Cancel</button>
     </form>
     } else {
-        field = <p className="comment-field">{comment.comment}
-        <button onClick={handleEdit}>Edit</button></p>
+        field = <p className="comment-field">
+            {comment.comment}
+            <button onClick={handleEdit}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+        </p>
     }
 
     if (current.id === user.id) {
         return (
             <>
                 <div>
-                    <p>
                         <b>{user.username}</b>
                         {field}
-                    </p>
                 </div>
             </>
         )
