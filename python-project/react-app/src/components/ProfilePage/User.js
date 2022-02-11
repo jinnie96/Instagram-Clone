@@ -23,7 +23,6 @@ function User() {
   const current_user = useSelector((state) => state.session.user.id)
 
 
-
   useEffect(async() => {
       const res_user = await fetch(`/api/users/${userId}`);
       const res_following = await fetch(`/api/follow/${userId}/following`);

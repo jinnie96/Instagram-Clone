@@ -21,8 +21,8 @@ const CreateComment = ({ post, setUpdate }) => {
 
         if (res.ok) {
             const data = await res.json()
-            dispatch(commentActions.addOneComment(data))
             dispatch(commentActions.getAllComments(post.id))
+            setComment("")
             setUpdate(true)
             return data
         }

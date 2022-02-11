@@ -46,6 +46,7 @@ def update_comment(id):
     if form.validate_on_submit():
         comment = Comment.query.get(id)
         comment.comment = form.data['comment']
+        comment.edited = True
         db.session.commit()
         return {'comment': comment.to_dict()}
     return "comment updated"
