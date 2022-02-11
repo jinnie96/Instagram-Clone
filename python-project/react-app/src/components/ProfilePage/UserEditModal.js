@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { Modal } from '../context/Modal'
-import * as userActions from '../store/users'
+import { Modal } from '../../context/Modal'
+import * as userActions from '../../store/users'
 
 
 const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
