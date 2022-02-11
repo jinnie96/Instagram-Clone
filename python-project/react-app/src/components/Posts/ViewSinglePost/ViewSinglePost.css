@@ -9,14 +9,16 @@
 
 
 
-/* ------------------- Post modal info (home feed) ------------------- */
+/* ------------------- Post modal info (username + caption) ------------------- */
 .home-single-image {
     width: 70%;
 }
 
 .home-single-span {
     width: 30%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #home-single-username {
@@ -36,17 +38,31 @@
 
 
 
-/* ------------------- Post modal comments + likes (home feed) ------------------- */
+/* ------------------- Post modal comments ------------------- */
 .home-single-comments {
     padding: 16px;
     font-size: 13px;
 }
 
+
+
+
+
+/* ------------------- Post modal footer (likes + create comment) ------------------- */
+#single-post-heart {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: black;
+}
+
 .home-single-create {
-    /* height: 53px; */
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 16px;
     border-top: 1px solid #DBDBDB;
-
 }
 
 /* #home-single-create-comment {

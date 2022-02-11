@@ -50,7 +50,6 @@ function AuthNav() {
                     <div className="dropdown-container">
                         {showMenu && (
                             <div className="profile-dropdown">
-                                {/* <div>Welcome, {user.username}!</div> */}
                                 <div>
                                     <i className="fas fa-user i-img"></i>
                                     <NavLink to={'/profile/' + user.id}>

@@ -31,7 +31,7 @@ const ViewSinglePost = ({ post, comments }) => {
                     ))}
                 </div>
                 <div className='home-single-create'>
-                    <button>Like</button>
+                    <button id='single-post-heart'><i class="far fa-heart"></i></button>
                     <CreateComment post={post} />
                 </div>
             </span>
