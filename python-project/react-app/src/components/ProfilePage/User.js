@@ -13,7 +13,7 @@ import './User.css';
 
 function User() {
   const dispatch = useDispatch()
-  const { userId }  = useParams();
+  const { username }  = useParams();
   const [user, setUser] = useState({});
   const [following, setFollowing] = useState([])
   const [followers, setFollowers] = useState([])
@@ -23,6 +23,9 @@ function User() {
   const current_user = useSelector((state) => state.session.user.id)
 
 
+  let userId
+  let res = await fetch(`/api/users/${username}`)
+  userId = res.id
 
   useEffect(async() => {
       const res_user = await fetch(`/api/users/${userId}`);

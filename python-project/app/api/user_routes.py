@@ -23,6 +23,11 @@ def users():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
 
+@user_routes.route('/<username>')
+@login_required
+def getUserId(username):
+    user = User.query.filter(username == User.username)
+    return user.to_dict()
 
 @user_routes.route('/<int:id>')
 @login_required
