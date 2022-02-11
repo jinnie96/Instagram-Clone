@@ -25,7 +25,7 @@ const deleteComment = comment => ({
 
 
 export const getAllComments = postId => async dispatch => {
-    const response = await fetch(`/api/posts/${postId}/comments`)
+    const response = await fetch(`/api/comments/posts/${postId}/comments`)
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
@@ -82,8 +82,14 @@ export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_COMMENTS:
-            newState = {}
-            action.payload.comments.map((comment) =>  newState[comment.id] = comment )
+            // newState = {}
+            // action.payload.comments.map((comment) =>  newState[comment.id] = comment )
+            newState = {
+                ...state,
+                ...state.comments = {
+                    ...action.payload
+                }
+            }
             return newState
         case ADD_COMMENT:
             newState = {
