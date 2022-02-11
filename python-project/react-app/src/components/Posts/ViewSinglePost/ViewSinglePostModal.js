@@ -68,7 +68,11 @@ const ViewSinglePost = ({ post }) => {
                 }}></div>
             <span className='home-single-span'>
                 <div className='home-single-info'>
-                    <div id='home-single-username'>{post.username}</div>
+                    <div id='home-single-username'>
+                        <NavLink to={`/profile/${post.user_id}`}>
+                            {post.username}
+                        </NavLink>
+                    </div>
                     <div id='home-single-caption'>
                         <p><b>{post.username}</b> {post.caption}</p>
                     </div>

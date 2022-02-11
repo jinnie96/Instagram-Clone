@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllPosts } from "../../../store/post";
 import { getAllComments } from "../../../store/comments";
+import { NavLink } from "react-router-dom";
 import { Modal } from '../../../context/Modal';
 import ViewSinglePost from "../ViewSinglePost/ViewSinglePostModal";
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,7 +22,11 @@ const PostDetail = ({ post }) => {
     return (
         <>
             <div className='post-detail-container'>
-                <div className='post-username'>{post.username}</div>
+                <div className='post-username'>
+                    <NavLink to={`/profile/${post.user_id}`}>
+                        {post.username}
+                    </NavLink>
+                </div>
                 <div className='post-image'
                     style={{
                         backgroundImage: `url(${post.image})`,
