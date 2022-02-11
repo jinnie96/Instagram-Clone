@@ -113,7 +113,14 @@ function User() {
           </span>
         </div>
       </div>
-
+      <div className='userphotos'>
+        {posts.posts !== undefined && (
+          posts.posts.map(post => {
+            console.log(post, "POST!@!#!!")
+            return <ProfilePostDetail post={post} key={post.id}/>
+        }))
+       }
+      </div>
     </>
   );
 }
