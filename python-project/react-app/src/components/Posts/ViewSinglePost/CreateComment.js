@@ -30,7 +30,6 @@ const CreateComment = ({ post, setUpdate }) => {
     }
 
     return (
-
             <form className='create-comment' onSubmit={handleSubmit}>
                 <input
                     placeholder="Add a comment..."
