@@ -6,6 +6,7 @@ import { Modal } from '../../context/Modal'
 import * as followingActions from '../../store/followers'
 import EditProfileModal from './UserEditModal';
 import ProfilePostDetail from './ProfilePostDetail';
+import './ProfilePostDetail.css';
 
 
 function User() {
@@ -31,6 +32,7 @@ function User() {
       const following = await res_following.json();
       const followers = await res_followers.json();
       const posts = await res_posts.json();
+      const count = 0
 
       setUser(user);
       setFollowing(following);
@@ -101,6 +103,7 @@ function User() {
         <img src={user.profile_picture || noPic} style={{"height": "50px", "width": "50px"}} alt='profile-picture'></img>
       </div>
       <div className='userphotos'>
+        {console.log("POST$$$$$$$$$", posts.posts)}
         {posts.posts !== undefined && (
           posts.posts.map(post => {
             console.log(post, "POST!@!#!!")
