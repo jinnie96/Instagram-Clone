@@ -7,9 +7,20 @@ import CreateComment from "./CreateComment";
 import './ViewSinglePost.css';
 import { likePost, unlikePost } from "../../../store/likes";
 import { getAllPosts } from "../../../store/post";
-import { BsHeartFill, BsHeart } from "react-icons/bs";
 
 
+
+// {
+//     "requires": true,
+//     "lockfileVersion": 1,
+//     "dependencies": {
+//       "react-icons": {
+//         "version": "4.3.1",
+//         "resolved": "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz",
+//         "integrity": "sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ=="
+//       }
+//     }
+//   }
 
 const ViewSinglePost = ({ post, comments }) => {
     console.log("Post and Comment", post, comments);
