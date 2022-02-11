@@ -98,4 +98,15 @@
 }
 
 
+
 /* ------------------- Profile photo grid ------------------- */
+.profile-grid-container {
+    width: 100vw;
+    max-width: 935px;
+    margin-top: 40px;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 3vw;
+    row-gap: 3vw;
+}
