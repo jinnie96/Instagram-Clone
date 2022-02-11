@@ -11,7 +11,8 @@ import { getAllPosts } from "../../../store/post";
 
 
 
-const ViewSinglePost = ({ post }) => {
+
+const ViewSinglePost = ({ post, comments }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const userId = useSelector(state => {
