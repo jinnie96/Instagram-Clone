@@ -1,0 +1,101 @@
+/* ------------------- Profile info container ------------------- */
+.profile-about-container {
+    width: 100vw;
+    min-width: 700px;
+    max-width: 935px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+
+
+/* ------------------- Profile picture ------------------- */
+#profile-picture {
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#profile-picture img {
+    border-radius: 50%;
+}
+
+
+
+/* ------------------- Profile info ------------------- */
+#profile-info {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 32px;
+}
+
+#profile-info span {
+    padding-bottom: 20px;
+}
+
+#row-one {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#profile-username {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+#unfollow-butt {
+    padding: 5px 9px;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#edit-butt, #unfollow-butt {
+    padding: 5px 9px;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#follow-butt {
+    padding: 6px 24px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(38, 148, 252);
+    font-weight: bold;
+    color: white;
+}
+
+#profile-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 0 20px;
+}
+#row-two {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+#row-three {
+    font-size: 16px;
+}
+
+#row-four {
+    font-size: 15px;
+}
+
+
+/* ------------------- Profile photo grid ------------------- */
