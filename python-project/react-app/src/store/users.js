@@ -45,9 +45,14 @@ export const updateUserProfile = (id, form) => async dispatch => {
     if (res.ok) {
         const data = await res.json()
         dispatch(updateUser(data))
-        return data;
+        return null;
+    } else if (res.status < 500) {
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
     } else {
-        return res
+        return ['An error occured. Please try again.']
     }
 }
 
@@ -59,13 +64,13 @@ export default function reducer(state = initialState, action) {
             return state = { ...state, users: action.payload }
 
         case UPDATE_USER:
-            const index = state.users.findIndex(user => user.id === action.payload.id)
+            const index = state.users?.findIndex(user => user.id === action.payload.id)
             return {
                 ...state,
                 ...state.users = {
-                    ...state.users.slice(0, index),
+                    ...state.users?.slice(0, index),
                     ...action.payload,
-                    ...state.users.slice(index)
+                    ...state.users?.slice(index)
                 }
             }
 
