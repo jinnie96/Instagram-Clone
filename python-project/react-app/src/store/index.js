@@ -6,6 +6,7 @@ import likes from './likes';
 import post from './post'
 import followers from './followers'
 import follows from './follows'
+import user from './users'
 
 
 const rootReducer = combineReducers({
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   likes,
   post,
   followers,
-  follows
+  follows,
+  user
 });
 
 

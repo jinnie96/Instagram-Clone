@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllPosts } from "../../../store/post";
+import { getAllComments } from "../../../store/comments";
 import { Modal } from '../../../context/Modal';
 import ViewSinglePost from "../ViewSinglePost/ViewSinglePostModal";
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,9 +11,15 @@ const PostDetail = ({ post }) => {
 
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-
-    useEffect(() => {
+    const [comments, setComments] = useState([])
+    console.log("POST DETAILS", post);
+    useEffect(async () => {
         dispatch(getAllPosts(user.id))
+        const res = await fetch(`/api/comments/posts/${post.id}/comments`)
+        if (res.ok) {
+            const data = await res.json()
+            setComments(data)
+        }
     }, [dispatch])
 
     return (
@@ -35,7 +42,7 @@ const PostDetail = ({ post }) => {
             <div>
                 {(showModal) && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <ViewSinglePost post={post} />
+                        <ViewSinglePost post={post} comments={comments}/>
                     </Modal>
                 )}
             </div>

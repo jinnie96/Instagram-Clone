@@ -7,6 +7,8 @@ import * as followingActions from '../../store/followers'
 import EditProfileModal from './UserEditModal';
 import ProfilePostDetail from './ProfilePostDetail';
 import './ProfilePostDetail.css';
+import './User.css';
+
 
 
 function User() {
@@ -75,33 +77,44 @@ function User() {
   let follow;
 
   if (followers[current_user]) {
-    follow = <button onClick={handleUnfollow}>Unfollow</button>
+    follow = <button id='unfollow-butt' onClick={handleUnfollow}>Unfollow</button>
   } else if (validated) {
-    follow = <button onClick={() => setShowModal(true)}>Edit Profile</button>
+    follow = <button id='edit-butt' onClick={() => setShowModal(true)}>Edit Profile</button>
   } else {
-    follow = <button onClick={handleFollow}>Follow</button>;
+    follow = <button id='follow-butt' onClick={handleFollow}>Follow</button>;
   }
 
   return (
     <>
-      <ul className="unorderedlist">
-        <li className="profileUserInfo">
-          <strong>Username</strong> {user.username}
-        </li>
-        <div className="profilePostsFollows">
-          <li>
-            <strong>Posts:</strong> {posts.posts?.length || 0}
-          </li>
-          <li>
-            <strong>Followers:</strong> {Object.keys(followers).length || 0}
-          </li>
-          <li>
-            <strong>Following:</strong> {Object.keys(following).length || 0}
-          </li>
+      <div className='profile-about-container'>
+        <div id='profile-picture'>
+          <img src={user.profile_picture || noPic} style={{"height": "150px", "width": "150px"}} alt='profile-picture'></img>
         </div>
-      </ul>
-      <div>
-        <img src={user.profile_picture || noPic} style={{"height": "50px", "width": "50px"}} alt='profile-picture'></img>
+        <div id='profile-info'>
+          <span id='row-one'>
+            <div id='profile-username'>{user.username}</div>
+            <div id='profile-button'>
+              {follow}
+              {showModal &&
+              (
+                <Modal onClose={() => setShowModal(false)}>
+                  <EditProfileModal setShowModal={setShowModal} user={user} setUpdate={setUpdate}/>
+                </Modal>
+              )}
+            </div>
+          </span>
+          <span id='row-two'>
+            <div><strong>{posts.posts?.length || 0}</strong> posts</div>
+            <div><strong>{Object.keys(followers).length || 0}</strong> followers</div>
+            <div><strong>{Object.keys(following).length || 0}</strong> following</div>
+          </span>
+          <span id='row-three'>
+            <div><strong>{user.first_name} {user.last_name}</strong></div>
+          </span>
+          <span id='row-four'>
+            <div>{user.biography}</div>
+          </span>
+        </div>
       </div>
       <div className='userphotos'>
         {console.log("POST$$$$$$$$$", posts.posts)}
@@ -112,16 +125,6 @@ function User() {
         }))
        }
       </div>
-      <div>
-        {follow}
-        {showModal &&
-        (
-          <Modal onClose={() => setShowModal(false)}>
-            <EditProfileModal setShowModal={setShowModal} user={user} setUpdate={setUpdate}/>
-          </Modal>
-        )}
-      </div>
-
     </>
   );
 }
