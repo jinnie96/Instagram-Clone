@@ -28,7 +28,6 @@
 
 
 
-
 /* ------------------- Navbar components ------------------- */
 .auth-nav-container a {
     background-color: transparent;
@@ -71,6 +70,7 @@
 #profile-button:hover {
     cursor: pointer;
 }
+
 
 
 /* ------------------- Dropdown components ------------------- */

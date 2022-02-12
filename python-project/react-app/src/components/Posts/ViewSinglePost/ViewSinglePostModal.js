@@ -1,26 +1,21 @@
-
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from "react-router-dom";
-import '../ViewPosts/ViewPosts.css';
 import CommentDetails from "./CommentDetails";
 import CreateComment from "./CreateComment";
-import './ViewSinglePost.css';
 import { likePost, unlikePost } from "../../../store/likes";
-import { getAllPosts } from "../../../store/post";
-
-
+import '../ViewPosts/ViewPosts.css';
+import './ViewSinglePost.css';
 
 
 
 const ViewSinglePost = ({ post }) => {
-    const dispatch = useDispatch()
-    const history = useHistory()
+    const dispatch = useDispatch();
     const userId = useSelector(state => {
         if (state.session.user) {
             return state.session.user.id
         }
-    })
+    });
 
     const [update, setUpdate] = useState(false);
     const [likes, setLikes] = useState([]);
@@ -46,14 +41,15 @@ const ViewSinglePost = ({ post }) => {
 
     const handleLike = async () => {
         dispatch(likePost(userId, post.id))
-        setUpdate(true)
-    }
+        setUpdate(true);
+    };
 
     const handleUnlike = async () => {
         dispatch(unlikePost(userId, post.id))
         setUpdate(true)
     }
-    console.log("PROFILE", post);
+    console.log("-------------profile post", post);
+
 
     let like;
 
@@ -85,6 +81,7 @@ const ViewSinglePost = ({ post }) => {
                 </div>
                 <div className='single-likes'>
                     {like}
+                    <div>{Object.keys(likes).length} likes</div>
                 </div>
                 <CreateComment post={post} setUpdate={setUpdate} />
             </span>

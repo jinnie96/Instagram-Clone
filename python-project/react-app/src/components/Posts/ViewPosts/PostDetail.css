@@ -10,6 +10,10 @@
     background-color: white;
 }
 
+.post-detail-container {
+    cursor: pointer;
+}
+
 
 
 /* ------------------- Individual post components ------------------- */
@@ -23,31 +27,49 @@
     /* margin: 0; */
 }
 
+.post-likes {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    padding: 16px 16px 0 16px;
+    background-color: white;
+}
+
+.post-likes div {
+    padding-left: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #262626;
+    background-color: white;
+}
+
+#post-heart-like {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 .post-username {
-    padding: 10px;
+    padding: 16px;
     font-size: 14px;
     font-weight: bold;
+    background-color: white;
 }
 
 .post-username > * {
+    background-color: white;
     text-decoration: none;
     color: black;
 }
 
 .post-caption {
-    padding: 10px;
+    padding: 16px;
     font-size: 12px;
+    background-color: white;
 }
 
-.post-caption p {
+.post-caption p, .post-caption b {
     margin: 0;
-}
-
-.post-caption:hover {
-    cursor: pointer;
-}
-
-.caption-caption {
-    padding-left: 5px;
-    font-size: 12px;
+    background-color: white;
 }

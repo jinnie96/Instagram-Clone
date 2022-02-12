@@ -84,7 +84,6 @@ function User() {
     follow = <button id='follow-butt' onClick={handleFollow}>Follow</button>;
   }
 
-  console.log(posts);
 
   return (
     <>

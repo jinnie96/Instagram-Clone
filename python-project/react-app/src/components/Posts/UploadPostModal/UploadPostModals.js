@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import * as postActions from '../../../store/post';
+import './UploadPost.css';
 
 
 const UploadPostModals = ({ setShowModal }) => {
@@ -29,6 +30,7 @@ const UploadPostModals = ({ setShowModal }) => {
             method: "POST",
             body: formData
         });
+
         if (res.ok) {
             dispatch(postActions.getAllPosts(id)); // returns state unaltered, but triggers dispatch!
 
@@ -43,7 +45,6 @@ const UploadPostModals = ({ setShowModal }) => {
             // error handling
             console.log("error");
         }
-
     }
 
     const updateImage = (e) => {
@@ -52,24 +53,28 @@ const UploadPostModals = ({ setShowModal }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                name='image'
-                type="file"
-                accept="image/*"
-                onChange={updateImage}
-            />
-            <textarea
-                name='caption'
-                rows="5"
-                type="text"
-                value={caption}
-                placeholder="Enter a caption..."
-                onChange={(e) => setCaption(e.target.value)}
-            />
-            <button type="submit">Submit</button>
-            {(imageLoading) && <p>Loading...</p>}
-        </form>
+        <div className='create-post-container'>
+            <div>Create new post</div>
+            <form className='create-post-form' onSubmit={handleSubmit}>
+                <input
+                    className='create-post-input'
+                    name='image'
+                    type="file"
+                    accept="image/*"
+                    onChange={updateImage}
+                />
+                <textarea
+                    name='caption'
+                    rows="10"
+                    type="text"
+                    value={caption}
+                    placeholder="Enter a caption..."
+                    onChange={(e) => setCaption(e.target.value)}
+                />
+                <button id='new-post-share' type="submit">Share</button>
+                {(imageLoading) && <p>Loading...</p>}
+            </form>
+        </div>
     )
 }
 
