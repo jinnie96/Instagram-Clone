@@ -40,9 +40,9 @@ const PostDetail = ({ post }) => {
     let like;
 
     if(likes[user.id]) {
-        like =  <i id='heart-like' className="fas fa-heart" style={{"color": "#e94943"}} onClick={() => handleUnlike()}></i>
+        like =  <i id='post-heart-like' className="fas fa-heart" style={{"color": "#e94943"}} onClick={() => handleUnlike()}></i>
     } else {
-        like =  <i id='heart-like' className="far fa-heart" onClick={() => handleLike()}></i>
+        like =  <i id='post-heart-like' className="far fa-heart" onClick={() => handleLike()}></i>
     }
 
     return (
@@ -61,7 +61,10 @@ const PostDetail = ({ post }) => {
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center"
                     }}></div>
+                <div className='post-likes'>
                     {like}
+                    <div>{Object.keys(likes).length} likes</div>
+                </div>
                 <div className='post-caption' onClick={() => setShowModal(true)}>
                     <p><b>{post.username}</b> {post.caption}</p>
                 </div>
