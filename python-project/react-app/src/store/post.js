@@ -176,7 +176,7 @@ export default function postsReducer(state = initialState, action) {
         };
         case DELETE_POST: {
             newState = { ...state };
-            delete newState[action.payload.post.id];
+            delete newState[action.payload.id];
             return newState;
         };
         case GET_USER_POST:
