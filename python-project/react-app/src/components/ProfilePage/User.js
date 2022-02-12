@@ -105,7 +105,7 @@ function User() {
             </div>
           </span>
           <span id='row-two'>
-            {/* <div><b>{posts.length || 0}</b> posts</div> */}
+            <div><b>{Object.keys(posts).length || 0}</b> posts</div>
             <div><b>{Object.keys(followers).length || 0}</b> followers</div>
             <div><b>{Object.keys(following).length || 0}</b> following</div>
           </span>

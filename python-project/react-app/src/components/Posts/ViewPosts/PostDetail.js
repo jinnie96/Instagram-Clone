@@ -5,10 +5,14 @@ import { NavLink } from "react-router-dom";
 import { Modal } from '../../../context/Modal';
 import ViewSinglePost from "../ViewSinglePost/ViewSinglePostModal";
 import { useDispatch, useSelector } from 'react-redux';
+import { likePost, unlikePost } from "../../../store/likes";
 import './PostDetail.css';
 
 const PostDetail = ({ post }) => {
     const [showModal, setShowModal] = useState(false);
+    const [likes, setLikes] = useState([]);
+    const [update, setUpdate] = useState(false);
+
 
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -17,7 +21,29 @@ const PostDetail = ({ post }) => {
 
     useEffect(async () => {
         dispatch(getAllPosts(user.id))
-    }, [dispatch])
+        const res_likes = await fetch(`/api/likes/p/${post.id}/likes`);
+        const like = await res_likes.json()
+        setLikes(like)
+        setUpdate(false)
+    }, [dispatch, update, showModal])
+
+    const handleLike = async () => {
+        dispatch(likePost(user.id, post.id))
+        setUpdate(true)
+    }
+
+    const handleUnlike = async () => {
+        dispatch(unlikePost(user.id, post.id))
+        setUpdate(true)
+    }
+
+    let like;
+
+    if(likes[user.id]) {
+        like =  <i id='heart-like' className="fas fa-heart" style={{"color": "#e94943"}} onClick={() => handleUnlike()}></i>
+    } else {
+        like =  <i id='heart-like' className="far fa-heart" onClick={() => handleLike()}></i>
+    }
 
     return (
         <>
@@ -35,6 +61,7 @@ const PostDetail = ({ post }) => {
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center"
                     }}></div>
+                    {like}
                 <div className='post-caption' onClick={() => setShowModal(true)}>
                     <p><b>{post.username}</b> {post.caption}</p>
                 </div>
@@ -45,6 +72,7 @@ const PostDetail = ({ post }) => {
                         <ViewSinglePost post={post} />
                     </Modal>
                 )}
+
             </div>
         </>
     )
