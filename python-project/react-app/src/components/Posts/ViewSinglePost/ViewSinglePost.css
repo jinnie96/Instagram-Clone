@@ -33,16 +33,20 @@
 
 /* ------------------- Post modal caption + comments ------------------- */
 #single-caption-comments {
+    overflow: scroll;
+    overflow-x: hidden;
     height: 346px;
     padding: 16px;
-    font-size: 13px;
-    /* border-bottom: 1px solid #DBDBDB; */
+    font-size: 12px;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }
 
 #single-caption-comments p {
-    margin: 7px 0;
+    margin: 0;
 }
-
 
 
 
