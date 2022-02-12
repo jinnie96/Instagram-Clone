@@ -61,7 +61,7 @@ def photoFeed(id):
 @post_routes.route('/user/<int:userId>')
 def getUserPosts(userId):
     posts = Post.query.filter(userId == Post.user_id).all()
-    # print('POOOOOOST', posts)
+
     return {
         "posts": [post.to_dict() for post in posts]
     }

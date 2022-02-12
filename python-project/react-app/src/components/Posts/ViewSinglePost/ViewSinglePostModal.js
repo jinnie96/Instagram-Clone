@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from "react-router-dom";
@@ -7,6 +8,7 @@ import CreateComment from "./CreateComment";
 import './ViewSinglePost.css';
 import { likePost, unlikePost } from "../../../store/likes";
 import { getAllPosts } from "../../../store/post";
+
 
 
 
@@ -21,20 +23,25 @@ const ViewSinglePost = ({ post }) => {
 
     const [update, setUpdate] = useState(false);
     const [likes, setLikes] = useState([]);
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState([])
+    const [userprof, setUserProf] = useState([])
 
 
     useEffect(async () => {
         const res_likes = await fetch(`/api/likes/p/${post.id}/likes`);
-        const res = await fetch(`/api/comments/posts/${post.id}/comments`);
+        const res = await fetch(`/api/comments/posts/${post.id}/comments`)
+        const res_user = await fetch(`/api/users/${post.user_id}`)
 
-        const like = await res_likes.json();
-        const data = await res.json();
+        const like = await res_likes.json()
+        const data = await res.json()
+        const userpage = await res_user.json()
 
-        setComments(data);
-        setLikes(like);
-        setUpdate(false);
-    }, [update]);
+
+        setComments(data)
+        setLikes(like)
+        setUserProf(userpage)
+        setUpdate(false)
+    }, [update])
 
     const handleLike = async () => {
         dispatch(likePost(userId, post.id))
@@ -43,11 +50,10 @@ const ViewSinglePost = ({ post }) => {
 
     const handleUnlike = async () => {
         dispatch(unlikePost(userId, post.id))
-        setUpdate(true);
-    };
+        setUpdate(true)
+    }
+    console.log("-------------profile post", post);
 
-    console.log('---------post object', post);
-    // console.log('===========likes', Object.keys(likes).length);
 
     let like;
 
@@ -69,10 +75,10 @@ const ViewSinglePost = ({ post }) => {
                 }}></div>
             <span className='single-span'>
                 <NavLink to={`/profile/${post.user_id}`} id='single-username'>
-                        {post.username}
+                        {userprof.username}
                 </NavLink>
                 <div id='single-caption-comments'>
-                    <p><b>{post.username}</b> {post.caption}</p>
+                    <p><b>{userprof.username}</b> {post.caption}</p>
                     {comments?.comments?.map(comment => (
                         <CommentDetails comment={comment} key={comment.id} setUpdate={setUpdate}/>
                         ))}
