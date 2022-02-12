@@ -35,7 +35,7 @@
 #single-caption-comments {
     overflow: scroll;
     overflow-x: hidden;
-    height: 346px;
+    height: 358px;
     padding: 16px;
     font-size: 12px;
 }
@@ -51,22 +51,27 @@
 
 
 /* ------------------- Post modal footer (likes + create comment) ------------------- */
+.single-likes {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-top: 1px solid #DBDBDB;
+}
+
+.single-likes div {
+    padding-left: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #262626;
+}
+
 #heart-like {
     background-color: transparent;
     border: none;
     font-size: 24px;
     cursor: pointer;
 }
-
-.single-likes {
-    height: 36px;
-    padding: 16px;
-    border-top: 1px solid #DBDBDB;
-}
-
-/* #home-single-create-comment {
-    margin-top: 14px;
-} */
 
 .create-comment {
     /* height: 55.5; */
@@ -85,4 +90,9 @@
     font-weight: bold;
     color: #2694fc;
     cursor: pointer;
+}
+
+#comment-submit:disabled {
+    color: #8ba8c4;
+    cursor: default;
 }

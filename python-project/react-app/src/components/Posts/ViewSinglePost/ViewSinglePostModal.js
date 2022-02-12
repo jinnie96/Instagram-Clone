@@ -12,41 +12,42 @@ import { getAllPosts } from "../../../store/post";
 
 
 const ViewSinglePost = ({ post }) => {
-    const dispatch = useDispatch()
-    const history = useHistory()
+    const dispatch = useDispatch();
     const userId = useSelector(state => {
         if (state.session.user) {
             return state.session.user.id
         }
-    })
+    });
 
     const [update, setUpdate] = useState(false);
     const [likes, setLikes] = useState([]);
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState([]);
 
 
     useEffect(async () => {
         const res_likes = await fetch(`/api/likes/p/${post.id}/likes`);
-        const res = await fetch(`/api/comments/posts/${post.id}/comments`)
+        const res = await fetch(`/api/comments/posts/${post.id}/comments`);
 
-        const like = await res_likes.json()
-        const data = await res.json()
+        const like = await res_likes.json();
+        const data = await res.json();
 
-        setComments(data)
-        setLikes(like)
-        setUpdate(false)
-    }, [update])
+        setComments(data);
+        setLikes(like);
+        setUpdate(false);
+    }, [update]);
 
     const handleLike = async () => {
         dispatch(likePost(userId, post.id))
-        setUpdate(true)
-    }
+        setUpdate(true);
+    };
 
     const handleUnlike = async () => {
         dispatch(unlikePost(userId, post.id))
-        setUpdate(true)
-    }
-    console.log(likes)
+        setUpdate(true);
+    };
+
+    console.log('---------post object', post);
+    // console.log('===========likes', Object.keys(likes).length);
 
     let like;
 
@@ -78,6 +79,7 @@ const ViewSinglePost = ({ post }) => {
                 </div>
                 <div className='single-likes'>
                     {like}
+                    <div>{Object.keys(likes).length} likes</div>
                 </div>
                 <CreateComment post={post} setUpdate={setUpdate} />
             </span>
