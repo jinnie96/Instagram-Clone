@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { getAllPosts } from "../../../store/post";
 import PostDetail from "./PostDetail";
 import { useDispatch, useSelector } from 'react-redux';
+import Footer from "../../Footer";
 import './ViewPosts.css';
 
 
@@ -26,6 +27,7 @@ const ViewPosts = () => {
             {viewPostsArrReverse.map(post => (
                 <PostDetail post={post} key={post.id} />
             ))}
+            <Footer />
         </div>
     )
 }

@@ -9,23 +9,23 @@ function Footer() {
             <ul className='footer-names'>
                 <li className='names'>
                     <div>Dominique</div>
-                    <a href='/'>Github</a>
-                    <a href='/'>LinkedIn</a>
+                    <a href='https://github.com/Dominisam98' target="_blank" rel="noreferrer">Github</a>
+                    <a href='/' target="_blank" rel="noreferrer">LinkedIn</a>
                 </li>
                 <li className='names'>
                     <div>Jake</div>
-                    <a href='/'>Github</a>
-                    <a href='/'>LinkedIn</a>
+                    <a href='https://github.com/Sheeptoaster' target="_blank" rel="noreferrer">Github</a>
+                    <a href='/' target="_blank" rel="noreferrer">LinkedIn</a>
                 </li>
                 <li className='names'>
                     <div>Karandeep</div>
-                    <a href='/'>Github</a>
-                    <a href='/'>LinkedIn</a>
+                    <a href='https://github.com/jinnie96' target="_blank" rel="noreferrer">Github</a>
+                    <a href='/'target="_blank" rel="noreferrer">LinkedIn</a>
                 </li>
                 <li className='names'>
                     <div>Savanah</div>
-                    <a href='/'>Github</a>
-                    <a href='/'>LinkedIn</a>
+                    <a href='https://github.com/strewm' target="_blank" rel="noreferrer">Github</a>
+                    <a href='https://www.linkedin.com/in/savanah-trewman/' target="_blank" rel="noreferrer">LinkedIn</a>
                 </li>
             </ul>
             <div className='footer-about'>
