@@ -77,9 +77,9 @@ const ViewSinglePost = ({ post }) => {
                 <NavLink to={`/profile/${post.user_id}`} id='single-username'>
                         {userprof.username}
                 </NavLink>
-                {/* { post.id === current_user.id && ( */}
+                { post.user_id === userId && (
                     <button id="deleteBtn" onClick={() => handleDelete()}>Delete Post</button>
-                {/* )} */}
+                )}
                 <div id='single-caption-comments'>
                     <p><b>{userprof.username}</b> {post.caption}</p>
                     {comments?.comments?.map(comment => (
