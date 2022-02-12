@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import noPic from './no-profile-alt.jpg'
 import { Modal } from '../../context/Modal'
 import * as followingActions from '../../store/followers'
+import { getUserPosts } from '../../store/post';
 import EditProfileModal from './UserEditModal';
 import ProfilePostDetail from './ProfilePostDetail';
 import './ProfilePostDetail.css';
@@ -21,7 +22,7 @@ function User() {
   const [showModal, setShowModal] = useState(false)
   const [update, setUpdate] = useState(false)
   const current_user = useSelector((state) => state.session.user.id)
-
+  // const posts = useSelector(state => state.post)
 
   useEffect(async() => {
       const res_user = await fetch(`/api/users/${userId}`);
@@ -39,8 +40,7 @@ function User() {
       setFollowers(followers);
       setPosts(posts)
       setUpdate(false)
-  }, [update]);
-
+  }, [dispatch, update]);
 
   const handleFollow = async () => {
     dispatch(followingActions.followUser(current_user, +userId))
@@ -83,6 +83,8 @@ function User() {
     follow = <button id='follow-butt' onClick={handleFollow}>Follow</button>;
   }
 
+  console.log(posts);
+
   return (
     <>
       <div className='profile-about-container'>
@@ -103,7 +105,7 @@ function User() {
             </div>
           </span>
           <span id='row-two'>
-            <div><b>{posts.posts?.length || 0}</b> posts</div>
+            {/* <div><b>{posts.length || 0}</b> posts</div> */}
             <div><b>{Object.keys(followers).length || 0}</b> followers</div>
             <div><b>{Object.keys(following).length || 0}</b> following</div>
           </span>
@@ -116,10 +118,10 @@ function User() {
         </div>
       </div>
       <div className='profile-grid-container'>
-        {posts.posts !== undefined && (
-          posts.posts.map(post => {
-            return <ProfilePostDetail post={post} key={post.id}/>
-        }))}
+        {console.log(posts)}
+        {posts.posts && posts.posts?.map(post => {
+          return <ProfilePostDetail post={post} key={post.id} />
+        })}
       </div>
     </>
   );

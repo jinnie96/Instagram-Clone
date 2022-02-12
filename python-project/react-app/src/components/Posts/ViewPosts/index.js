@@ -16,8 +16,6 @@ const ViewPosts = () => {
 
     const viewPostsArr = Object.values(viewPosts);
     const viewPostsArrReverse = viewPostsArr.reverse();
-    console.log("Posts Arr", viewPostsArrReverse);
-
     return (
         <div className='all-post-container'>
             <div className='post-welcome-container'>

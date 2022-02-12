@@ -69,8 +69,8 @@ const CommentDetails = ({ comment, setUpdate }) => {
     } else {
         field = <p className="comment-field">
             {comment.comment}
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button id='edit-comment' onClick={handleEdit}><i className="far fa-edit"></i></button>
+            <button id='delete-comment' onClick={handleDelete}><i className="far fa-trash-alt"></i></button>
         </p>
     }
 

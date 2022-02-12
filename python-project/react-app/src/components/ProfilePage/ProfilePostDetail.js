@@ -7,20 +7,14 @@ import './ProfilePostDetail.css';
 
 const ProfilePostDetail = ({ post }) => {
     const [showModal, setShowModal] = useState(false);
-
+    console.log('TSET', post);
     const dispatch = useDispatch()
-    const [comments, setComments] = useState([])
 
     const user = useSelector(state => state.session.user)
     useEffect(async () => {
         dispatch(getAllPosts(user.id))
-        const res = await fetch(`/api/comments/posts/${post.id}/comments`)
-        if (res.ok) {
-            const data = await res.json()
-            setComments(data)
-        }
     }, [dispatch])
-
+    console.log("PFP", post);
     return (
         <>
             <div className='profile-grid-image' onClick={() => setShowModal(true)}
@@ -34,7 +28,7 @@ const ProfilePostDetail = ({ post }) => {
             </div>
             {(showModal) && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ViewSingleProfilePost post={post} comments={comments} />
+                    <ViewSingleProfilePost post={post} />
                 </Modal>
             )}
         </>

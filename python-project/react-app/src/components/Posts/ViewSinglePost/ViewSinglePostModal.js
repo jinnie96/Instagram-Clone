@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from "react-router-dom";
@@ -47,7 +48,7 @@ const ViewSinglePost = ({ post }) => {
         dispatch(unlikePost(userId, post.id))
         setUpdate(true)
     }
-    console.log(likes)
+    console.log("PROFILE", post);
 
     let like;
 
