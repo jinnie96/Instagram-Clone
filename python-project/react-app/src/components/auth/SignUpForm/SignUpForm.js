@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
+import Footer from '../../Footer';
 import './SignUpForm.css'
 
 const SignUpForm = () => {
@@ -123,7 +124,6 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='signup-form'>
-            {/* <label>Confirm Password</label> */}
             <input
               className='signup-inputs'
               type='password'
@@ -142,6 +142,7 @@ const SignUpForm = () => {
         <div>Have an account?</div>
         <a href='/login'>Log in</a>
       </div>
+      <Footer />
     </div>
   );
 };

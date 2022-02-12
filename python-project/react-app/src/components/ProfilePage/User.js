@@ -6,6 +6,7 @@ import { Modal } from '../../context/Modal'
 import * as followingActions from '../../store/followers'
 import EditProfileModal from './UserEditModal';
 import ProfilePostDetail from './ProfilePostDetail';
+import Footer from '../Footer';
 import './ProfilePostDetail.css';
 import './User.css';
 
@@ -121,6 +122,7 @@ function User() {
             return <ProfilePostDetail post={post} key={post.id}/>
         }))}
       </div>
+      <Footer />
     </>
   );
 }
