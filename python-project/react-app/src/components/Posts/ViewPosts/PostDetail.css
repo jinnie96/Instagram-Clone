@@ -10,6 +10,10 @@
     background-color: white;
 }
 
+.post-detail-container {
+    cursor: pointer;
+}
+
 
 
 /* ------------------- Individual post components ------------------- */
@@ -68,8 +72,4 @@
 .post-caption p, .post-caption b {
     margin: 0;
     background-color: white;
-}
-
-.post-caption:hover {
-    cursor: pointer;
 }

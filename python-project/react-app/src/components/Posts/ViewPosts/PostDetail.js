@@ -47,7 +47,7 @@ const PostDetail = ({ post }) => {
 
     return (
         <>
-            <div className='post-detail-container'>
+            <div className='post-detail-container' onClick={() => setShowModal(true)}>
                 <div className='post-username'>
                     <NavLink to={`/profile/${post.user_id}`}>
                         {post.username}
@@ -65,7 +65,7 @@ const PostDetail = ({ post }) => {
                     {like}
                     <div>{Object.keys(likes).length} likes</div>
                 </div>
-                <div className='post-caption' onClick={() => setShowModal(true)}>
+                <div className='post-caption'>
                     <p><b>{post.username}</b> {post.caption}</p>
                 </div>
             </div>
@@ -75,7 +75,6 @@ const PostDetail = ({ post }) => {
                         <ViewSinglePost post={post} />
                     </Modal>
                 )}
-
             </div>
         </>
     )
