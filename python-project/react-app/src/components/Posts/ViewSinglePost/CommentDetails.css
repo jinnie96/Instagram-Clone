@@ -1,0 +1,26 @@
+/* ------------------- Edit/delete comment ------------------- */
+.comment-container {
+    margin: 9px 0;
+}
+
+.comment-field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* margin: 3px 0; */
+}
+
+#edit-comment, #delete-comment {
+    border: none;
+    padding: 0 2px;
+    font-size: 9px;
+    color: #c2c2c2;
+    cursor: pointer;
+}
+
+#edit-comment {
+    padding-left: 7px;
+}
+
+
+/* ------------------- Submit/cancel edit comment ------------------- */

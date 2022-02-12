@@ -61,11 +61,11 @@
     padding: 0 10px 0 10px;
     border: none;
     font-size: 24px;
-    color: black;
+    color: #262626;
 }
 
 #navbar-home a, #navbar-create a {
-    color: black;
+    color: #262626;
 }
 
 #profile-button:hover {

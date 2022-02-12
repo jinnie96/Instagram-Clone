@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllPosts } from "../../store/post";
 import { Modal } from '../../context/Modal';
-import ViewSingleProfilePost from "../Posts/ViewSinglePost/ViewSingleProfilePost";
+import ViewSinglePost from "../Posts/ViewSinglePost/ViewSinglePostModal";
 import { useDispatch, useSelector } from 'react-redux';
 import './ProfilePostDetail.css';
 
@@ -28,7 +28,7 @@ const ProfilePostDetail = ({ post }) => {
             </div>
             {(showModal) && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ViewSingleProfilePost post={post} />
+                    <ViewSinglePost post={post} />
                 </Modal>
             )}
         </>

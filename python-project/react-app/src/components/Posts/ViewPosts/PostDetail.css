@@ -29,6 +29,11 @@
     font-weight: bold;
 }
 
+.post-username > * {
+    text-decoration: none;
+    color: black;
+}
+
 .post-caption {
     padding: 10px;
     font-size: 12px;
