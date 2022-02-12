@@ -52,14 +52,14 @@ const ViewSinglePost = ({ post }) => {
     let like;
 
     if(likes[userId]) {
-        like =  <i className="fas fa-heart" style={{"color": "red"}} onClick={() => handleUnlike()}></i>
+        like =  <i id='heart-like' className="fas fa-heart" style={{"color": "#e94943"}} onClick={() => handleUnlike()}></i>
     } else {
-        like =  <i className="far fa-heart" onClick={() => handleLike()}></i>
+        like =  <i id='heart-like' className="far fa-heart" onClick={() => handleLike()}></i>
     }
 
     return (
-        <div className='home-single-container' key={post.id}>
-            <div className='home-single-image'
+        <div className='single-container' key={post.id}>
+            <div className='single-image'
                 style={{
                     backgroundImage: `url(${post.image})`,
                     backgroundSize: "cover",
@@ -67,27 +67,20 @@ const ViewSinglePost = ({ post }) => {
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center"
                 }}></div>
-            <span className='home-single-span'>
-                <div className='home-single-info'>
-                    <div id='home-single-username'>
-                        <NavLink to={`/profile/${post.user_id}`}>
-                            {post.username}
-                        </NavLink>
-                    </div>
-                    <div id='home-single-caption'>
-                        <p><b>{post.username}</b> {post.caption}</p>
-                    </div>
-                </div>
-                <div className='home-single-comments'>
+            <span className='single-span'>
+                <NavLink to={`/profile/${post.user_id}`} id='single-username'>
+                        {post.username}
+                </NavLink>
+                <div id='single-caption-comments'>
+                    <p><b>{post.username}</b> {post.caption}</p>
                     {comments?.comments?.map(comment => (
                         <CommentDetails comment={comment} key={comment.id} setUpdate={setUpdate}/>
                         ))}
                 </div>
-                <div className='home-single-create'>
+                <div className='single-likes'>
                     {like}
-                    {/* <button id='single-post-heart'><i class="far fa-heart"></i></button> */}
-                    <CreateComment post={post} setUpdate={setUpdate} />
                 </div>
+                <CreateComment post={post} setUpdate={setUpdate} />
             </span>
         </div>
     )

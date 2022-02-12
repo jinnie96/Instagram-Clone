@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as userActions from '../../../store/users'
+import * as userActions from '../../../store/users';
+import './CommentDetails.css';
 
 
 const CommentDetails = ({ comment, setUpdate }) => {
@@ -56,40 +57,32 @@ const CommentDetails = ({ comment, setUpdate }) => {
 
     if (edit) {
         field = <form className="edit-comment-form" onSubmit={handleEditSubmit}>
-        <input
-        className="edit-comment-input"
-        type="text"
-        contentEditable="false"
-        value={newComment}
-        onChange={(e) => setNewComment(e.target.value)}
-        />
-        <button type="submit">Submit</button>
-        <button onClick={handleCancel}>Cancel</button>
-    </form>
+            <input
+            className="edit-comment-input"
+            type="text"
+            contentEditable="false"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            />
+            <button id='submit-edit-comment' type="submit">Submit</button>
+            <button id='cancel-edit-comment' onClick={handleCancel}>Cancel</button>
+        </form>
     } else {
         field = <p className="comment-field">
             {comment.comment}
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button id='edit-comment' onClick={handleEdit}><i class="far fa-edit"></i></button>
+            <button id='delete-comment' onClick={handleDelete}><i class="far fa-trash-alt"></i></button>
         </p>
     }
 
     if (current.id === user.id) {
         return (
-            <>
-                <div>
-                        <b>{user.username}</b>
-                        {field}
-                </div>
-            </>
+            <div className='comment-container'><b>{user.username}</b>{field}</div>
         )
     }
+
     return (
-        <>
-            <div>
-                <p><b>{user.username}</b> {comment.comment}</p>
-            </div>
-        </>
+        <p><b>{user.username}</b> {comment.comment}</p>
     )
 }
 

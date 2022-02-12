@@ -48,7 +48,7 @@
     padding: 8px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(38, 148, 252);
+    background-color: #2694fc;
     font-size: 15px;
     font-weight: bold;
     color: white;
@@ -85,5 +85,5 @@ input::placeholder {
     margin-left: 2px;
     text-decoration: none;
     background-color: white;
-    color: rgb(38, 148, 252);
+    color: #2694fc;
 }

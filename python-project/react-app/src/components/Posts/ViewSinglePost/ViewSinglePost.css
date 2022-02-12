@@ -1,66 +1,65 @@
 /* ------------------- Post modal container (home feed) ------------------- */
-.home-single-container {
-    /* min-width: 500px; */
-    width: 750px;
+.single-container {
+    width: 775px;
     height: auto;
-    min-height: 500px;
+    min-height: 555px;
     display: flex;
 }
 
-
-
-/* ------------------- Post modal info (username + caption) ------------------- */
-.home-single-image {
+.single-image {
     width: 70%;
 }
 
-.home-single-span {
+.single-span {
     width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-#home-single-username {
+
+
+/* ------------------- Post modal info (username) ------------------- */
+#single-username {
+    /* height: 52.5px; */
     padding: 16px;
     border-bottom: 1px solid #DBDBDB;
     font-size: 16px;
+    text-decoration: none;
+    color: black;
 }
 
-#home-single-caption {
+
+
+/* ------------------- Post modal caption + comments ------------------- */
+#single-caption-comments {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 346px;
     padding: 16px;
-    font-size: 13px;
+    font-size: 12px;
 }
 
-#home-single-caption p {
+::-webkit-scrollbar {
+    width: 0;
+}
+
+#single-caption-comments p {
     margin: 0;
 }
 
 
 
-/* ------------------- Post modal comments ------------------- */
-.home-single-comments {
-    padding: 16px;
-    font-size: 13px;
-}
-
-
-
-
-
 /* ------------------- Post modal footer (likes + create comment) ------------------- */
-#single-post-heart {
+#heart-like {
     background-color: transparent;
     border: none;
     font-size: 24px;
-    color: black;
+    cursor: pointer;
 }
 
-.home-single-create {
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.single-likes {
+    height: 36px;
     padding: 16px;
     border-top: 1px solid #DBDBDB;
 }
@@ -68,3 +67,22 @@
 /* #home-single-create-comment {
     margin-top: 14px;
 } */
+
+.create-comment {
+    /* height: 55.5; */
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border-top: 1px solid #DBDBDB;
+}
+
+.create-comment input {
+    border: none;
+}
+
+#comment-submit {
+    border: none;
+    font-weight: bold;
+    color: #2694fc;
+    cursor: pointer;
+}

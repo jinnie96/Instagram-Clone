@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import * as commentActions from '../../../store/comments'
+import * as commentActions from '../../../store/comments';
+import './ViewSinglePost.css';
 
 const CreateComment = ({ post, setUpdate }) => {
-    const dispatch = useDispatch()
-    const [comment, setComment] = useState("")
+    const dispatch = useDispatch();
+    const [comment, setComment] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -29,17 +30,16 @@ const CreateComment = ({ post, setUpdate }) => {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+            <form className='create-comment' onSubmit={handleSubmit}>
                 <input
+                    placeholder="Add a comment..."
                     name="comment"
                     type="text"
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                 />
-                <button type="submit">Post</button>
+                <button id='comment-submit' type="submit" disabled={!comment}>Post</button>
             </form>
-        </>
     )
 }
 
