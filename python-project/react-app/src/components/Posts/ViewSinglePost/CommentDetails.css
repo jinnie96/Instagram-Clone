@@ -3,11 +3,11 @@
     margin: 9px 0;
 }
 
-.comment-field {
+
+.edit-comment-form {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    /* margin: 3px 0; */
 }
 
 #edit-comment, #delete-comment {
@@ -24,3 +24,29 @@
 
 
 /* ------------------- Submit/cancel edit comment ------------------- */
+.confirm-edit-comment-input {
+    padding: 2px;
+    border: 1px solid #DBDBDB;
+    font-size: 12px;
+}
+
+#submit-edit-comment, #cancel-edit-comment {
+    border: none;
+    padding: 0 2px;
+    font-size: 11px;
+    color: #c2c2c2;
+    cursor: pointer;
+}
+
+#submit-edit-comment {
+    padding-left: 7px;
+}
+
+#submit-edit-comment:hover {
+    color: rgb(24, 160, 24);
+}
+
+#cancel-edit-comment:hover {
+    color: rgb(216, 58, 58);
+}
+

@@ -1,4 +1,12 @@
 /* ------------------- Signup Container ------------------- */
+.signup-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .signup-container {
     width: 350px;
     height: 380px;

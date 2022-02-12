@@ -56,19 +56,22 @@ const CommentDetails = ({ comment, setUpdate }) => {
     let field;
 
     if (edit) {
-        field = <form className="edit-comment-form" onSubmit={handleEditSubmit}>
+
+        field = <form className="confirm-edit-comment-form" onSubmit={handleEditSubmit}>
             <input
-            className="edit-comment-input"
+            className="confirm-edit-comment-input"
             type="text"
             contentEditable="false"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             />
-            <button id='submit-edit-comment' type="submit">Submit</button>
-            <button id='cancel-edit-comment' onClick={handleCancel}>Cancel</button>
+  
+            <button id='submit-edit-comment' type="submit"><i className="far fa-check-circle"></i></button>
+            <button id='cancel-edit-comment' onClick={handleCancel}><i className="far fa-times-circle"></i></button>
+              
         </form>
     } else {
-        field = <p className="comment-field">
+        field = <p className="edit-comment-form">
             {comment.comment}
             <button id='edit-comment' onClick={handleEdit}><i className="far fa-edit"></i></button>
             <button id='delete-comment' onClick={handleDelete}><i className="far fa-trash-alt"></i></button>

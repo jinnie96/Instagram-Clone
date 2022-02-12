@@ -9,7 +9,7 @@ import UsersList from './components/ProfilePage/UsersList';
 import User from './components/ProfilePage/User';
 // import Footer from './components/Footer';
 import { authenticate } from './store/session';
-import NewCommentForm from './components/comments/NewComment';
+import NewCommentForm from './components/Comments/NewComment';
 import ViewPosts from './components/Posts/ViewPosts';
 // Do we need the below?
 // import Handle404 from './components/Handle404';
@@ -57,7 +57,6 @@ function App() {
           <ViewPosts />
         </ProtectedRoute>
       </Switch>
-      {/* <Footer /> */}
       {/* <Handle404 /> */}
     </BrowserRouter>
   );
