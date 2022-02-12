@@ -1,15 +1,11 @@
-
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from "react-router-dom";
-import '../ViewPosts/ViewPosts.css';
 import CommentDetails from "./CommentDetails";
 import CreateComment from "./CreateComment";
-import './ViewSinglePost.css';
 import { likePost, unlikePost } from "../../../store/likes";
-import { getAllPosts } from "../../../store/post";
-
-
+import '../ViewPosts/ViewPosts.css';
+import './ViewSinglePost.css';
 
 
 
