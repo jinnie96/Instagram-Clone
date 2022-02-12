@@ -21,12 +21,11 @@
 
 /* ------------------- Post modal info (username) ------------------- */
 #single-username {
-    /* height: 52.5px; */
     padding: 16px;
-    border-bottom: 1px solid #DBDBDB;
     font-size: 16px;
     text-decoration: none;
     color: black;
+    border-bottom: 1px solid #DBDBDB;
 }
 
 
@@ -74,7 +73,6 @@
 }
 
 .create-comment {
-    /* height: 55.5; */
     display: flex;
     justify-content: space-between;
     padding: 16px;
