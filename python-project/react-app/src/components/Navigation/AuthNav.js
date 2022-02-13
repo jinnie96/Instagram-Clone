@@ -46,22 +46,20 @@ function AuthNav() {
                     <button onClick={openMenu} id='profile-button'>
                         <i className="fas fa-user-circle i-img"></i>
                     </button>
-                    <div className="dropdown-container">
-                        {showMenu && (
-                            <div className="profile-dropdown">
-                                <div>
-                                    <i className="fas fa-user i-img"></i>
-                                    <NavLink id='dropdown-navlink' to={'/profile/' + user.id}>
-                                        <div>Profile</div>
-                                    </NavLink>
-                                </div>
-                                <div id='dropdown-logout'>
-                                    <i className="fas fa-sign-out-alt i-img"></i>
-                                    <LogoutButton />
-                                </div>
+                    {showMenu && (
+                        <div className="profile-dropdown">
+                            <div>
+                                <i className="fas fa-user i-img"></i>
+                                <NavLink id='dropdown-navlink' to={'/profile/' + user.id}>
+                                    <div>Profile</div>
+                                </NavLink>
                             </div>
-                        )}
-                    </div>
+                            <div id='dropdown-logout'>
+                                <i className="fas fa-sign-out-alt i-img"></i>
+                                <LogoutButton />
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

@@ -74,24 +74,22 @@
 
 
 /* ------------------- Dropdown components ------------------- */
-.dropdown-container {
-    position: absolute;
+.profile-dropdown {
     top: 60px;
-    right: 50px;
+    margin-left: 130px;
+    position: absolute;
+    height: 68.5px;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     border-radius: 5px;
     box-shadow: 0 0 6px #DBDBDB;
     background-color:white;
-}
-
-.profile-dropdown {
-    height: 68.5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
     list-style-type: none;
-    background-color: transparent;
 }
 
 .profile-dropdown div {
