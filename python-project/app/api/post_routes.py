@@ -94,12 +94,14 @@ def newPost():
 
     if form.validate_on_submit():
         if "image" not in request.files:
-            return {"errors": "image required"}, 400
+            # return {"errors": "image required"}, 400
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
         image = request.files['image']
 
         if not allowed_file(image.filename):
-            return {"errors": "file type not permitted"}, 400
+            # return {"errors": "file type not permitted"}, 400
+            return {'errors': "Invalid File Type"}, 400
 
         image.filename = get_unique_filename(image.filename)
 
