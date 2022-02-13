@@ -57,17 +57,18 @@ const UploadPostModals = ({ setShowModal }) => {
         <div className='create-post-container'>
             <div>Create new post</div>
             <form className='create-post-form' onSubmit={handleSubmit}>
-                <ul className='errors'>
+                {/* <ul className='errors'>
                     {console.log("########################", errors)}
-                    {errors.map((error, ind) => (
+                    {errors?.map((error, ind) => (
                         <li key={ind}>{error}</li>
                     ))}
-                </ul>
+                </ul> */}
                 <input
                     className='create-post-input'
                     name='image'
                     type="file"
                     accept="image/*"
+                    required
                     onChange={updateImage}
                 />
                 <textarea
