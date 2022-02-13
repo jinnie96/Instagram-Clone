@@ -53,8 +53,10 @@ function App() {
         <ProtectedRoute path='/' exact={true}>
           <ViewPosts />
         </ProtectedRoute>
+      <Route path='*' >
+        <Handle404 />
+      </Route>
       </Switch>
-      <Handle404 />
     </BrowserRouter>
   );
 }
