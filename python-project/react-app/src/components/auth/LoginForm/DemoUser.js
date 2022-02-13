@@ -18,7 +18,7 @@ const DemoButton = () => {
     return <Redirect to='/' />;
   }
 
-  return <button onClick={handleDemo}>Demo User</button>;
+  return <button id='demo-btn' onClick={handleDemo}>Demo User</button>;
 }
 
 

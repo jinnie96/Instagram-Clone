@@ -73,7 +73,6 @@ def getUserPosts(userId):
 @post_routes.route('/<int:id>')
 def getOnePost(id):
     post = Post.query.get(id)
-    # print('HELOOOOOOOOOOOOOO', post.to_dict())
     return post.to_dict()
 
 
@@ -111,6 +110,7 @@ def newPost():
 
         return post.to_dict()
     return (form.errors)
+
 
 @post_routes.route('/<int:id>', methods=["PUT"])
 # @login_required

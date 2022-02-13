@@ -15,12 +15,12 @@ function Footer() {
                 <li className='names'>
                     <div>Jake</div>
                     <a href='https://github.com/Sheeptoaster' target="_blank" rel="noreferrer">Github</a>
-                    <a href='/' target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href='https://www.linkedin.com/in/jacob-weber-662a08153/' target="_blank" rel="noreferrer">LinkedIn</a>
                 </li>
                 <li className='names'>
                     <div>Karandeep</div>
                     <a href='https://github.com/jinnie96' target="_blank" rel="noreferrer">Github</a>
-                    <a href='/'target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href='https://www.linkedin.com/in/karandeep-singh-600852a8/'target="_blank" rel="noreferrer">LinkedIn</a>
                 </li>
                 <li className='names'>
                     <div>Savanah</div>

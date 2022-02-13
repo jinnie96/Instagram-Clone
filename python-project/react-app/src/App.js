@@ -7,11 +7,9 @@ import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/ProfilePage/UsersList';
 import User from './components/ProfilePage/User';
-// import Footer from './components/Footer';
 import { authenticate } from './store/session';
-import NewCommentForm from './components/comments/NewComment/index';
+import NewCommentForm from './components/Comments/NewComment';
 import ViewPosts from './components/Posts/ViewPosts';
-// Do we need the below?
 // import Handle404 from './components/Handle404';
 
 
@@ -19,7 +17,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.session.user);
+  // const user = useSelector(state => state.session.user);
 
   useEffect(() => {
     (async () => {
@@ -31,8 +29,7 @@ function App() {
   if (!loaded) {
     return null;
   }
-  // console.log("!@#!#@!#!@#!#!#", user.followers)
-  // user.followers.forEach(user => console.log(user))
+
 
   return (
     <BrowserRouter>
