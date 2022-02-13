@@ -130,12 +130,14 @@ const ViewSinglePost = ({ post }) => {
                     backgroundPosition: "center"
                 }}></div>
             <span className='single-span'>
-                <NavLink to={`/profile/${post.user_id}`} id='single-username'>
-                        {userprof.username}
-                </NavLink>
-                { post.user_id === userId && (
-                    <button id="deleteBtn" onClick={() => handleDelete()}>Delete Post</button>
-                )}
+                <div id='single-header'>
+                    <NavLink to={`/profile/${post.user_id}`} id='single-username'>
+                            {userprof.username}
+                    </NavLink>
+                    {post.user_id === userId && (
+                        <button id="deleteBtn" onClick={() => handleDelete()}><i class="fas fa-trash-alt"></i></button>
+                    )}
+                </div>
                 <div id='single-caption-comments'>
                     <p><b>{userprof.username}</b> {post.caption}{field}</p>
                     {comments?.comments?.map(comment => (

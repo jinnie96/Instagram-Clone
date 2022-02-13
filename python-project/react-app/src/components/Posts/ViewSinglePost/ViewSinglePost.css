@@ -19,22 +19,42 @@
 
 
 
-/* ------------------- Post modal info (username) ------------------- */
-#single-username {
+/* ------------------- Post modal info (username + delete post) ------------------- */
+#single-header {
+    height: 19px;
     padding: 16px;
-    font-size: 16px;
-    text-decoration: none;
-    color: black;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #DBDBDB;
 }
 
+
+#single-username {
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+}
+
+#deleteBtn {
+    display: none;
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#single-header:hover {
+    display: default;
+}
 
 
 /* ------------------- Post modal caption + comments ------------------- */
 #single-caption-comments {
     overflow: scroll;
     overflow-x: hidden;
-    height: 358px;
+    height: 372px;
     padding: 16px;
     font-size: 12px;
 }
