@@ -55,8 +55,9 @@
 
 /* ------------------- Submit/cancel edit post caption ------------------- */
 .confirm-edit-caption-input {
-    width: 95%;
+    width: 75%;
     padding: 2px;
+    resize: none;
     border: 1px solid #DBDBDB;
     border-radius: 3px;
     font-size: 12px;
