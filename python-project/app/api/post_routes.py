@@ -108,57 +108,17 @@ def newPost():
 
         return post.to_dict()
     return (form.errors)
-# @post_routes.route('/create', methods=["POST"])
-# # @login_required
-# def newPost():
-#     form = AddPostForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-
-
-#     # print("@@@@@@@@@@@@@")
-#     # print(request.__dict__)
-#     if form.validate_on_submit():
-#     # print("@@@@@@@", request.files)
-#         files = form.data
-#         data = json.loads(files['image'])
-#         if "image" not in files:
-#             return {"errors": "image required"}, 400
-
-#         image = data
-#         filename = image['name']
-#         if not allowed_file(filename):
-#             return {"errors": "file type not permitted"}, 400
-
-
-#         image.update(filename = get_unique_filename(image['name']))
-#         print(image)
-
-#         upload = upload_file_to_s3(image)
-#         print("@@@@@@@@@@@@@@@", upload)
-#         if "url" not in upload:
-#             return print("@@@@@@@@@@@@@@"), upload, 400
-
-#         url = upload["url"]
-#         print("URRRRRRRRRRRL", url)
-#         post = Post(user_id=current_user.id, image=url, caption=form.data['caption'])
-
-#         print('++++++++++ post', post)
-
-#         # post = Post(user_id=request.json['user_id'], image=request.json['image'], caption=request.json['caption'])
-#         db.session.add(post)
-#         db.session.commit()
-#         print("POST")
-
-#         return post.to_dict()
-#     return (form.errors)
-
-
 
 @post_routes.route('/<int:id>', methods=["PUT"])
 # @login_required
 def editPost(id):
+    print("BEFORE QUERY")
     post = Post.query.get(id)
-    post.caption=request.json['caption']
+    print("AFTER QUERY", post)
+    # print("REQ CAPTION!!!!!!!!", request.files['caption'])
+    print("REQ CAPTION!!!!!!!!", json.loads(request.data)["comment"])
+    post.caption=json.loads(request.data)["comment"]
+    print("AFTER EDIT", post)
     db.session.commit()
     return post.to_dict()
 
@@ -167,6 +127,8 @@ def editPost(id):
 # @login_required
 def deletePost(id):
     post = Post.query.get(id)
+    print("BEFORE DELETE", post)
     db.session.delete(post)
+    print("AFTER DELETE")
     db.session.commit()
     return post.to_dict()
