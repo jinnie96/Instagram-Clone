@@ -4,6 +4,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import CommentDetails from "./CommentDetails";
 import CreateComment from "./CreateComment";
 import { likePost, unlikePost } from "../../../store/likes";
+import { deleteOnePost } from "../../../store/post"
 import '../ViewPosts/ViewPosts.css';
 import './ViewSinglePost.css';
 
@@ -50,6 +51,9 @@ const ViewSinglePost = ({ post }) => {
     }
     console.log("-------------profile post", post);
 
+    const handleDelete = async () => {
+        dispatch(deleteOnePost(post.id))
+    }
 
     let like;
 
@@ -73,6 +77,9 @@ const ViewSinglePost = ({ post }) => {
                 <NavLink to={`/profile/${post.user_id}`} id='single-username'>
                         {userprof.username}
                 </NavLink>
+                { post.user_id === userId && (
+                    <button id="deleteBtn" onClick={() => handleDelete()}>Delete Post</button>
+                )}
                 <div id='single-caption-comments'>
                     <p><b>{userprof.username}</b> {post.caption}</p>
                     {comments?.comments?.map(comment => (
