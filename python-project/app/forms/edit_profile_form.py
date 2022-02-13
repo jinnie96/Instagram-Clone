@@ -10,7 +10,7 @@ def user_exists(form, field):
 
     if email == current_user.email:
         return
-    if user:
+    elif user:
         raise ValidationError('Email address is already in use.')
 
 def username_exists(form, field):
