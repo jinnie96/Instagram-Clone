@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from .db import db
 from sqlalchemy.orm import relationship
 
@@ -14,7 +15,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     image = db.Column(db.Text, nullable=False)
     caption = db.Column(db.Text)
-
+    cascade="all, delete-orphan"
     user = relationship("User", foreign_keys=[user_id], overlaps="like")
     comment = relationship("Comment", foreign_keys="Comment.post_id", overlaps="posts")
 

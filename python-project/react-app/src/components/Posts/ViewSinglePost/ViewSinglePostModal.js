@@ -10,7 +10,8 @@ import './ViewSinglePost.css';
 
 
 
-const ViewSinglePost = ({ post }) => {
+const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
+    const history = useHistory()
     const dispatch = useDispatch();
     const userId = useSelector(state => {
         if (state.session.user) {
@@ -22,16 +23,9 @@ const ViewSinglePost = ({ post }) => {
     const [likes, setLikes] = useState([]);
     const [comments, setComments] = useState([])
     const [userprof, setUserProf] = useState([])
-    const [edit, setEdit] = useState(false)
+    const [editPost, setEditPost] = useState(false)
     const [newCaption, setNewCaption] = useState(post.caption)
 
-    // useEffect(async () => {
-    //     dispatch(getAllPosts(user.id))
-    //     const res_likes = await fetch(`/api/likes/p/${post.id}/likes`);
-    //     const like = await res_likes.json()
-    //     setLikes(like)
-    //     setUpdate(false)
-    // }, [dispatch, update])
 
     useEffect(async () => {
         const res_likes = await fetch(`/api/likes/p/${post.id}/likes`);
@@ -58,65 +52,71 @@ const ViewSinglePost = ({ post }) => {
         dispatch(unlikePost(userId, post.id))
         setUpdate(true)
     }
-    console.log("-------------profile post", post);
 
     const handleDelete = async () => {
         dispatch(deleteOnePost(post.id))
-        // setUpdate(true)
+        setShowModal(false)
+        window.location.reload(false)
     }
 
-    const handleCommEdit = async (e) => {
+    const handleEdit = async (e) => {
         e.preventDefault()
-        setEdit(true)
+        setEditPost(true)
     }
 
-    const handleEditCommSubmit = async (e) => {
+    const handleCaptionSubmit = async (e) => {
         e.preventDefault()
+        const form = {caption: newCaption}
         const res = await fetch(`/api/posts/${post.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": 'application/json'
             },
-            body: JSON.stringify({
-                comment: newCaption,
-            })
+            body: JSON.stringify(form)
         })
-        setUpdate(true)
-        setEdit(false)
+        setEditPost(false)
+        setUpdate1(true)
     }
 
-    const handleCancel = async (e) => {
+    const handleEditCancel = async (e) => {
         e.preventDefault()
-        setNewCaption(post.caption)
-        setEdit(false)
+        setEditPost(false)
     }
 
     let field
+    let owned = false
 
-    if (edit) {
-        field = <form className="confirm-edit-caption-form" onSubmit={handleEditCommSubmit}>
-            <input
-            className="confirm-edit-caption-input"
-            type="text"
-            contentEditable="false"
-            value={newCaption}
-            onChange = {(e) => setNewCaption(e.target.value)}
-            />
+    if (userId === post.user_id) owned = true
 
-            <button id='submit-edit-caption' type="submit"><i className="far fa-check-circle"></i></button>
-            <button id='cancel-edit-caption' onClick={handleCancel}><i className="far fa-times-circle"></i></button>
-
-        </form>
+    if (owned) {
+        field = <p>
+            {post.caption}
+            <button id='edit-comment' onClick={handleEdit}><i className="far fa-edit"></i></button>
+        </p>
     } else {
-        field = <button id="editBtn" onClick= {handleCommEdit}>Edit</button>
+        field = <p>
+            {post.caption}
+        </p>
+    }
+
+    if (editPost) {
+        field = <form onSubmit={handleCaptionSubmit}>
+        <input
+            type="text"
+            value={newCaption}
+            onChange={(e) => setNewCaption(e.target.value)}
+        />
+        <button id='submit-edit-comment' type="submit"><i className="far fa-check-circle"></i></button>
+        <button id='cancel-edit-comment' onClick={handleEditCancel}><i className="far fa-times-circle"></i></button>
+    </form>
     }
 
     let like;
 
-    if(likes[userId]) {
-        like =  <i id='heart-like' className="fas fa-heart" style={{"color": "#e94943"}} onClick={() => handleUnlike()}></i>
+    if (likes[userId]) {
+        like = <i id='heart-like' className="fas fa-heart" style={{ "color": "#e94943" }} onClick={() => handleUnlike()}></i>
     } else {
-        like =  <i id='heart-like' className="far fa-heart" onClick={() => handleLike()}></i>
+        like = <i id='heart-like' className="far fa-heart" onClick={() => handleLike()}></i>
     }
 
     return (
@@ -131,16 +131,16 @@ const ViewSinglePost = ({ post }) => {
                 }}></div>
             <span className='single-span'>
                 <NavLink to={`/profile/${post.user_id}`} id='single-username'>
-                        {userprof.username}
+                    {userprof.username}
                 </NavLink>
-                { post.user_id === userId && (
+                {post.user_id === userId && (
                     <button id="deleteBtn" onClick={() => handleDelete()}>Delete Post</button>
                 )}
                 <div id='single-caption-comments'>
-                    <p><b>{userprof.username}</b> {post.caption}{field}</p>
+                    <span><b>{userprof.username}</b>{field}</span>
                     {comments?.comments?.map(comment => (
-                        <CommentDetails comment={comment} key={comment.id} setUpdate={setUpdate}/>
-                        ))}
+                        <CommentDetails comment={comment} key={comment.id} setUpdate={setUpdate} />
+                    ))}
                 </div>
                 <div className='single-likes'>
                     {like}

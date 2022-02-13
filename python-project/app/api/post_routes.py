@@ -4,8 +4,8 @@ from app.models import User, Post, db
 from flask_login import current_user, login_required
 from sqlalchemy.orm import joinedload, selectinload
 from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename)
-from app.forms import AddPostForm
-import json
+from app.forms.post_form import AddPostForm
+from app.forms.edit_post_form import EditPostForm
 
 post_routes = Blueprint('posts', __name__)
 
@@ -61,11 +61,14 @@ def photoFeed(id):
 @post_routes.route('/user/<int:userId>')
 def getUserPosts(userId):
     posts = Post.query.filter(userId == Post.user_id).all()
+    # res = {}
 
+    # for post in posts:
+    #     res[post.id] = post.to_dict()
     return {
         "posts": [post.to_dict() for post in posts]
     }
-
+    # return jsonify(res)
 
 @post_routes.route('/<int:id>')
 def getOnePost(id):
@@ -112,13 +115,10 @@ def newPost():
 @post_routes.route('/<int:id>', methods=["PUT"])
 # @login_required
 def editPost(id):
-    print("BEFORE QUERY")
     post = Post.query.get(id)
-    print("AFTER QUERY", post)
-    # print("REQ CAPTION!!!!!!!!", request.files['caption'])
-    print("REQ CAPTION!!!!!!!!", json.loads(request.data)["comment"])
-    post.caption=json.loads(request.data)["comment"]
-    print("AFTER EDIT", post)
+    # print("REQQ ARGS", request.get_json())
+    data = request.get_json()
+    post.caption = data['caption']
     db.session.commit()
     return post.to_dict()
 
@@ -127,8 +127,7 @@ def editPost(id):
 # @login_required
 def deletePost(id):
     post = Post.query.get(id)
-    print("BEFORE DELETE", post)
+
     db.session.delete(post)
-    print("AFTER DELETE")
     db.session.commit()
     return post.to_dict()

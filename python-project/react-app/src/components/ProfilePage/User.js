@@ -22,9 +22,9 @@ function User() {
   const [posts, setPosts] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [update, setUpdate] = useState(false)
+  const [pL, setPL] = useState([])
   const current_user = useSelector((state) => state.session.user.id)
   // const posts = useSelector(state => state.post)
-
   useEffect(async() => {
       const res_user = await fetch(`/api/users/${userId}`);
       const res_following = await fetch(`/api/follow/${userId}/following`);
@@ -40,6 +40,7 @@ function User() {
       setFollowing(following);
       setFollowers(followers);
       setPosts(posts)
+      setPL(posts.posts)
       setUpdate(false)
   }, [dispatch, update]);
 
@@ -105,7 +106,7 @@ function User() {
             </div>
           </span>
           <span id='row-two'>
-            <div><b>{Object.keys(posts).length || 0}</b> posts</div>
+            <div><b>{Object.keys(pL).length || 0}</b> posts</div>
             <div><b>{Object.keys(followers).length || 0}</b> followers</div>
             <div><b>{Object.keys(following).length || 0}</b> following</div>
           </span>
@@ -119,8 +120,8 @@ function User() {
       </div>
       <div className='profile-grid-container'>
         {console.log(posts)}
-        {posts.posts && posts.posts?.map(post => {
-          return <ProfilePostDetail post={post} key={post.id} />
+        {posts.posts?.map(post => {
+          return <ProfilePostDetail post={post} key={post.id} setUpdate={setUpdate}/>
         })}
       </div>
       <Footer />
