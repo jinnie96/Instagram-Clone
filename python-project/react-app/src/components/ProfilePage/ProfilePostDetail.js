@@ -8,7 +8,6 @@ import './ProfilePostDetail.css';
 const ProfilePostDetail = ({ post, setUpdate }) => {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
-    console.log(post);
     const user = useSelector(state => state.session.user)
     useEffect(async () => {
         dispatch(getAllPosts(user.id))
@@ -20,7 +19,6 @@ const ProfilePostDetail = ({ post, setUpdate }) => {
                 style={{
                     backgroundImage: `url(${post.image})`,
                     backgroundSize: "cover",
-                    // backgroundSize: "contain",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center"
                 }}>

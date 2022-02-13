@@ -10,7 +10,7 @@ import User from './components/ProfilePage/User';
 import { authenticate } from './store/session';
 // import NewCommentForm from './components/Comments/NewComment';
 import ViewPosts from './components/Posts/ViewPosts';
-// import Handle404 from './components/Handle404';
+import Handle404 from './components/Handle404';
 
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
           <ViewPosts />
         </ProtectedRoute>
       </Switch>
-      {/* <Handle404 /> */}
+      <Handle404 />
     </BrowserRouter>
   );
 }

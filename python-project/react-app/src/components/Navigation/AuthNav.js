@@ -10,7 +10,6 @@ import './AuthNav.css';
 function AuthNav() {
     const [showMenu, setShowMenu] = useState(false);
     const user = useSelector(state => state.session.user)
-    console.log("USER^^^^^^^^^^^^^^^", user)
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -40,9 +39,9 @@ function AuthNav() {
                     <div id='navbar-create'>
                         <UploadPostModal className='i-navlink' />
                     </div>
-                    <div id='navbar-likes'>
-                        <i className="fas fa-heart i-img"></i>
-                    </div>
+                    {/* <div id='navbar-likes'> */}
+                        {/* <i className="fas fa-heart i-img"></i>
+                    </div> */}
                     <button onClick={openMenu} id='profile-button'>
                         <i className="fas fa-user-circle i-img"></i>
                     </button>

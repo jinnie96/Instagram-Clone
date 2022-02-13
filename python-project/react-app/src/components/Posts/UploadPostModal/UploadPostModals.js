@@ -35,7 +35,6 @@ const UploadPostModals = ({ setShowModal }) => {
 
         if (res.ok) {
             dispatch(postActions.getAllPosts(id)); // returns state unaltered, but triggers dispatch!
-            console.log(res.errors);
             await res.json();
             setImageLoading(false);
             setShowModal(false);

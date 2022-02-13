@@ -41,7 +41,6 @@ export const updateUserProfile = (id, form) => async dispatch => {
         },
         body: JSON.stringify(post)
     })
-    console.log("TEST @@@@@@@@@@@@@@@@@@@@@", res);
     if (res.ok) {
         const data = await res.json()
         dispatch(updateUser(data))

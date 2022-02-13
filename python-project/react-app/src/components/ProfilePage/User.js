@@ -119,7 +119,6 @@ function User() {
         </div>
       </div>
       <div className='profile-grid-container'>
-        {console.log(posts)}
         {posts.posts?.map(post => {
           return <ProfilePostDetail post={post} key={post.id} setUpdate={setUpdate}/>
         })}

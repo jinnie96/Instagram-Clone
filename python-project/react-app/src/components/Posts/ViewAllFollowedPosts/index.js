@@ -7,22 +7,15 @@ import './index.css'
 const ViewFollowedPosts = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    // console.log("UserSTATE@@@@@", user)
 
     const followedPosts = useSelector(state => state.post)
-    // console.log("ALLLLL POST@@@@@@", allPosts)
 
     useEffect(() => {
-        // console.log("USEEFFECTTTTTTT")
         dispatch(getFollowPosts(user.id))
     }, [dispatch])
 
     const followedPostsArr = Object.values(followedPosts)
     const followedPostsArrRev = followedPostsArr.reverse()
-    console.log("REVERSE@@@@@", followedPostsArrRev)
-    // console.log(allPostsArr)
-
-    // allPostsArr.map(post => console.log(post.image, post.id))
 
 
     return (

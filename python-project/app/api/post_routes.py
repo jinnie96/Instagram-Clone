@@ -22,7 +22,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 @post_routes.route('/photofeed/<int:id>')
-# @login_required
+@login_required
 def photoFeed(id):
     current_user = User.query.get(id)
     current_user_posts = Post.query.filter(Post.user_id == id).all()
@@ -32,7 +32,6 @@ def photoFeed(id):
 
     # User does not follow anyone, and does not have posts
     if not posts and not current_user_posts:
-        # print('--------- first')
         posts = Post.query.all()
         res = {}
         for post in posts:
@@ -43,7 +42,6 @@ def photoFeed(id):
         return res
     # User does not follow anyone, and has their own posts
     elif not posts and current_user_posts:
-        # print('--------- second')
         res = {}
         for post in current_user_posts:
             user = User.query.get(post.user.id)
@@ -53,7 +51,6 @@ def photoFeed(id):
         return res
     # User follows + do/do not have their own posts
     else:
-        # print('--------- third')
         for post in posts:
             user = User.query.get(post.user.id)
             username = user.username
@@ -71,14 +68,10 @@ def photoFeed(id):
 @post_routes.route('/user/<int:userId>')
 def getUserPosts(userId):
     posts = Post.query.filter(userId == Post.user_id).all()
-    # res = {}
 
-    # for post in posts:
-    #     res[post.id] = post.to_dict()
     return {
         "posts": [post.to_dict() for post in posts]
     }
-    # return jsonify(res)
 
 @post_routes.route('/<int:id>')
 def getOnePost(id):
@@ -87,20 +80,18 @@ def getOnePost(id):
 
 
 @post_routes.route('/create', methods=["POST"])
-# @login_required
+@login_required
 def newPost():
     form = AddPostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         if "image" not in request.files:
-            # return {"errors": "image required"}, 400
             return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
         image = request.files['image']
 
         if not allowed_file(image.filename):
-            # return {"errors": "file type not permitted"}, 400
             return {'errors': "Invalid File Type"}, 400
 
         image.filename = get_unique_filename(image.filename)
@@ -122,10 +113,9 @@ def newPost():
 
 
 @post_routes.route('/<int:id>', methods=["PUT"])
-# @login_required
+@login_required
 def editPost(id):
     post = Post.query.get(id)
-    # print("REQQ ARGS", request.get_json())
     data = request.get_json()
     post.caption = data['caption']
     db.session.commit()
@@ -133,7 +123,7 @@ def editPost(id):
 
 
 @post_routes.route('/<int:id>', methods=["DELETE"])
-# @login_required
+@login_required
 def deletePost(id):
     post = Post.query.get(id)
 

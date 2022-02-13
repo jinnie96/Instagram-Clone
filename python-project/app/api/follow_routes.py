@@ -8,13 +8,11 @@ follow_routes = Blueprint('follow', __name__)
 
 # Following
 @follow_routes.route('/<int:id>/following')
-# @login_required
+@login_required
 def getFollow(id):
     current_user = User.query.get(id)
 
     res = {}
-
-    print("@@@@@@@@@@@@@@@@@@@@", current_user.followers)
 
 
     for name in current_user.followers:
@@ -24,7 +22,7 @@ def getFollow(id):
 
 
 @follow_routes.route('/<int:userId>/following/<int:targetId>', methods=["POST"])
-# @login_required
+@login_required
 def newFollow(userId, targetId):
     current_user = User.query.get(userId)
     target_user = User.query.get(targetId)
@@ -32,7 +30,6 @@ def newFollow(userId, targetId):
     current_user.followers.append(target_user)
     db.session.commit()
 
-    print("@@@@@@@@@@@@@@@@", current_user.followers)
 
     res = {}
 
@@ -43,7 +40,7 @@ def newFollow(userId, targetId):
 
 
 @follow_routes.route('/<int:userId>/following/<int:targetId>', methods=["DELETE"])
-# @login_required
+@login_required
 def deleteFollow(userId, targetId):
     current_user = User.query.get(userId)
     target_user = User.query.get(targetId)
@@ -61,7 +58,7 @@ def deleteFollow(userId, targetId):
 
 # Followers
 @follow_routes.route('/<int:id>/followers')
-# @login_required
+@login_required
 def getFollower(id):
     current_user = User.query.get(id)
 
@@ -74,7 +71,7 @@ def getFollower(id):
 
 
 @follow_routes.route('/<int:userId>/followers/<int:targetId>', methods=["DELETE"])
-# @login_required
+@login_required
 def deleteFollower(userId, targetId):
     current_user = User.query.get(userId)
     target_user = User.query.get(targetId)

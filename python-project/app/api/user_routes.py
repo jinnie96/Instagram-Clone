@@ -52,5 +52,4 @@ def editProfile(id):
         db.session.commit()
 
         return user.to_dict()
-    print("TEST ERRORS @@@@@@@@@@@@@@",form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
