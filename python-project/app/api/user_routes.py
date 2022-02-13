@@ -43,6 +43,8 @@ def editProfile(id):
         user = User.query.get(user_id)
         if form.data['username'] != user.username:
             user.username = form.data['username']
+        if form.data['username'] == user.username:
+            user.username = form.data['username']
         user.first_name = form.data['first_name']
         user.last_name = form.data['last_name']
         user.email = form.data['email']
