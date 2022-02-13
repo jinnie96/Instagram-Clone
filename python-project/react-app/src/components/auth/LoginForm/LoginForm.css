@@ -58,11 +58,11 @@
 }
 
 #demo-btn {
-    background-color: #fc9826;
+    background-color: #fd4573;
 }
 
 #demo-btn:hover {
-    background-color: #f08c1a;
+    background-color: #f33968;
 }
 
 input::placeholder {

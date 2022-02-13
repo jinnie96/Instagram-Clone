@@ -15,9 +15,9 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+
     const data = await dispatch(login(email, password));
     if (data) {
-      console.log(data);
       setErrors(data);
     }
   };
@@ -38,11 +38,11 @@ const LoginForm = () => {
     <div className='login-page'>
       <div className='login-container'>
         <form className='login-form' onSubmit={onLogin}>
-          <div className='login-form errors'>
+          <ul className='login-form errors'>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <li key={ind}>{error}</li>
             ))}
-          </div>
+          </ul>
           <div className='login-form'>
             <input
               className='login-inputs'
@@ -65,7 +65,7 @@ const LoginForm = () => {
           </div>
           <button className='login-form login-submit' type='submit'>Log In</button>
         </form>
-        <DemoButton/>
+        <DemoButton />
       </div>
       <div className='login-below-container'>
         <div>Don't have an account?</div>

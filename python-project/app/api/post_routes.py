@@ -9,6 +9,16 @@ import json
 
 post_routes = Blueprint('posts', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 
 
 @post_routes.route('/photofeed/<int:id>')
@@ -81,15 +91,12 @@ def newPost():
 
     if form.validate_on_submit():
         if "image" not in request.files:
-            print("Error 1")
             return {"errors": "image required"}, 400
 
         image = request.files['image']
-        print("@@@@@@@@@@@@@@@@@@@@@@@@@", image)
 
         if not allowed_file(image.filename):
             return {"errors": "file type not permitted"}, 400
-
 
         image.filename = get_unique_filename(image.filename)
 
@@ -103,10 +110,10 @@ def newPost():
 
         db.session.add(post)
         db.session.commit()
-        print("POST")
 
         return post.to_dict()
-    return (form.errors)
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 
 @post_routes.route('/<int:id>', methods=["PUT"])
