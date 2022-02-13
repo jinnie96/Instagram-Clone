@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux'
-import { Modal } from '../../context/Modal'
-import * as userActions from '../../store/users'
+import { useDispatch } from 'react-redux';
+import * as userActions from '../../store/users';
+import './UserEdit.css';
 
 
 const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
@@ -19,8 +19,9 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
 
         const info = {username, firstName, lastName, email, biography}
         const data = await dispatch(userActions.updateUserProfile(user.id, info))
+
         if(data) {
-            console.log("DATA", data);
+            // console.log("DATA", data);
             setErrors(data)
         } else {
             setUpdate(true)
@@ -34,48 +35,66 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <ul>
+        <div className='edit-user-container'>
+            <div>Edit profile</div>
+            <form className='edit-user-form' onSubmit={handleSubmit}>
+                <ul className="errors">
                     {console.log("########################", errors)}
                     {errors?.map((error, ind) => (
                         <li key={ind}>{error}</li>
                     ))}
                 </ul>
-                <input
-                    name='username'
-                    type='text'
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <input
-                    name='first_name'
-                    type='text'
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-                <input
-                    name='last_name'
-                    type='text'
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
-                <input
-                    name='email'
-                    type='text'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    name='biography'
-                    type='textarea'
-                    value={biography || ""}
-                    onChange={(e) => setBiography(e.target.value)}
-                />
-                <button type="submit">Submit</button>
-                <button onClick={handleCancel}>Cancel</button>
+                <fieldset>
+                    <legend>Username</legend>
+                    <input
+                        name='username'
+                        type='text'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </fieldset>
+                <fieldset>
+                    <legend>First name</legend>
+                    <input
+                        name='first_name'
+                        type='text'
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                    />
+                </fieldset>
+                <fieldset>
+                    <legend>Last name</legend>
+                    <input
+                        name='last_name'
+                        type='text'
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                    />
+                </fieldset>
+                <fieldset>
+                    <legend>Email</legend>
+                    <input
+                        name='email'
+                        type='text'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </fieldset>
+                <fieldset>
+                    <legend>Biography</legend>
+                    <input
+                        name='biography'
+                        type='textarea'
+                        value={biography || ""}
+                        onChange={(e) => setBiography(e.target.value)}
+                    />
+                </fieldset>
+                <div className='edit-user-btns'>
+                    <button id='edit-user-submit' type="submit">Submit</button>
+                    <button id='edit-user-cancel' onClick={handleCancel}>Cancel</button>
+                </div>
             </form>
-        </>
+        </div>
     )
 }
 

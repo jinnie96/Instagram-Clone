@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import UploadPostModal from "../Posts/UploadPostModal";
 import LogoutButton from '../auth/LogoutButton';
-import textLogo from './text-clone-logo.png'
-// import current_user from flask_login
-import './AuthNav.css'
-import { useSelector } from "react-redux";
+import textLogo from './text-clone-logo.png';
+import './AuthNav.css';
 
 
 function AuthNav() {
@@ -52,8 +51,8 @@ function AuthNav() {
                             <div className="profile-dropdown">
                                 <div>
                                     <i className="fas fa-user i-img"></i>
-                                    <NavLink to={'/profile/' + user.id}>
-                                    <div>Profile</div>
+                                    <NavLink id='dropdown-navlink' to={'/profile/' + user.id}>
+                                        <div>Profile</div>
                                     </NavLink>
                                 </div>
                                 <div id='dropdown-logout'>

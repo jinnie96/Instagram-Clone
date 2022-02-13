@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { updateOneComment } from "../../../store/comments";
 import './EditComment.css'
@@ -51,11 +51,11 @@ const EditCommentForm = ({comment, editState, sendDataToParent}) => {
         {editPopUp && (
             <form className='edit-your-comment' onSubmit={onEdit}>
                 <div>
-                    <div>
+                    <ul className="errors">
                         {errors.map((error, ind) => (
-                            <div key={ind}>{error}</div>
+                            <li key={ind}>{error}</li>
                         ))}
-                    </div>
+                    </ul>
                     <div>
                         <input
                             className="edit-comment-input"

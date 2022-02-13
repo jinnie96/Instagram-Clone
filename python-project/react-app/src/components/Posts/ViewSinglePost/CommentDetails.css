@@ -3,7 +3,6 @@
     margin: 9px 0;
 }
 
-
 .edit-comment-form {
     display: flex;
     justify-content: flex-start;
@@ -18,15 +17,21 @@
     cursor: pointer;
 }
 
+#edit-comment:hover, #delete-comment:hover {
+    color: #818181;
+}
+
 #edit-comment {
     padding-left: 7px;
 }
+
 
 
 /* ------------------- Submit/cancel edit comment ------------------- */
 .confirm-edit-comment-input {
     padding: 2px;
     border: 1px solid #DBDBDB;
+    border-radius: 3px;
     font-size: 12px;
 }
 
@@ -49,4 +54,3 @@
 #cancel-edit-comment:hover {
     color: rgb(216, 58, 58);
 }
-

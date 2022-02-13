@@ -19,13 +19,67 @@
 
 
 
-/* ------------------- Post modal info (username) ------------------- */
-#single-username {
+/* ------------------- Post modal info (username + delete post) ------------------- */
+#single-header {
+    height: 19px;
     padding: 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+
+#single-username {
     font-size: 16px;
     text-decoration: none;
     color: black;
-    border-bottom: 1px solid #DBDBDB;
+}
+
+#deleteBtn {
+    display: none;
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    color: #262626;
+    cursor: pointer;
+    transition: 2s;
+}
+
+#single-header:hover #deleteBtn {
+    display: inline-block;
+}
+
+
+
+/* ------------------- Submit/cancel edit post caption ------------------- */
+.confirm-edit-caption-input {
+    /* line-height: 65px; */
+    padding: 2px;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+#submit-edit-caption, #cancel-edit-caption {
+    border: none;
+    padding: 0 2px;
+    font-size: 11px;
+    color: #c2c2c2;
+    cursor: pointer;
+}
+
+#submit-edit-caption {
+    padding-left: 7px;
+}
+
+#submit-edit-caption:hover {
+    color: rgb(24, 160, 24);
+}
+
+#cancel-edit-caption:hover {
+    color: rgb(216, 58, 58);
 }
 
 
@@ -34,9 +88,14 @@
 #single-caption-comments {
     overflow: scroll;
     overflow-x: hidden;
-    height: 358px;
+    height: 372px;
     padding: 16px;
     font-size: 12px;
+}
+
+#single-caption-comments div div {
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -45,6 +104,19 @@
 
 #single-caption-comments p {
     margin: 0;
+}
+
+#editBtn {
+    border: none;
+    padding: 0 7px;
+    /* font-weight: bold; */
+    font-size: 10px;
+    color: #a7a6a6;
+    cursor: pointer;
+}
+
+#editBtn:hover {
+    color: #818181;
 }
 
 

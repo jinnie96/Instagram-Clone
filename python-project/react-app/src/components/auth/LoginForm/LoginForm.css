@@ -21,14 +21,12 @@
     background-color: white;
 }
 
+
+
 /* ------------------- Login elements ------------------- */
 .login-form {
     background-color: white;
 }
-
-/* .login-labels {
-    color: #8E8E8E;
-} */
 
 .login-inputs {
     overflow: auto;
@@ -42,7 +40,7 @@
     color: black;
 }
 
-.login-submit {
+.login-submit, #demo-btn {
     width: 276px;
     margin: 6px 3px 3px 3px;
     padding: 8px;
@@ -52,12 +50,27 @@
     font-size: 15px;
     font-weight: bold;
     color: white;
+    cursor: pointer;
+}
+
+.login-submit:hover {
+    background-color: rgb(26, 135, 236);
+}
+
+#demo-btn {
+    background-color: #fd4573;
+}
+
+#demo-btn:hover {
+    background-color: #f33968;
 }
 
 input::placeholder {
     font-size: 12px;
     color: #8E8E8E;
 }
+
+
 
 /* ------------------- Below login container ------------------- */
 .login-below-container {

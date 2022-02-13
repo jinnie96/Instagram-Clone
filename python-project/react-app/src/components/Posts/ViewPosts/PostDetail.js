@@ -57,11 +57,10 @@ const PostDetail = ({ post }) => {
                         {post.username}
                     </NavLink>
                 </div>
-                <div className='post-image'
+                <div className='post-image' onClick={() => setShowModal(true)}
                     style={{
                         backgroundImage: `url(${post.image})`,
                         backgroundSize: "cover",
-                        // backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center"
                     }}></div>

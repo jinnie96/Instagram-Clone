@@ -6,9 +6,11 @@ import './CommentDetails.css';
 
 const CommentDetails = ({ comment, setUpdate }) => {
     const [user, setUser] = useState([])
-    const current = useSelector(state => state.session.user)
     const [newComment, setNewComment] = useState(comment.comment)
     const [edit, setEdit] = useState(false)
+
+    const current = useSelector(state => state.session.user)
+
     useEffect(async () => {
         const res = await fetch(`/api/users/${comment.user_id}`)
         if (res.ok) {
@@ -56,7 +58,6 @@ const CommentDetails = ({ comment, setUpdate }) => {
     let field;
 
     if (edit) {
-
         field = <form className="confirm-edit-comment-form" onSubmit={handleEditSubmit}>
             <input
                 className="confirm-edit-comment-input"
