@@ -44,7 +44,6 @@ const LoginForm = () => {
             ))}
           </div>
           <div className='login-form'>
-            {/* <label className='login-labels' htmlFor='email'>Email</label> */}
             <input
               className='login-inputs'
               name='email'
@@ -55,7 +54,6 @@ const LoginForm = () => {
             />
           </div>
           <div className='login-form'>
-            {/* <label className='login-labels' htmlFor='password'>Password</label> */}
             <input
               className='login-inputs'
               name='password'

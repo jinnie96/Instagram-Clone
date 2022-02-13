@@ -21,6 +21,8 @@
     background-color: white;
 }
 
+
+
 /* ------------------- Signup elements ------------------- */
 .signup-form {
     background-color: white;
@@ -48,14 +50,21 @@
     font-size: 15px;
     font-weight: bold;
     color: white;
+    cursor: pointer;
+}
+
+.signup-submit:hover {
+    background-color: rgb(26, 135, 236);
 }
 
 .signup-policies {
     padding-top: 10px;
     background-color: white;
-    font-size: 13px;
+    font-size: 11px;
     color: #8E8E8E;
 }
+
+
 
 /* ------------------- Below signup container ------------------- */
 .signup-below-container {
