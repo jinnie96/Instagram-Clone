@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/ProfilePage/UsersList';
 import User from './components/ProfilePage/User';
 import { authenticate } from './store/session';
-import NewCommentForm from './components/Comments/NewComment';
+// import NewCommentForm from './components/Comments/NewComment';
 import ViewPosts from './components/Posts/ViewPosts';
 // import Handle404 from './components/Handle404';
 
@@ -42,7 +42,7 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path='/posts/:id/new-comment' exact={true}>
-          <NewCommentForm />
+          {/* <NewCommentForm /> */}
         </Route>
         <ProtectedRoute path='/users' exact={true}>
           <UsersList />
