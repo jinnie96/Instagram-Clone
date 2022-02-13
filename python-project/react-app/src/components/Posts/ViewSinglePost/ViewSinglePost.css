@@ -93,6 +93,11 @@
     font-size: 12px;
 }
 
+#single-caption-comments div div {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
     width: 0;
 }

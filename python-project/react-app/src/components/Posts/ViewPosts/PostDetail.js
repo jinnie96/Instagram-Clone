@@ -57,7 +57,6 @@ const PostDetail = ({ post }) => {
                     style={{
                         backgroundImage: `url(${post.image})`,
                         backgroundSize: "cover",
-                        // backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center"
                     }}></div>
