@@ -91,24 +91,25 @@ const ViewSinglePost = ({ post }) => {
         setEdit(false)
     }
 
-    let field
+    let field;
 
     if (edit) {
         field = <form className="confirm-edit-caption-form" onSubmit={handleEditCommSubmit}>
-            <input
-            className="confirm-edit-caption-input"
-            type="text"
-            contentEditable="false"
-            value={newCaption}
-            onChange = {(e) => setNewCaption(e.target.value)}
+            <textarea
+                className="confirm-edit-caption-input"
+                rows="10"
+                value={newCaption}
+                onChange = {(e) => setNewCaption(e.target.value)}
             />
 
             <button id='submit-edit-caption' type="submit"><i className="far fa-check-circle"></i></button>
             <button id='cancel-edit-caption' onClick={handleCancel}><i className="far fa-times-circle"></i></button>
-
         </form>
     } else {
-        field = <button id="editBtn" onClick= {handleCommEdit}>Edit</button>
+        field = <div>
+            {post.caption}
+            <button id="editBtn" onClick= {handleCommEdit}><i className="fas fa-pencil-alt"></i></button>
+        </div>
     }
 
     let like;
@@ -130,14 +131,16 @@ const ViewSinglePost = ({ post }) => {
                     backgroundPosition: "center"
                 }}></div>
             <span className='single-span'>
-                <NavLink to={`/profile/${post.user_id}`} id='single-username'>
+                <div id='single-header'>
+                    <NavLink to={`/profile/${post.user_id}`} id='single-username'>
                         {userprof.username}
-                </NavLink>
-                { post.user_id === userId && (
-                    <button id="deleteBtn" onClick={() => handleDelete()}>Delete Post</button>
-                )}
+                    </NavLink>
+                    {post.user_id === userId && (
+                        <button id="deleteBtn" onClick={() => handleDelete()}><i className="fas fa-trash-alt"></i></button>
+                    )}
+                </div>
                 <div id='single-caption-comments'>
-                    <p><b>{userprof.username}</b> {post.caption}{field}</p>
+                    <div><b>{userprof.username}</b>{field}</div>
                     {comments?.comments?.map(comment => (
                         <CommentDetails comment={comment} key={comment.id} setUpdate={setUpdate}/>
                         ))}

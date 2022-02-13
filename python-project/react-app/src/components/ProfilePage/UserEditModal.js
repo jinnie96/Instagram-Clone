@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux'
-import { Modal } from '../../context/Modal'
-import * as userActions from '../../store/users'
+import { useDispatch, useSelector } from 'react-redux';
+import * as userActions from '../../store/users';
 
 
 const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
@@ -20,7 +19,7 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
         const info = {username, firstName, lastName, email, biography}
         const data = await dispatch(userActions.updateUserProfile(user.id, info))
         if(data) {
-            console.log("DATA", data);
+            // console.log("DATA", data);
             setErrors(data)
         } else {
             setUpdate(true)
