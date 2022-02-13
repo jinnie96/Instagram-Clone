@@ -104,9 +104,11 @@ export const updateOnePost = post => async dispatch => {
 }
 
 export const deleteOnePost = postId => async dispatch => {
+    console.log("IN API 1")
     const res = await fetch(`/api/posts/${postId}`, {
         method: 'DELETE',
     })
+    console.log("IN API 2")
     if (res.ok) {
         dispatch(deletePost(postId))
         return 'Post successfully deleted.'

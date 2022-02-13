@@ -22,7 +22,16 @@ const ViewSinglePost = ({ post }) => {
     const [likes, setLikes] = useState([]);
     const [comments, setComments] = useState([])
     const [userprof, setUserProf] = useState([])
+    const [edit, setEdit] = useState(false)
+    const [newCaption, setNewCaption] = useState(post.caption)
 
+    // useEffect(async () => {
+    //     dispatch(getAllPosts(user.id))
+    //     const res_likes = await fetch(`/api/likes/p/${post.id}/likes`);
+    //     const like = await res_likes.json()
+    //     setLikes(like)
+    //     setUpdate(false)
+    // }, [dispatch, update])
 
     useEffect(async () => {
         const res_likes = await fetch(`/api/likes/p/${post.id}/likes`);
@@ -53,6 +62,53 @@ const ViewSinglePost = ({ post }) => {
 
     const handleDelete = async () => {
         dispatch(deleteOnePost(post.id))
+        // setUpdate(true)
+    }
+
+    const handleCommEdit = async (e) => {
+        e.preventDefault()
+        setEdit(true)
+    }
+
+    const handleEditCommSubmit = async (e) => {
+        e.preventDefault()
+        const res = await fetch(`/api/posts/${post.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify({
+                comment: newCaption,
+            })
+        })
+        setUpdate(true)
+        setEdit(false)
+    }
+
+    const handleCancel = async (e) => {
+        e.preventDefault()
+        setNewCaption(post.caption)
+        setEdit(false)
+    }
+
+    let field
+
+    if (edit) {
+        field = <form className="confirm-edit-caption-form" onSubmit={handleEditCommSubmit}>
+            <input
+            className="confirm-edit-caption-input"
+            type="text"
+            contentEditable="false"
+            value={newCaption}
+            onChange = {(e) => setNewCaption(e.target.value)}
+            />
+
+            <button id='submit-edit-caption' type="submit"><i className="far fa-check-circle"></i></button>
+            <button id='cancel-edit-caption' onClick={handleCancel}><i className="far fa-times-circle"></i></button>
+
+        </form>
+    } else {
+        field = <button id="editBtn" onClick= {handleCommEdit}>Edit</button>
     }
 
     let like;
@@ -81,7 +137,7 @@ const ViewSinglePost = ({ post }) => {
                     <button id="deleteBtn" onClick={() => handleDelete()}>Delete Post</button>
                 )}
                 <div id='single-caption-comments'>
-                    <p><b>{userprof.username}</b> {post.caption}</p>
+                    <p><b>{userprof.username}</b> {post.caption}{field}</p>
                     {comments?.comments?.map(comment => (
                         <CommentDetails comment={comment} key={comment.id} setUpdate={setUpdate}/>
                         ))}
