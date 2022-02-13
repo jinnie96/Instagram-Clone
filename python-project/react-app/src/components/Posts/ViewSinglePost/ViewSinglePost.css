@@ -42,12 +42,15 @@
     background-color: transparent;
     border: none;
     font-size: 17px;
+    color: #262626;
     cursor: pointer;
+    transition: 2s;
 }
 
-#single-header:hover {
-    display: default;
+#single-header:hover #deleteBtn {
+    display: inline-block;
 }
+
 
 
 /* ------------------- Post modal caption + comments ------------------- */
@@ -65,6 +68,19 @@
 
 #single-caption-comments p {
     margin: 0;
+}
+
+#editBtn {
+    border: none;
+    padding: 0 7px;
+    /* font-weight: bold; */
+    font-size: 10px;
+    color: #a7a6a6;
+    cursor: pointer;
+}
+
+#editBtn:hover {
+    color: #818181;
 }
 
 
