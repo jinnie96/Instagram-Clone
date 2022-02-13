@@ -62,26 +62,6 @@
     font-size: 12px;
 }
 
-#submit-edit-caption, #cancel-edit-caption {
-    border: none;
-    padding: 0 2px;
-    font-size: 11px;
-    color: #c2c2c2;
-    cursor: pointer;
-}
-
-#submit-edit-caption {
-    padding-left: 7px;
-}
-
-#submit-edit-caption:hover {
-    color: rgb(24, 160, 24);
-}
-
-#cancel-edit-caption:hover {
-    color: rgb(216, 58, 58);
-}
-
 
 
 /* ------------------- Post modal caption + comments ------------------- */
