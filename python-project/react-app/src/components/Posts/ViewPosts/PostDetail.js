@@ -12,6 +12,7 @@ const PostDetail = ({ post }) => {
     const [showModal, setShowModal] = useState(false);
     const [likes, setLikes] = useState([]);
     const [update, setUpdate] = useState(false);
+    const [update1, setUpdate1] = useState(false)
 
 
     const dispatch = useDispatch()
@@ -21,11 +22,14 @@ const PostDetail = ({ post }) => {
 
     useEffect(async () => {
         dispatch(getAllPosts(user.id))
+
         const res_likes = await fetch(`/api/likes/p/${post.id}/likes`);
         const like = await res_likes.json()
+
         setLikes(like)
         setUpdate(false)
-    }, [dispatch, update, showModal])
+        setUpdate1(false)
+    }, [dispatch, update, showModal, update1])
 
     const handleLike = async () => {
         dispatch(likePost(user.id, post.id))
@@ -64,14 +68,14 @@ const PostDetail = ({ post }) => {
                     {like}
                     <div>{Object.keys(likes).length} likes</div>
                 </div>
-                <div className='post-caption'>
+                <div className='post-caption' onClick={() => setShowModal(true)}>
                     <p><b>{post.username}</b> {post.caption}</p>
                 </div>
             </div>
             <div>
                 {(showModal) && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <ViewSinglePost post={post} />
+                        <ViewSinglePost post={post} setUpdate1={setUpdate1} setShowModal={setShowModal} />
                     </Modal>
                 )}
             </div>
