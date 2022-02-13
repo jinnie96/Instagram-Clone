@@ -41,12 +41,9 @@ const getUserPost = post => ({
 
 // ------------------- Thunk creators ------------------- //
 export const getAllPosts = (id) => async dispatch => {
-    // console.log("IN THUNK CREATOR")
     const response = await fetch (`/api/posts/photofeed/${id}`)
-    // console.log("=======RESSSS", response)
     if (response.ok) {
         const data = await response.json();
-        // console.log("DATAAAAAAAA", data)
         if (data.errors) {
             return;
         };
@@ -71,17 +68,11 @@ export const getSinglePost = (postId) => async (dispatch) => {
 };
 
 export const addOnePost = (form) => async dispatch => {
-    // const {user_id, caption, image} = form;
-    form.forEach((value, key) => {
-            console.log(key, value);
-    })
-    console.log();
     const response = await fetch(`/api/posts/create`, {
         method: 'POST',
         body: form
     })
     if (response.ok) {
-        console.log('++++++++++ hello?')
         const data = await response.json();
         dispatch(addPost(data));
         return data;
@@ -104,11 +95,9 @@ export const updateOnePost = post => async dispatch => {
 }
 
 export const deleteOnePost = postId => async dispatch => {
-    console.log("IN API 1")
     const res = await fetch(`/api/posts/${postId}`, {
         method: 'DELETE',
     })
-    console.log("IN API 2")
     if (res.ok) {
         dispatch(deletePost(postId))
         return 'Post successfully deleted.'
@@ -139,22 +128,10 @@ export default function postsReducer(state = initialState, action) {
         case GET_POSTS: {
             newState = { ...state };
             for (const key in action.payload) {
-                // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
                 newState[action.payload[key].id] = action.payload[key]
             }
             return newState;
         };
-        // case GET_POSTS: {
-        //     newState = { ...state };
-        //     for (const key in action.payload) {
-        //         // console.log(key, "--->", action.payload[key], "!!!!!!!!!!!!!!!")
-        //         newState[action.payload[key].id] = action.payload[key]
-        //     }
-        //     // newState[action.payload["3"].id] = action.payload["3"]
-
-        //     // action.payload.posts.map((post) => newState[post.id] = post);
-        //     return newState;
-        // };
         case GET_ONE_POST: {
             newState = {
                 ...state,

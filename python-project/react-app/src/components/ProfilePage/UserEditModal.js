@@ -21,7 +21,6 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
         const data = await dispatch(userActions.updateUserProfile(user.id, info))
 
         if(data) {
-            // console.log("DATA", data);
             setErrors(data)
         } else {
             setUpdate(true)
@@ -39,7 +38,6 @@ const EditProfileModal = ({ setShowModal, user, setUpdate }) => {
             <div>Edit profile</div>
             <form className='edit-user-form' onSubmit={handleSubmit}>
                 <ul className="errors">
-                    {console.log("########################", errors)}
                     {errors?.map((error, ind) => (
                         <li key={ind}>{error}</li>
                     ))}

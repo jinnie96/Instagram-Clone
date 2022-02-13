@@ -18,7 +18,7 @@ def getLike(postId):
 
 
 @like_routes.route('/p/<int:postId>/likes', methods=["POST"])
-# @login_required
+@login_required
 def newLike(postId):
     target_post = Post.query.get(postId)
 
@@ -33,7 +33,7 @@ def newLike(postId):
 
 
 @like_routes.route('/p/<int:postId>/likes/<int:userId>', methods=["DELETE"])
-# @login_required
+@login_required
 def deleteLike(postId, userId):
     target_post = Post.query.get(postId)
     target_user = User.query.get(userId)
