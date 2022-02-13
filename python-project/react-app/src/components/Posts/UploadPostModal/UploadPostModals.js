@@ -9,7 +9,6 @@ const UploadPostModals = ({ setShowModal }) => {
     const [image, setImage] = useState(null);
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
-    const [errors, setErrors] = useState([]);
     const history = useHistory(); // so that we can redirect after the image upload is successful
     const dispatch = useDispatch();
 
@@ -37,7 +36,6 @@ const UploadPostModals = ({ setShowModal }) => {
             dispatch(postActions.getAllPosts(id)); // returns state unaltered, but triggers dispatch!
 
             await res.json();
-            setErrors(res);
             setImageLoading(false);
             setShowModal(false);
             history.push("/");
@@ -57,17 +55,12 @@ const UploadPostModals = ({ setShowModal }) => {
         <div className='create-post-container'>
             <div>Create new post</div>
             <form className='create-post-form' onSubmit={handleSubmit}>
-                <ul className='errors'>
-                    {console.log("########################", errors)}
-                    {errors.map((error, ind) => (
-                        <li key={ind}>{error}</li>
-                    ))}
-                </ul>
                 <input
                     className='create-post-input'
                     name='image'
                     type="file"
                     accept="image/*"
+                    required
                     onChange={updateImage}
                 />
                 <textarea
