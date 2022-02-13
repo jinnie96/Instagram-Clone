@@ -43,10 +43,6 @@ const SignUpForm = () => {
     setEmail(e.target.value);
   };
 
-  // const updateBiography = (e) => {
-  //   setBiography(e.target.value);
-  // };
-
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -57,17 +53,18 @@ const SignUpForm = () => {
 
   if (user) {
     return <Redirect to='/' />;
-  }
+  };
+
 
   return (
     <div className='signup-page'>
       <div className='signup-container'>
         <form className='signup-form' onSubmit={onSignUp}>
-          <div className='signup-form errors'>
+          <ul className='signup-form errors'>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <li key={ind}>{error}</li>
             ))}
-          </div>
+          </ul>
           <div className='signup-form'>
             {/* <label>User Name</label> */}
             <input

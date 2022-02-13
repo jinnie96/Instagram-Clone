@@ -37,11 +37,11 @@ const NewCommentForm = ({ post }) => {
     return (
         <form className="new-comment-form" onSubmit={submit} >
             <div>
-                <div>
+                <ul className="errors">
                     {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
+                        <li key={ind}>{error}</li>
                     ))}
-                </div>
+                </ul>
                 <div className="new-comment-box">
                     <input
                         className="new-comment-input"

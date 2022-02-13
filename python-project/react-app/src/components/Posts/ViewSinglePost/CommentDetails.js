@@ -60,11 +60,11 @@ const CommentDetails = ({ comment, setUpdate }) => {
     if (edit) {
         field = <form className="confirm-edit-comment-form" onSubmit={handleEditSubmit}>
             <input
-            className="confirm-edit-comment-input"
-            type="text"
-            contentEditable="false"
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
+                className="confirm-edit-comment-input"
+                type="text"
+                contentEditable="false"
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
             />
 
             <button id='submit-edit-comment' type="submit"><i className="far fa-check-circle"></i></button>
