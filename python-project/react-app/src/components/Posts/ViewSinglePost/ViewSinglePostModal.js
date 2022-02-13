@@ -105,6 +105,7 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
             className="confirm-edit-caption-input"
             rows="10"
             type="text"
+            resize="none"
             value={newCaption}
             onChange={(e) => setNewCaption(e.target.value)}
         />

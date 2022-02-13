@@ -41,9 +41,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/posts/:id/new-comment' exact={true}>
-          {/* <NewCommentForm /> */}
-        </Route>
+        {/* <Route path='/posts/:id/new-comment' exact={true}>
+          <NewCommentForm />
+        </Route> */}
         <ProtectedRoute path='/users' exact={true}>
           <UsersList />
         </ProtectedRoute>
