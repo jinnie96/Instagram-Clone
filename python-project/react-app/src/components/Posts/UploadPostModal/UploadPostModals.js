@@ -9,6 +9,7 @@ const UploadPostModals = ({ setShowModal }) => {
     const [image, setImage] = useState(null);
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
+    const [errors, setErrors] = useState("")
     const history = useHistory(); // so that we can redirect after the image upload is successful
     const dispatch = useDispatch();
 
