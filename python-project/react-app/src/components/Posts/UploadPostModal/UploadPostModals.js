@@ -35,16 +35,16 @@ const UploadPostModals = ({ setShowModal }) => {
 
         if (res.ok) {
             dispatch(postActions.getAllPosts(id)); // returns state unaltered, but triggers dispatch!
-
+            console.log(res.errors);
             await res.json();
-            setErrors(res);
+            setErrors(res.errors);
             setImageLoading(false);
             setShowModal(false);
             history.push("/");
         }
         else {
             setImageLoading(false);
-            // console.log("error");
+            setErrors("Invalid File Type")
         }
     }
 
@@ -57,12 +57,11 @@ const UploadPostModals = ({ setShowModal }) => {
         <div className='create-post-container'>
             <div>Create new post</div>
             <form className='create-post-form' onSubmit={handleSubmit}>
-                {/* <ul className='errors'>
-                    {console.log("########################", errors)}
-                    {errors?.map((error, ind) => (
-                        <li key={ind}>{error}</li>
-                    ))}
-                </ul> */}
+                <ul className='errors'>
+                    <li className="errors">
+                        {errors}
+                    </li>
+                </ul>
                 <input
                     className='create-post-input'
                     name='image'
