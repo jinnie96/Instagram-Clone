@@ -1,7 +1,7 @@
 /* ------------------- Edit profile modal container ------------------- */
 .edit-user-container {
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -26,7 +26,7 @@
 
 /* ------------------- Edit profile modal form ------------------- */
 .edit-user-form {
-    /* height: 399.5px; */
+    height: 420px;
     display: flex;
     flex-direction: column;
     justify-content: center;

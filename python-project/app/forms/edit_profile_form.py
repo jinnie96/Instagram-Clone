@@ -4,6 +4,15 @@ from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired, ValidationError, Email
 from app.models import User
 
+def user_exists(form, field):
+    email = field.data
+    user = User.query.filter(User.email == email).first()
+
+    if email == current_user.email:
+        return
+    if user:
+        raise ValidationError('Email address is already in use.')
+
 def username_exists(form, field):
     username = field.data
     user = User.query.filter(User.username == username).first()
@@ -15,8 +24,8 @@ def username_exists(form, field):
 
 class EditProfileForm(FlaskForm):
     username = StringField('username', validators=[DataRequired(), username_exists])
-    first_name = StringField('first_name')
-    last_name = StringField('last_name')
-    email= StringField('email')
+    first_name = StringField('first_name', validators=[DataRequired()])
+    last_name = StringField('last_name', validators=[DataRequired()])
+    email= StringField('email', validators=[DataRequired(), user_exists])
     biography = TextAreaField('biography')
     # profile_picture = StringField('profileURL')
