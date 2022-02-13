@@ -83,25 +83,27 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
         setEditPost(false)
     }
 
-    let field
-    let owned = false
+    let field;
+    let owned = false;
 
-    if (userId === post.user_id) owned = true
+    if (userId === post.user_id) owned = true;
 
     if (owned) {
-        field = <p>
+        field = <div>
             {post.caption}
             <button id='edit-comment' onClick={handleEdit}><i className="far fa-edit"></i></button>
-        </p>
+        </div>
     } else {
-        field = <p>
+        field = <div>
             {post.caption}
-        </p>
+        </div>
     }
 
     if (editPost) {
-        field = <form onSubmit={handleCaptionSubmit}>
-        <input
+        field = <form className="confirm-edit-caption-form" onSubmit={handleCaptionSubmit}>
+        <textarea
+            className="confirm-edit-caption-input"
+            rows="10"
             type="text"
             value={newCaption}
             onChange={(e) => setNewCaption(e.target.value)}
@@ -125,7 +127,6 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
                 style={{
                     backgroundImage: `url(${post.image})`,
                     backgroundSize: "cover",
-                    // backgroundSize: "contain",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center"
                 }}></div>
