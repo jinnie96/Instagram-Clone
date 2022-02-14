@@ -25,7 +25,7 @@ export const getUserProfile = (id) => async (dispatch) => {
 }
 
 export const updateUserProfile = (id, form) => async dispatch => {
-    const {username, firstName, lastName, email, biography} = form
+    const {username, firstName, lastName, email, biography} = form;
     const post = {
         user_id: id,
         username,
@@ -34,6 +34,7 @@ export const updateUserProfile = (id, form) => async dispatch => {
         email,
         biography
     }
+
     const res = await fetch(`/api/users/${id}/account/edit`, {
         method: "PUT",
         headers: {
@@ -41,6 +42,7 @@ export const updateUserProfile = (id, form) => async dispatch => {
         },
         body: JSON.stringify(post)
     })
+
     if (res.ok) {
         const data = await res.json()
         dispatch(updateUser(data))
@@ -56,6 +58,7 @@ export const updateUserProfile = (id, form) => async dispatch => {
 }
 
 const initialState = {}
+
 export default function reducer(state = initialState, action) {
     switch(action.type) {
 

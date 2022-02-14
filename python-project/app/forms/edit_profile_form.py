@@ -28,4 +28,4 @@ class EditProfileForm(FlaskForm):
     last_name = StringField('last_name', validators=[DataRequired()])
     email= StringField('email', validators=[DataRequired(), user_exists])
     biography = TextAreaField('biography')
-    # profile_picture = StringField('profileURL')
+    profile_picture = TextAreaField('profile_picture', validators=[DataRequired()])

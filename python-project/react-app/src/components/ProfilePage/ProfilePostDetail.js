@@ -7,8 +7,10 @@ import './ProfilePostDetail.css';
 
 const ProfilePostDetail = ({ post, setUpdate }) => {
     const [showModal, setShowModal] = useState(false);
-    const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user)
+    const dispatch = useDispatch();
+
+    const user = useSelector(state => state.session.user);
+    
     useEffect(async () => {
         dispatch(getAllPosts(user.id))
     }, [dispatch])

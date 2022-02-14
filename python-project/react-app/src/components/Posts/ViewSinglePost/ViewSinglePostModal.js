@@ -13,6 +13,7 @@ import './ViewSinglePost.css';
 const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
     const history = useHistory()
     const dispatch = useDispatch();
+    
     const userId = useSelector(state => {
         if (state.session.user) {
             return state.session.user.id
@@ -36,7 +37,6 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
         const data = await res.json()
         const userpage = await res_user.json()
 
-
         setComments(data)
         setLikes(like)
         setUserProf(userpage)
@@ -51,18 +51,18 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
     const handleUnlike = async () => {
         dispatch(unlikePost(userId, post.id))
         setUpdate(true)
-    }
+    };
 
     const handleDelete = async () => {
         dispatch(deleteOnePost(post.id))
         setShowModal(false)
         window.location.reload(false)
-    }
+    };
 
     const handleEdit = async (e) => {
         e.preventDefault()
         setEditPost(true)
-    }
+    };
 
     const handleCaptionSubmit = async (e) => {
         e.preventDefault()
@@ -76,12 +76,12 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
         })
         setEditPost(false)
         setUpdate1(true)
-    }
+    };
 
     const handleEditCancel = async (e) => {
         e.preventDefault()
         setEditPost(false)
-    }
+    };
 
     let field;
     let owned = false;
@@ -97,7 +97,7 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
         field = <div>
             {post.caption}
         </div>
-    }
+    };
 
     if (editPost) {
         field = <form className="confirm-edit-caption-form" onSubmit={handleCaptionSubmit}>
@@ -112,7 +112,7 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
         <button id='submit-edit-comment' type="submit"><i className="far fa-check-circle"></i></button>
         <button id='cancel-edit-comment' onClick={handleEditCancel}><i className="far fa-times-circle"></i></button>
     </form>
-    }
+    };
 
     let like;
 
@@ -121,6 +121,7 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
     } else {
         like = <i id='heart-like' className="far fa-heart" onClick={() => handleLike()}></i>
     }
+
 
     return (
         <div className='single-container' key={post.id}>

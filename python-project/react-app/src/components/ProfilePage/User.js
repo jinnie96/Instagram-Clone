@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import noPic from './no-profile-alt.jpg'
-import { Modal } from '../../context/Modal'
-import * as followingActions from '../../store/followers'
-import { getUserPosts } from '../../store/post';
+import noPic from './no-profile-alt.jpg';
+import { Modal } from '../../context/Modal';
+import * as followingActions from '../../store/followers';
 import EditProfileModal from './UserEditModal';
 import ProfilePostDetail from './ProfilePostDetail';
 import Footer from '../Footer';
@@ -14,17 +13,17 @@ import './User.css';
 
 
 function User() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { userId }  = useParams();
   const [user, setUser] = useState({});
-  const [following, setFollowing] = useState([])
-  const [followers, setFollowers] = useState([])
-  const [posts, setPosts] = useState([])
-  const [showModal, setShowModal] = useState(false)
-  const [update, setUpdate] = useState(false)
-  const [pL, setPL] = useState([])
-  const current_user = useSelector((state) => state.session.user.id)
-  // const posts = useSelector(state => state.post)
+  const [following, setFollowing] = useState([]);
+  const [followers, setFollowers] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [update, setUpdate] = useState(false);
+  const [pL, setPL] = useState([]);
+  const current_user = useSelector((state) => state.session.user.id);
+
   useEffect(async() => {
       const res_user = await fetch(`/api/users/${userId}`);
       const res_following = await fetch(`/api/follow/${userId}/following`);
@@ -53,7 +52,7 @@ function User() {
       setFollowers(data)
       return data
     }
-  }
+  };
 
   const handleUnfollow = async () => {
     dispatch(followingActions.unfollowUser(current_user, +userId))
@@ -64,16 +63,17 @@ function User() {
       setFollowers(data)
       return data
     }
-  }
+  };
 
   if (!user) {
     return null;
-  }
-  let validated = false
+  };
+
+  let validated = false;
 
   if (+userId === current_user) {
     validated = true
-  }
+  };
 
   let follow;
 
@@ -83,15 +83,22 @@ function User() {
     follow = <button id='edit-butt' onClick={() => setShowModal(true)}>Edit Profile</button>
   } else {
     follow = <button id='follow-butt' onClick={handleFollow}>Follow</button>;
-  }
+  };
 
 
   return (
     <>
       <div className='profile-about-container'>
-        <div id='profile-picture'>
+        {/* <div id='profile-picture'>
           <img src={user.profile_picture || noPic} style={{"height": "130px", "width": "130px"}} alt='profile-picture'></img>
-        </div>
+        </div> */}
+        <div id='profile-picture'
+                style={{
+                    backgroundImage: `url(${user.profile_picture})`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center"
+                }}></div>
         <div id='profile-info'>
           <span id='row-one'>
             <div id='profile-username'>{user.username}</div>

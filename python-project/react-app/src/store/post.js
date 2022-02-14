@@ -120,7 +120,6 @@ const initialState = {};
 
 
 
-
 // ------------------- Reducer ------------------- //
 export default function postsReducer(state = initialState, action) {
     let newState;
