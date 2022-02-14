@@ -72,11 +72,11 @@ const CommentDetails = ({ comment, setUpdate }) => {
 
         </form>
     } else {
-        field = <p className="edit-comment-form">
+        field = <div className="edit-comment-form">
             {comment.comment}
             <button id='edit-comment' onClick={handleEdit}><i className="far fa-edit"></i></button>
             <button id='delete-comment' onClick={handleDelete}><i className="far fa-trash-alt"></i></button>
-        </p>
+        </div>
     }
 
     if (current.id === user.id) {
@@ -86,7 +86,7 @@ const CommentDetails = ({ comment, setUpdate }) => {
     }
 
     return (
-        <p><b>{user.username}</b> {comment.comment}</p>
+        <div id='all-comments'><b>{user.username}</b> {comment.comment}</div>
     )
 }
 

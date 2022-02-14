@@ -1,6 +1,7 @@
 /* ------------------- Edit/delete comment ------------------- */
 .comment-container {
     margin: 9px 0;
+    /* display: flex; */
 }
 
 .edit-comment-form {
@@ -25,7 +26,9 @@
     padding-left: 7px;
 }
 
-
+#all-comments {
+    margin: 9px 0;
+}
 
 /* ------------------- Submit/cancel edit comment ------------------- */
 .confirm-edit-comment-input {
