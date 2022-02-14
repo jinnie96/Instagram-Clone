@@ -39,23 +39,23 @@ To view and use this application, you can either navigate to the [live hosted si
 
 ## Features
 ### Login + Signup
-![login]()
-![signup]()
+![login](./Images/ReadMePhotos/6-login.png)
+![signup](./Images/ReadMePhotos/7-signup.png)
 
 ### Home
 Home feed:
-![home feed]()
+![home feed](./Images/ReadMePhotos/1-homefeed.png)
 Single post:
-![single post]()
+![single post](./Images/ReadMePhotos/2-singlepost.png)
 
 ### Create post
-![create post]()
+![create post](./Images/ReadMePhotos/3-createpost.png)
 
 ### Profile Page
 User profile:
-![user profile]()
+![user profile](./Images/ReadMePhotos/4-viewprofile.png)
 Edit profile:
-![edit profile]()
+![edit profile](./Images/ReadMePhotos/5-editprofile.png)
 
 ## Future Features
 - Profile
