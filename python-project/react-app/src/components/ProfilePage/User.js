@@ -42,7 +42,7 @@ function User() {
       setPosts(posts)
       setPL(posts.posts)
       setUpdate(false)
-  }, [dispatch, update]);
+  }, [dispatch, update, userId]);
 
   const handleFollow = async () => {
     dispatch(followingActions.followUser(current_user, +userId))
