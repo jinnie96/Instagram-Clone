@@ -24,6 +24,8 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(['Passwords must match.'])
     }
   };
 
