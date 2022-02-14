@@ -2,7 +2,7 @@
 
 Insta-Clone is a semi-clone of the popular social network application, [Instagram](https://www.instagram.com/).
 
-Check out our semi-clone at our live site: [Crash Pad](https://flask-instagram-clone.herokuapp.com/).
+Check out our semi-clone at our live site: [Insta-Clone](https://flask-instagram-clone.herokuapp.com/).
 
 
 ## Getting Started
@@ -39,15 +39,27 @@ To view and use this application, you can either navigate to the [live hosted si
 
 ## Features
 ### Login + Signup
+![login]()
+![signup]()
 
+### Home
+Home feed:
+![home feed]()
+Single post:
+![single post]()
 
-### Home Page
-
+### Create post
+![create post]()
 
 ### Profile Page
-
+User profile:
+![user profile]()
+Edit profile:
+![edit profile]()
 
 ## Future Features
+- Profile
+   - Users will be able to add and remove a profile picture
 - Search
     - Users will be able to search for users and posts that include searched characters
 - Hashtags + tags
