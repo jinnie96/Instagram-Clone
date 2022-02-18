@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
 import Footer from '../../Footer';
+import textLogo from '../text-clone-logo.png';
 import './SignUpForm.css'
+
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -59,6 +61,7 @@ const SignUpForm = () => {
   return (
     <div className='signup-page'>
       <div className='signup-container'>
+        <img src={textLogo} alt='text logo' className="auth-logo"></img>
         <form className='signup-form' onSubmit={onSignUp}>
           <ul className='signup-form errors'>
             {errors.map((error, ind) => (

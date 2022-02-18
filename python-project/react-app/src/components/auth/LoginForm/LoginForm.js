@@ -4,7 +4,9 @@ import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import DemoButton from './DemoUser';
 import Footer from '../../Footer';
+import textLogo from '../text-clone-logo.png';
 import './LoginForm.css';
+
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -37,6 +39,7 @@ const LoginForm = () => {
   return (
     <div className='login-page'>
       <div className='login-container'>
+        <img src={textLogo} alt='text logo' className="auth-logo"></img>
         <form className='login-form' onSubmit={onLogin}>
           <ul className='login-form errors'>
             {errors.map((error, ind) => (

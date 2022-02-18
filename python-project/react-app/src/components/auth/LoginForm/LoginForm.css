@@ -24,6 +24,15 @@
 
 
 /* ------------------- Login elements ------------------- */
+.auth-logo {
+    height: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    margin-bottom: 25px;
+}
+
 .login-form {
     background-color: white;
 }
