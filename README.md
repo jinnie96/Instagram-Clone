@@ -2,11 +2,11 @@
 
 Insta-Clone is a semi-clone of the popular social network application, [Instagram](https://www.instagram.com/).
 
-Check out our semi-clone at our live site: [Insta-Clone](https://flask-instagram-clone.herokuapp.com/).
+Check out our semi-clone at our live site: [Insta-Clone](https://insta-clone-group.herokuapp.com/login).
 
 
 ## Getting Started
-To view and use this application, you can either navigate to the [live hosted site](https://flask-instagram-clone.herokuapp.com/) and login as a new or demo user, or download the project locally:
+To view and use this application, you can either navigate to the [live hosted site](https://insta-clone-group.herokuapp.com/login) and login as a new or demo user, or download the project locally:
 1. Clone this repository ```git clone https://github.com/jinnie96/Instagram-Clone.git```
 
 2. ```cd``` into ```/python-project``` and install dependencies ```pipenv install```
