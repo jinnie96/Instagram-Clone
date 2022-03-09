@@ -21,7 +21,7 @@ To view and use this application, you can either navigate to the [live hosted si
     psql -c "CREATE DATABASE <database name> WITH OWNER <username>"
     ```
 
-6. Start shell + migrate database + seed database + run flask ```/python-project```
+6. Start shell + migrate database + seed database + run flask in ```/python-project```
     ```javascript
     pipenv shell
     flask db upgrade

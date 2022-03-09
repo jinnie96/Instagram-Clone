@@ -1,0 +1,30 @@
+/* ------------------- Sitewide styles ------------------- */
+* {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    background-color: #FAFAFA;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.errors {
+    margin: 12px 0;
+    padding: 0;
+    color: red;
+    background-color: transparent;
+}
+
+.errors li {
+    list-style: none;
+    font-size: 12px;
+    background-color: transparent;
+}

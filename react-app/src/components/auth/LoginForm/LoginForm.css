@@ -1,0 +1,111 @@
+/* ------------------- Login Container ------------------- */
+.login-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 350px;
+    height: 380px;
+    border: 1.75px solid #DBDBDB;
+    border-radius: 1px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+}
+
+
+
+/* ------------------- Login elements ------------------- */
+.auth-logo {
+    height: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    margin-bottom: 25px;
+}
+
+.login-form {
+    background-color: white;
+}
+
+.login-inputs {
+    overflow: auto;
+    width: 258px;
+    margin: 3px;
+    padding: 8px;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    background-color: #FAFAFA;
+    font-size: 12px;
+    color: black;
+}
+
+.login-submit, #demo-btn {
+    width: 276px;
+    margin: 6px 3px 3px 3px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2694fc;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.login-submit:hover {
+    background-color: rgb(26, 135, 236);
+}
+
+#demo-btn {
+    background-color: #fd4573;
+}
+
+#demo-btn:hover {
+    background-color: #f33968;
+}
+
+input::placeholder {
+    font-size: 12px;
+    color: #8E8E8E;
+}
+
+
+
+/* ------------------- Below login container ------------------- */
+.login-below-container {
+    width: 350px;
+    height: 70px;
+    margin-top: 10px;
+    border: 1.75px solid #DBDBDB;
+    border-radius: 1px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    font-size: 13px;
+}
+
+.login-below-container div {
+    margin-right: 2px;
+    background-color: white;
+    color: black;
+}
+
+.login-below-container a {
+    margin-left: 2px;
+    text-decoration: none;
+    background-color: white;
+    color: #2694fc;
+}
