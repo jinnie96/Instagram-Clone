@@ -1,16 +1,9 @@
 from app.models import db, Comment
 
 def seed_comments():
-    comment1 = Comment(
-        user_id = 1, post_id = 1, comment = 'Cool', edited = False
-    )
-    comment2 = Comment(
-        user_id = 2, post_id = 1, comment = "Cool post", edited = False
-    )
-
-    comment3 = Comment(
-        user_id = 3, post_id = 2, comment = 'Cool', edited = False
-    )
+    comment1 = Comment(user_id = 1, post_id = 1, comment = 'Cool', edited = False)
+    comment2 = Comment(user_id = 2, post_id = 1, comment = "Cool post", edited = False)
+    comment3 = Comment(user_id = 3, post_id = 2, comment = 'Cool', edited = False)
 
     db.session.add(comment1)
     db.session.add(comment2)
