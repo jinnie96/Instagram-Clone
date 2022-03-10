@@ -5,11 +5,13 @@ import { login } from '../../../store/session';
 
 const DemoButton = () => {
   const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
   const handleDemo = async (e) => {
     e.preventDefault();
-    const email = 'demo@aa.io'
-    const password = 'password'
+
+    const email = 'demo@aa.io';
+    const password = 'password';
     await dispatch(login(email, password));
 
   };

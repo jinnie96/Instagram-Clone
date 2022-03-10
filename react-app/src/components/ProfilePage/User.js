@@ -3,14 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import noPic from './no-profile-alt.jpg'
 import { Modal } from '../../context/Modal'
-import * as followingActions from '../../store/followers'
-import { getUserPosts } from '../../store/post';
+import * as followingActions from '../../store/followers';
 import EditProfileModal from './UserEditModal';
 import ProfilePostDetail from './ProfilePostDetail';
 import Footer from '../Footer';
 import './ProfilePostDetail.css';
 import './User.css';
-
 
 
 function User() {
@@ -24,7 +22,8 @@ function User() {
   const [update, setUpdate] = useState(false)
   const [pL, setPL] = useState([])
   const current_user = useSelector((state) => state.session.user.id)
-  // const posts = useSelector(state => state.post)
+
+
   useEffect(async() => {
       const res_user = await fetch(`/api/users/${userId}`);
       const res_following = await fetch(`/api/follow/${userId}/following`);

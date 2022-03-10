@@ -26,6 +26,6 @@ class EditProfileForm(FlaskForm):
     username = StringField('username', validators=[DataRequired(), username_exists])
     first_name = StringField('first_name', validators=[DataRequired()])
     last_name = StringField('last_name', validators=[DataRequired()])
-    email= StringField('email', validators=[DataRequired(), user_exists])
+    email= StringField('email', validators=[DataRequired(), user_exists, Email()])
     biography = TextAreaField('biography')
     # profile_picture = StringField('profileURL')
