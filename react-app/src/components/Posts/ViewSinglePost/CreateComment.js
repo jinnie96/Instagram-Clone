@@ -8,7 +8,8 @@ const CreateComment = ({ post, setUpdate }) => {
     const [comment, setComment] = useState("");
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        
         const res = await fetch(`/api/comments/posts/${post.id}/comments`, {
             method: "POST",
             headers: {
@@ -18,7 +19,7 @@ const CreateComment = ({ post, setUpdate }) => {
                 comment,
                 edited: false
             })
-        })
+        });
 
         if (res.ok) {
             const data = await res.json()
@@ -26,21 +27,21 @@ const CreateComment = ({ post, setUpdate }) => {
             setComment("")
             setUpdate(true)
             return data
-        }
-    }
+        };
+    };
 
     return (
-            <form className='create-comment' onSubmit={handleSubmit}>
-                <input
-                    placeholder="Add a comment..."
-                    name="comment"
-                    type="text"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                />
-                <button id='comment-submit' type="submit" disabled={!comment}>Post</button>
-            </form>
+        <form className='create-comment' onSubmit={handleSubmit}>
+            <input
+                placeholder="Add a comment..."
+                name="comment"
+                type="text"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+            />
+            <button id='comment-submit' type="submit" disabled={!comment}>Post</button>
+        </form>
     )
 }
 
-export default CreateComment
+export default CreateComment;

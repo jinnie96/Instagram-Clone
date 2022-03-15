@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { io } from 'socket.io-client';
+import './Chat.css';
 let socket;
 
 const Chat = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const messagesEnd = useRef(null);
 
     const user = useSelector(state => state.session.user);
 
@@ -32,21 +34,31 @@ const Chat = () => {
         e.preventDefault()
         socket.emit("chat", { user: user.username, msg: chatInput });
         setChatInput("")
+    };
+
+    const scrollToBottom = () => {
+        messagesEnd.current?.scrollIntoView({ behavior: "smooth" })
     }
 
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages])
+
     return (user && (
-        <div>
-            <div>
+        <div className='chat-container'>
+            <div className='chat-messages'>
                 {messages.map((message, ind) => (
                     <div key={ind}>{`${message.user}: ${message.msg}`}</div>
                 ))}
+                <div ref={messagesEnd}></div>
             </div>
-            <form onSubmit={sendChat}>
+            <form className='create-chat' onSubmit={sendChat}>
                 <input
+                    placeholder='Message...'
                     value={chatInput}
                     onChange={updateChatInput}
                 />
-                <button type="submit">Send</button>
+                <button id='chat-submit' type="submit" disabled={!chatInput}>Send</button>
             </form>
         </div>
     )

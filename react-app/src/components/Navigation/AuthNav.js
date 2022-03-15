@@ -40,7 +40,7 @@ function AuthNav() {
                         <UploadPostModal className='i-navlink' />
                     </div>
                     <div id='navbar-chat'>
-                        <a href='/chat' className='i-navlink'><i class="fa-regular fa-comments"></i></a>
+                        <a href='/chat' className='i-navlink'><i className="fa-regular fa-comments"></i></a>
                     </div>
                     {/* <div id='navbar-likes'> */}
                         {/* <i className="fa-regular fa-heart i-img"></i>
