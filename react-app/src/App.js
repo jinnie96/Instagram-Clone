@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import LoginForm from './components/auth/LoginForm/LoginForm';
 import SignUpForm from './components/auth/SignUpForm/SignUpForm';
 import NavBar from './components/Navigation';
-import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/ProfilePage/UsersList';
 import User from './components/ProfilePage/User';
-import { authenticate } from './store/session';
 import ViewPosts from './components/Posts/ViewPosts';
+import Chat from './components/Chat';
 import Handle404 from './components/Handle404';
+import { authenticate } from './store/session';
 
 
 function App() {
@@ -49,9 +50,12 @@ function App() {
         <ProtectedRoute path='/' exact={true}>
           <ViewPosts />
         </ProtectedRoute>
-      <Route path='*' >
-        <Handle404 />
-      </Route>
+        <ProtectedRoute path='/chat' exact={true}>
+          <Chat />
+        </ProtectedRoute>
+        <Route path='*' >
+          <Handle404 />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

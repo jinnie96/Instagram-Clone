@@ -7,7 +7,7 @@ function UploadPostModal() {
 
   return (
     <>
-      <i onClick={() => setShowModal(true)} className="fas fa-plus-square i-img"></i>
+      <i onClick={() => setShowModal(true)} className="fa-regular fa-square-plus i-img"></i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <UploadPostModals setShowModal={setShowModal} />

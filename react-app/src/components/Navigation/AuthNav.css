@@ -55,7 +55,7 @@
     background-color: transparent;
 }
 
-#navbar-home, #navbar-create, #navbar-likes, #profile-button {
+#navbar-home, #navbar-create, #navbar-chat, #navbar-likes, #profile-button {
     background-color: transparent;
     padding: 0 10px 0 10px;
     border: none;
@@ -63,7 +63,7 @@
     color: #262626;
 }
 
-#navbar-home a, #navbar-create a {
+#navbar-home a, #navbar-create a, #navbar-chat a {
     color: #262626;
 }
 

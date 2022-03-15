@@ -39,11 +39,14 @@ function AuthNav() {
                     <div id='navbar-create'>
                         <UploadPostModal className='i-navlink' />
                     </div>
+                    <div id='navbar-chat'>
+                        <a href='/chat' className='i-navlink'><i class="fa-regular fa-comments"></i></a>
+                    </div>
                     {/* <div id='navbar-likes'> */}
-                        {/* <i className="fas fa-heart i-img"></i>
+                        {/* <i className="fa-regular fa-heart i-img"></i>
                     </div> */}
                     <button onClick={openMenu} id='profile-button'>
-                        <i className="fas fa-user-circle i-img"></i>
+                        <i className="fa-regular fa-circle-user i-img"></i>
                     </button>
                     {showMenu && (
                         <div className="profile-dropdown">
