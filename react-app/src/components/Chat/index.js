@@ -5,6 +5,7 @@ import './Chat.css';
 let socket;
 
 const Chat = () => {
+    const [roomStatus, setRoomStatus] = useState('Nothing here yet! Say hello to the world, below.');
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const messagesEnd = useRef(null);
@@ -16,7 +17,8 @@ const Chat = () => {
         socket = io();
 
         socket.on("chat", (chat) => {
-            setMessages(messages => [...messages, chat])
+            setMessages(messages => [...messages, chat]);
+            setRoomStatus('');
         });
 
         // When component unmounts, disconnect
@@ -36,16 +38,19 @@ const Chat = () => {
         setChatInput("")
     };
 
+    // Chat box will scroll to keep bottom of chat box in view
     const scrollToBottom = () => {
-        messagesEnd.current?.scrollIntoView({ behavior: "smooth" })
-    }
+        messagesEnd.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
     useEffect(() => {
         scrollToBottom();
-    }, [messages])
+    }, [messages]);
+
 
     return (user && (
         <div className='chat-container'>
+            <div id='room-status'>{roomStatus}</div>
             <div className='chat-messages'>
                 {messages.map((message, ind) => (
                     <div key={ind}>{`${message.user}: ${message.msg}`}</div>
@@ -61,8 +66,7 @@ const Chat = () => {
                 <button id='chat-submit' type="submit" disabled={!chatInput}>Send</button>
             </form>
         </div>
-    )
-    )
+    ))
 };
 
 

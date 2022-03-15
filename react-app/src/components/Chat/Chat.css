@@ -1,4 +1,4 @@
-/* ------------------- Individual post containers ------------------- */
+/* ------------------- Chat container ------------------- */
 .chat-container {
     display: flex;
     flex-direction: column;
@@ -17,27 +17,30 @@
 
 
 
+/* ------------------- Chat content ------------------- */
+#room-status {
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+    color: #a8a8a8;
+    background-color: transparent;
+}
 
 .chat-messages {
     overflow: scroll;
     overflow-x: hidden;
     padding: 16px 16px 14px;
     font-size: 12px;
-    background-color: white;
+    background-color: transparent;
 }
 
 .chat-messages div {
     background-color: transparent;
 }
 
-/* .chat-messages div div {
-    overflow: scroll;
-    overflow-x: hidden;
-} */
 
 
-
-
+/* ------------------- Create chat ------------------- */
 .create-chat {
     display: flex;
     justify-content: space-between;
@@ -48,6 +51,11 @@
 .create-chat input {
     border: none;
     width: 100%;
+}
+
+.create-chat input::placeholder {
+    font-size: 14px;
+    color: #8E8E8E;
 }
 
 #chat-submit {
