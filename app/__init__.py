@@ -13,6 +13,7 @@ from .api.post_routes import post_routes
 from .api.comment_routes import comment_routes
 from .api.likes_routes import like_routes
 from .api.images_routes import image_routes
+from .web_socket import socketio
 
 from .seeds import seed_commands
 
@@ -43,6 +44,8 @@ app.register_blueprint(like_routes, url_prefix='/api/likes')
 app.register_blueprint(image_routes, url_prefix='/api/images')
 db.init_app(app)
 migrate = Migrate(app, db)
+
+socketio.init_app(app)
 
 # Application Security
 CORS(app)
@@ -80,3 +83,7 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
+
+
+if __name__ == '__main__':
+    socketio.run(app)
