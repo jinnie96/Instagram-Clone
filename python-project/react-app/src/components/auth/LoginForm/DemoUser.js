@@ -6,9 +6,17 @@ import { login } from '../../../store/session';
 const DemoButton = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch()
+  let email
   const handleDemo = async (e) => {
     e.preventDefault();
-    const email = 'demo@aa.io'
+    const response = await fetch('/api/users/');
+    const responseData = await response.json();
+    responseData.users.map((user) => {
+      if (user.id == 1) {
+        email = user.email
+      }
+    })
+    // const email = responseData.users[7].email
     const password = 'password'
     await dispatch(login(email, password));
 

@@ -136,12 +136,12 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
                     <NavLink to={`/profile/${post.user_id}`} id='single-username'>
                         {userprof.username}
                     </NavLink>
+                    <div id='single-caption-comments'><b>{userprof.username}</b>{field}</div>
                     {post.user_id === userId && (
                         <button id="deleteBtn" onClick={() => handleDelete()}><i className="fas fa-trash-alt"></i></button>
                     )}
                 </div>
                 <div id='single-caption-comments'>
-                    <div><b>{userprof.username}</b>{field}</div>
                     {comments?.comments?.map(comment => (
                         <CommentDetails comment={comment} key={comment.id} setUpdate={setUpdate} />
                     ))}
