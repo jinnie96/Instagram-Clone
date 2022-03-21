@@ -16,7 +16,6 @@ const DemoButton = () => {
         email = user.email
       }
     })
-    // const email = responseData.users[7].email
     const password = 'password'
     await dispatch(login(email, password));
 
