@@ -44,6 +44,7 @@ function User() {
       setUpdate(false)
   }, [dispatch, update, userId]);
 
+  console.log(current_user,"XURRRRRR")
   const handleFollow = async () => {
     dispatch(followingActions.followUser(current_user, +userId))
     const res = await dispatch(followingActions.getAllFollowers(userId))
