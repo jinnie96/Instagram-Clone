@@ -24,9 +24,10 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 @user_routes.route('/demo')
-def userss():
-    users = User.query.all()
-    return {'users': [user.to_dict() for user in users]}
+def demo_user():
+    demo = User.query.get(1)
+    return demo.to_dict()
+
 
 @user_routes.route('/<int:id>')
 @login_required

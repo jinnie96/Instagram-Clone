@@ -6,18 +6,13 @@ import { login } from '../../../store/session';
 const DemoButton = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch()
-  let email
   const handleDemo = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/users/');
-    const responseData = await response.json();
-    responseData.users.map((user) => {
-      if (user.id == 1) {
-        email = user.email
-      }
-    })
-    const password = 'password'
-    await dispatch(login(email, password));
+    const res = await fetch('/api/users/demo')
+    if (res.ok) {
+      const data = await res.json();
+      await dispatch(login(data['email'], 'password'));
+    }
 
   };
 
