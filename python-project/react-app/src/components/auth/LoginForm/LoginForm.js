@@ -15,8 +15,6 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  console.log("DISPATCHHHH", dispatch)
-
   const onLogin = async (e) => {
     e.preventDefault();
 
