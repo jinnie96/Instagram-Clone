@@ -44,7 +44,8 @@ To view and use this application, you can either navigate to the [live hosted si
 
 ### Home
 Home feed:
-![home feed](./Images/ReadMePhotos/1-homefeed.png)
+![image](https://user-images.githubusercontent.com/85136034/159996150-31a62e6f-bcc2-438a-a54b-8503a4353412.png)
+
 Single post:
 ![single post](./Images/ReadMePhotos/2-singlepost.png)
 
