@@ -15,6 +15,21 @@ function AuthNav() {
         setShowMenu(true);
     };
 
+    const showResults = (e) => {
+        console.log(e.target.parentElement.childNodes[1])
+        e.target.parentElement.childNodes[1].classList = "results"
+        console.log(e.target.parentElement.childNodes[1])
+    }
+
+    const closeResults = (e) => {
+        const results = document.querySelector('.results')
+        if (results) {
+            // results.classList = "results none"
+        }
+    }
+
+    window.addEventListener("click", closeResults)
+
     useEffect(() => {
         if (!showMenu) return;
 
@@ -32,6 +47,12 @@ function AuthNav() {
                 <a href="/">
                     <img src={textLogo} alt='text logo' className="auth-nav-logo"></img>
                 </a>
+                <div className="searchBar">
+                    <input className="search" placeholder="Search" onClick={showResults}></input>
+                    <div className="results none">
+                        <div className="empty">No results found.</div>
+                    </div>
+                </div>
                 <div className="auth-nav-components">
                     <div id='navbar-home'>
                         <a href="/" className='i-navlink'><i className="fas fa-home i-img"></i></a>
