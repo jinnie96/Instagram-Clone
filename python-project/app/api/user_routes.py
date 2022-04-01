@@ -23,6 +23,13 @@ def users():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
 
+@user_routes.route('/search')
+def userSearch():
+    print(request.json, "GGGGG")
+    users = User.query.all()
+    print(users)
+    return {'users': [user.to_dict() for user in users]}
+
 @user_routes.route('/demo')
 def demo_user():
     demo = User.query.get(1)

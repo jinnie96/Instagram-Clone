@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import UploadPostModal from "../Posts/UploadPostModal";
 import LogoutButton from '../auth/LogoutButton';
 import textLogo from './text-clone-logo.png';
+import { searchTerm } from '../../store/search'
 import './AuthNav.css';
 
 
 function AuthNav() {
     const [showMenu, setShowMenu] = useState(false);
     const [search, setSearch] = useState('')
+    const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
 
+    useEffect(() => {
+        if (search) {
+            let searchObj = {search}
+            console.log(typeof(searchObj))
+            dispatch(searchTerm(searchObj))
+        }
+    }, [search])
 
     const showResults = (e) => {
         console.log(e.target.parentElement.childNodes[1])
@@ -51,7 +60,7 @@ function AuthNav() {
     const changeSearch = (e) => {
         console.log(e.target.value)
         setSearch(e.target.value)
-        
+
     }
 
 
