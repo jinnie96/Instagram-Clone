@@ -108,3 +108,22 @@
     padding-left: 1px;
     text-decoration: none;
 }
+
+
+/* ------------------- Dropdown components ------------------- */
+
+.results {
+    position: absolute;
+    height: 450px;
+    width: 375px;
+    background-color: #fff;
+    padding: 12px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.none {
+    display: none;
+}
