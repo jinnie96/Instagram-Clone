@@ -9,11 +9,13 @@ import './AuthNav.css';
 
 function AuthNav() {
     const [showMenu, setShowMenu] = useState(false);
+    const [search, setSearch] = useState('')
     const user = useSelector(state => state.session.user)
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
+
 
     const showResults = (e) => {
         console.log(e.target.parentElement.childNodes[1])
@@ -46,6 +48,11 @@ function AuthNav() {
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
 
+    const changeSearch = (e) => {
+        console.log(e.target.value)
+        setSearch(e.target.value)
+    }
+
 
     return (
         <div className="auth-nav-container">
@@ -54,7 +61,7 @@ function AuthNav() {
                     <img src={textLogo} alt='text logo' className="auth-nav-logo"></img>
                 </a>
                 <div className="searchBar">
-                    <input className="search" placeholder="Search" onClick={showResults}></input>
+                    <input className="search" placeholder="Search" onClick={showResults} onChange={changeSearch}></input>
                     <div className="results">
                         <div className="empty">No results found.</div>
                     </div>

@@ -122,6 +122,15 @@
     justify-content: center;
     align-items: center;
     display: none;
+    text-align: center;
+            /* position: relative; */
+
+}
+
+.empty {
+    top: 50%;
+    /* height: 100%; */
+    transform: translateY(-50%);
 }
 
 .none {
