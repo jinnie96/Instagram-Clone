@@ -51,6 +51,7 @@ function AuthNav() {
     const changeSearch = (e) => {
         console.log(e.target.value)
         setSearch(e.target.value)
+        
     }
 
 
