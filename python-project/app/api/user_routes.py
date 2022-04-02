@@ -23,10 +23,12 @@ def users():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
 
-@user_routes.route('/search')
+@user_routes.route('/search', methods=["PUT"])
 def userSearch():
-    print(request.json, "GGGGG")
-    users = User.query.all()
+    print(request.json['search'], "GGGGG")
+    term = request.json['search']
+    print(type(term), "FFFFFFF")
+    users = User.query.filter(User.username.find(term) != -1 or User.first_name.find(term) != -1 or User.last_name.find(term) != -1).all()
     print(users)
     return {'users': [user.to_dict() for user in users]}
 
