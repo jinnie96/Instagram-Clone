@@ -9,6 +9,9 @@ const searchUsers = term => ({
       console.log(term)
     const response = await fetch('/api/users/search', {
         method:'PUT',
+        headers: {
+            "Content-Type": "application/json",
+          },
         body: JSON.stringify(term)
     })
     if (response.ok) {
