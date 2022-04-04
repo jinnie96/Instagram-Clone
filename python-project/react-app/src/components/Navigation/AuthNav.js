@@ -18,11 +18,24 @@ function AuthNav() {
         setShowMenu(true);
     };
 
-    useEffect(() => {
+    useEffect(async() => {
+        const results = document.querySelector('.results')
+        // while(results.firstChild) {
+        //     results.removeChild(results.firstChild)
+        // }
         if (search) {
             let searchObj = {search}
             console.log(typeof(searchObj))
-            dispatch(searchTerm(searchObj))
+            const searchResultsObj = await dispatch(searchTerm(searchObj))
+            console.log("SEEEEEE", searchResultsObj.users)
+            let searchResults = searchResultsObj.users
+            for (let i = 0; i < searchResults.length; i++) {
+                let ele = document.createElement("div")
+                ele.innerText = searchResults[i].username
+                results.appendChild(ele)
+            }
+
+
         }
     }, [search])
 

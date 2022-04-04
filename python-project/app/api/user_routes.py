@@ -28,9 +28,16 @@ def userSearch():
     print(request.json['search'], "GGGGG")
     term = request.json['search']
     print(type(term), "FFFFFFF")
-    users = User.query.filter(User.username.find(term) != -1 or User.first_name.find(term) != -1 or User.last_name.find(term) != -1).all()
-    print(users)
-    return {'users': [user.to_dict() for user in users]}
+    users = User.query.all()
+    # users = User.query.filter(User.last_name.like(f'{term}'), User.first_name.like(f'{term}'), User.username.like(f'{term}')).all()
+    print("USERS", type(users))
+    searchArr = []
+    for user in users:
+        if term in user.username or term in user.first_name or term in user.last_name:
+            print(user.id)
+            searchArr.append(user)
+    print("NWW", searchArr)
+    return {'users': [user.to_dict() for user in searchArr]}
 
 @user_routes.route('/demo')
 def demo_user():

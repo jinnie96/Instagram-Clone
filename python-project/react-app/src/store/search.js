@@ -14,8 +14,10 @@ const searchUsers = term => ({
           },
         body: JSON.stringify(term)
     })
+    console.log(response)
     if (response.ok) {
         const data = await response.json();
+        console.log(data, "DAAAAATAAA")
         // print(data)
         // dispatch(updatePost(data));
         return data;
