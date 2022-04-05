@@ -38,9 +38,17 @@ function AuthNav() {
             console.log("SEEEEEE", searchResultsObj.users)
             let searchResults = searchResultsObj.users
             for (let i = 0; i < searchResults.length; i++) {
+                let user = document.createElement("div")
+                user.setAttribute('id', 'wholeUser')
                 let ele = document.createElement("div")
+                ele.setAttribute('id', "searchUserName")
                 ele.innerText = searchResults[i].username
-                results.appendChild(ele)
+                let nameEle = document.createElement("div")
+                nameEle.setAttribute('id', 'searchFullName')
+                nameEle.innerText = searchResults[i].first_name + ' ' + searchResults[i].last_name
+                user.appendChild(ele)
+                user.appendChild(nameEle)
+                results.appendChild(user)
             }
 
 
