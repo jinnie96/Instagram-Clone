@@ -18,11 +18,19 @@ function AuthNav() {
         setShowMenu(true);
     };
 
+
     useEffect(async() => {
+        const noSearch = document.querySelector('.empty')
         const results = document.querySelector('.results')
-        // while(results.firstChild) {
-        //     results.removeChild(results.firstChild)
-        // }
+        while(results.firstChild) {
+            console.log(results.firstChild.class === '.empty')
+            if (results.firstChild.className !== '.empty') {
+                results.removeChild(results.firstChild)
+            }
+        }
+        if (!search) {
+            results.innerHTML = '<div className="empty">No results found.</div>'
+        }
         if (search) {
             let searchObj = {search}
             console.log(typeof(searchObj))
