@@ -113,7 +113,7 @@ function AuthNav() {
                     <img src={textLogo} alt='text logo' className="auth-nav-logo"></img>
                 </a>
                 <div className="searchBar">
-                    <input className="search" placeholder="Search" onClick={showResults} onChange={changeSearch}></input>
+                    <input id="searchBar" className="search" placeholder="Search" onClick={showResults} onChange={changeSearch}></input>
                     <div className="results">
                         <div className="empty">No results found.</div>
                     </div>
