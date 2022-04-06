@@ -18,6 +18,11 @@ function AuthNav() {
         setShowMenu(true);
     };
 
+    const directToProfPage = (e) => {
+        console.log(e.target.id)
+        window.location.replace(`/profile/${e.target.id}`)
+    }
+
 
     useEffect(async() => {
         const noSearch = document.querySelector('.empty')
@@ -39,9 +44,11 @@ function AuthNav() {
             let searchResults = searchResultsObj.users
             for (let i = 0; i < searchResults.length; i++) {
                 let user = document.createElement("div")
-                user.setAttribute('id', 'wholeUser')
+                user.setAttribute('class', 'wholeUser')
+                user.setAttribute('id', searchResults[i].id)
                 let ele = document.createElement("div")
-                ele.setAttribute('id', "searchUserName")
+                user.addEventListener("click", directToProfPage)
+                ele.setAttribute('id', searchResults[i].id)
                 ele.innerText = searchResults[i].username
                 let nameEle = document.createElement("div")
                 nameEle.setAttribute('id', 'searchFullName')
