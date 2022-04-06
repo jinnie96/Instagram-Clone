@@ -41,6 +41,7 @@ function AuthNav() {
             console.log(typeof(searchObj))
             const searchResultsObj = await dispatch(searchTerm(searchObj))
             console.log("SEEEEEE", searchResultsObj.users)
+            if (searchResultsObj.users.length === 0) results.innerHTML = '<div className="empty">No results found.</div>'
             let searchResults = searchResultsObj.users
             for (let i = 0; i < searchResults.length; i++) {
                 let user = document.createElement("div")
