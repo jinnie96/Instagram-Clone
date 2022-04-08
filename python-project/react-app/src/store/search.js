@@ -24,3 +24,23 @@ const searchUsers = term => ({
     }
 
   }
+
+  export const searchHashtag = (term)  => async(dispatch) => {
+    console.log(term)
+  const response = await fetch('/api/users/search/hashtag', {
+      method:'PUT',
+      headers: {
+          "Content-Type": "application/json",
+        },
+      body: JSON.stringify(term)
+  })
+  console.log(response)
+  if (response.ok) {
+      const data = await response.json();
+      console.log(data, "DAAAAATAAA")
+      // print(data)
+      // dispatch(updatePost(data));
+      return data;
+  }
+
+}
