@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import UploadPostModal from "../Posts/UploadPostModal";
 import LogoutButton from '../auth/LogoutButton';
 import textLogo from './text-clone-logo.png';
-import { searchTerm } from '../../store/search'
+import { searchTerm, searchHashtag } from '../../store/search'
 import './AuthNav.css';
 
 
@@ -63,9 +63,10 @@ function AuthNav() {
                 // user.appendChild(nameEle)
                 results.appendChild(user)
             }
-        } else if (search.includes("#") && search.length > 1) {
+        } else if (search[0] === "#" && search.length > 1) {
             let hashtag = search.slice(1)
             console.log("TAGGGGG", hashtag)
+            const hashtagsObj = await dispatch(searchHashtag(hashtag))
         }
     }, [search])
 

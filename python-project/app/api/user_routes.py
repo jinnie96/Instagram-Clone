@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from itsdangerous import json
-from app.models import User, db
+from app.models import User, Post, db
 from app.forms.edit_profile_form import EditProfileForm
 
 user_routes = Blueprint('users', __name__)
@@ -38,6 +38,18 @@ def userSearch():
             searchArr.append(user)
     print("NWW", searchArr)
     return {'users': [user.to_dict() for user in searchArr]}
+
+@user_routes.route('/search/hashtag', methods=["PUT"])
+def userSearchHashtag():
+    print(request.json, "GGGGG")
+    term = request.json
+    tags = []
+    print(type(term), "FFFFFFF")
+    posts = Post.query.all()
+    for post in posts:
+        if (post.caption.includes(term)):
+            
+
 
 @user_routes.route('/demo')
 def demo_user():
