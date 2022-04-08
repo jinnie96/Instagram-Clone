@@ -33,10 +33,10 @@ function AuthNav() {
                 results.removeChild(results.firstChild)
             }
         }
-        if (!search) {
+        if (!search || search === "#") {
             results.innerHTML = '<div className="empty">No results found.</div>'
         }
-        if (search) {
+        if (!search.includes("#") && search) {
             let searchObj = {search}
             console.log(typeof(searchObj))
             const searchResultsObj = await dispatch(searchTerm(searchObj))
@@ -63,8 +63,9 @@ function AuthNav() {
                 // user.appendChild(nameEle)
                 results.appendChild(user)
             }
-
-
+        } else if (search.includes("#") && search.length > 1) {
+            let hashtag = search.slice(1)
+            console.log("TAGGGGG", hashtag)
         }
     }, [search])
 
