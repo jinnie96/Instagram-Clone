@@ -26,8 +26,8 @@ const searchUsers = term => ({
   }
 
   export const searchHashtag = (term)  => async(dispatch) => {
-    console.log(term)
-  const response = await fetch('/api/users/search/hashtag', {
+    console.log("TTTTTT", term)
+  const response = await fetch('/api/users/hashtag', {
       method:'PUT',
       headers: {
           "Content-Type": "application/json",
