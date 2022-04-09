@@ -39,16 +39,19 @@ def userSearch():
     print("NWW", searchArr)
     return {'users': [user.to_dict() for user in searchArr]}
 
-@user_routes.route('/search/hashtag', methods=["PUT"])
+@user_routes.route('/hashtag', methods=["PUT"])
 def userSearchHashtag():
     print(request.json, "GGGGG")
     term = request.json
     tags = []
     print(type(term), "FFFFFFF")
     posts = Post.query.all()
+    print("@@@@", posts)
     for post in posts:
-        if (post.caption.includes(term)):
-            
+        print("##############", post.caption.includes(term))
+        # if (post.caption.includes(term)):
+            # tags.append
+
 
 
 @user_routes.route('/demo')
