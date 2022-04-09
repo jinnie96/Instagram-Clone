@@ -42,16 +42,17 @@ def userSearch():
 @user_routes.route('/hashtag', methods=["PUT"])
 def userSearchHashtag():
     print(request.json, "GGGGG")
-    term = request.json
+    term = "#" + request.json
     tags = []
     print(type(term), "FFFFFFF")
     posts = Post.query.all()
     print("@@@@", posts)
     for post in posts:
-        print("##############", post.caption.includes(term))
-        # if (post.caption.includes(term)):
-            # tags.append
-
+        print("##############",term, post.caption, term.lower() in post.caption.lower())
+        if (term.lower() in post.caption.lower()):
+            tags.append([post.caption])
+    print("TAAAAAAAG", tags)
+    return {'tags': [tag for tag in tags]}
 
 
 @user_routes.route('/demo')
