@@ -67,6 +67,7 @@ function AuthNav() {
             let hashtag = search.slice(1)
             console.log("TAGGGGG", hashtag)
             const hashtagsObj = await dispatch(searchHashtag(hashtag))
+            console.log("HASHOBJ", hashtagsObj.tags)
         }
     }, [search])
 

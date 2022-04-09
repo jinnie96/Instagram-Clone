@@ -37,7 +37,7 @@ const searchUsers = term => ({
   console.log(response)
   if (response.ok) {
       const data = await response.json();
-      console.log(data, "DAAAAATAAA")
+      console.log(data, "HASHTAG")
       // print(data)
       // dispatch(updatePost(data));
       return data;

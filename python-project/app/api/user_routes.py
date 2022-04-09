@@ -50,7 +50,7 @@ def userSearchHashtag():
     for post in posts:
         print("##############",term, post.caption, term.lower() in post.caption.lower())
         if (term.lower() in post.caption.lower()):
-            tags.append([post.caption])
+            tags.append(post.caption)
     print("TAAAAAAAG", tags)
     return {'tags': [tag for tag in tags]}
 
