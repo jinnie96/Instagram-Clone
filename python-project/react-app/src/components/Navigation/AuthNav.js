@@ -70,6 +70,10 @@ function AuthNav() {
             console.log("HASHOBJ", hashtagsObj.tags)
             if (hashtagsObj.tags.length === 0) {
                 results.innerHTML = '<div className="empty">No results found.</div>'
+            } else {
+                for (let i = 0; i < hashtagsObj.tags.length; i++) {
+                    
+                }
             }
         }
     }, [search])
