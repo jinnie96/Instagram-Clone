@@ -72,7 +72,7 @@ function AuthNav() {
                 results.innerHTML = '<div className="empty">No results found.</div>'
             } else {
                 for (let i = 0; i < hashtagsObj.tags.length; i++) {
-                    
+
                 }
             }
         }
@@ -125,7 +125,7 @@ function AuthNav() {
                 <div className="searchBar">
                     <input id="searchBar" className="search" placeholder="Search" onClick={showResults} onChange={changeSearch}></input>
                     <div className="results">
-                        <div className="empty">No results found.</div>
+                        <div className="emptySearch" id="search">No results found.</div>
                     </div>
                 </div>
                 <div className="auth-nav-components">
