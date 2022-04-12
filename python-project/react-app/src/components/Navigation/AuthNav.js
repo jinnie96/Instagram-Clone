@@ -33,7 +33,7 @@ function AuthNav() {
                 results.removeChild(results.firstChild)
             }
         }
-        if (!search || search === "#") {
+        if (!search || search[0] === "#") {
             results.innerHTML = '<div className="empty">No results found.</div>'
         }
         if (!search.includes("#") && search) {
@@ -63,25 +63,28 @@ function AuthNav() {
                 // user.appendChild(nameEle)
                 results.appendChild(user)
             }
-        } else if (search[0] === "#" && search.length > 1) {
-            let hashtag = search.slice(1)
-            console.log("TAGGGGG", hashtag)
-            const hashtagsObj = await dispatch(searchHashtag(hashtag))
-            console.log("HASHOBJ", hashtagsObj.tags)
-            if (hashtagsObj.tags.length === 0) {
-                results.innerHTML = '<div className="empty">No results found.</div>'
-            } else {
-                for (let i = 0; i < hashtagsObj.tags.length; i++) {
-
-                }
-            }
         }
+        // else if (search[0] === "#" && search.length > 1) {
+        //     let hashtag = search.slice(1)
+        //     console.log("TAGGGGG", hashtag)
+        //     const hashtagsObj = await dispatch(searchHashtag(hashtag))
+        //     console.log("HASHOBJ", hashtagsObj.tags)
+        //     if (hashtagsObj.tags.length === 0) {
+        //         results.innerHTML = '<div className="empty">No results found.</div>'
+        //     } else {
+        //         for (let i = 0; i < hashtagsObj.tags.length; i++) {
+
+        //         }
+        //     }
+        // }
     }, [search])
 
     const showResults = (e) => {
-        console.log(e.target.parentElement.childNodes[1])
+        console.log(e.target.parentElement.childNodes[1].childNodes[0])
         // e.target.parentElement.childNodes[1].classList.remove("results")
         e.target.parentElement.childNodes[1].style.display = "block"
+        e.target.parentElement.childNodes[1].childNodes[0].style.backgroundColor = "white";
+
         console.log(e.target.parentElement.childNodes[1])
     }
 
@@ -110,7 +113,8 @@ function AuthNav() {
     }, [showMenu]);
 
     const changeSearch = (e) => {
-        console.log(e.target.value)
+        console.log(e.target.parentElement.childNodes[1].childNodes[0])
+        // e.target.parentElement.childNodes[1].childNodes[0].style.backgroundColor = "white";
         setSearch(e.target.value)
 
     }
