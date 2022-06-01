@@ -2,19 +2,19 @@ from app.models import db, Post
 
 def seed_posts():
     post1 = Post(
-        user_id=1, image='https://python-group-project-insta-clone1.s3.amazonaws.com/dog-3071334_960_720.jpg', caption='Dog'
+        user_id = 1, image = 'https://instaclone-bucket-app.s3.us-west-2.amazonaws.com/FullSizeSynth.pdf', caption = 'piano'
     )
 
     post2 = Post(
-        user_id=2, image='https://python-group-project-insta-clone1.s3.amazonaws.com/frog-2240764_960_720.jpg', caption="Frog"
+        user_id = 2, image = 'https://instaclone-bucket-app.s3.us-west-2.amazonaws.com/Photo2.jpeg', caption = "lights"
     )
 
     post3 = Post(
-        user_id=3, image='https://python-group-project-insta-clone1.s3.amazonaws.com/key-3348307_960_720.jpg', caption="Key"
+        user_id = 3, image = 'https://instaclone-bucket-app.s3.us-west-2.amazonaws.com/Photo5.jpeg', caption = "party"
     )
 
     post4 = Post(
-        user_id=3, image='https://python-group-project-insta-clone1.s3.amazonaws.com/pyrenees-351266_960_720.jpg', caption="Space"
+        user_id = 3, image = 'https://instaclone-bucket-app.s3.us-west-2.amazonaws.com/Photo8.jpeg', caption = "hey"
     )
 
 
