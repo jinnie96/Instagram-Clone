@@ -9,7 +9,7 @@ def seed_comments():
     )
 
     comment3 = Comment(
-        user_id = 3, post_id = 2, comment = 'Cool', edited = False
+        user_id = 3, post_id = 2, comment = 'Coooool', edited = False
     )
 
     db.session.add(comment1)

@@ -2,7 +2,7 @@ from app.models import db, Post
 
 def seed_posts():
     post1 = Post(
-        user_id = 1, image = 'https://instaclone-bucket-app.s3.us-west-2.amazonaws.com/FullSizeSynth.pdf', caption = 'piano'
+        user_id = 1, image = 'https://instaclone-bucket-app.s3.us-west-2.amazonaws.com/Photo3.jpeg', caption = 'piano'
     )
 
     post2 = Post(
