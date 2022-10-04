@@ -2,7 +2,7 @@
 
 Insta-Clone is a semi-clone of the popular social network application, [Instagram](https://www.instagram.com/).
 
-Check out our semi-clone at our live site: [Insta-Clone](https://flask-instagram-clone.herokuapp.com/).
+Check out our semi-clone at our live site: [Insta-Clone](https://insta-clone-group.herokuapp.com/).
 
 
 ## Getting Started
