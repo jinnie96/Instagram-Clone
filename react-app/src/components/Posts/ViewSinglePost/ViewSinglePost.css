@@ -1,0 +1,149 @@
+/* ------------------- Post modal container (home feed) ------------------- */
+.single-container {
+    width: 775px;
+    height: auto;
+    min-height: 555px;
+    display: flex;
+}
+
+.single-image {
+    width: 70%;
+}
+
+.single-span {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+/* ------------------- Post modal info (username + delete post) ------------------- */
+#single-header {
+    height: 19px;
+    padding: 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+
+#single-username {
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+}
+
+#deleteBtn {
+    display: none;
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    color: #262626;
+    cursor: pointer;
+    transition: 2s;
+}
+
+#single-header:hover #deleteBtn {
+    display: inline-block;
+}
+
+
+
+/* ------------------- Submit/cancel edit post caption ------------------- */
+.confirm-edit-caption-input {
+    width: 75%;
+    padding: 2px;
+    resize: none;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+
+
+/* ------------------- Post modal caption + comments ------------------- */
+#single-caption-comments {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 372px;
+    padding: 16px;
+    font-size: 12px;
+}
+
+#single-caption-comments div div {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+#single-caption-comments p {
+    margin: 0;
+}
+
+#editBtn {
+    border: none;
+    padding: 0 7px;
+    /* font-weight: bold; */
+    font-size: 10px;
+    color: #a7a6a6;
+    cursor: pointer;
+}
+
+#editBtn:hover {
+    color: #818181;
+}
+
+
+
+/* ------------------- Post modal footer (likes + create comment) ------------------- */
+.single-likes {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-top: 1px solid #DBDBDB;
+}
+
+.single-likes div {
+    padding-left: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #262626;
+}
+
+#heart-like {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.create-comment {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border-top: 1px solid #DBDBDB;
+}
+
+.create-comment input {
+    border: none;
+}
+
+#comment-submit {
+    border: none;
+    font-weight: bold;
+    color: #2694fc;
+    cursor: pointer;
+}
+
+#comment-submit:disabled {
+    color: #8ba8c4;
+    cursor: default;
+}
