@@ -2,19 +2,19 @@ from app.models import db, Post
 
 def seed_posts():
     post1 = Post(
-        user_id = 1, image = 'https://app-amazon-pro.s3.us-west-2.amazonaws.com/piano.jpeg', caption = 'piano'
+        user_id = 1, image = 'https://media.npr.org/assets/img/2022/08/31/nannette_streicher_piano-_slide-1cdc7e104f9414ee5d21b5a9e038a0f6a4ca65de.jpg', caption = 'piano'
     )
 
     post2 = Post(
-        user_id = 2, image = 'https://app-amazon-pro.s3.us-west-2.amazonaws.com/lights.jpeg', caption = "lights"
+        user_id = 2, image = 'https://www.dontwasteyourmoney.com/wp-content/uploads/2019/10/AdobeStock_8695995.jpeg', caption = "lights"
     )
 
     post3 = Post(
-        user_id = 3, image = 'https://app-amazon-pro.s3.us-west-2.amazonaws.com/party.jpeg', caption = "party"
+        user_id = 3, image = 'https://www.contiki.com/six-two/wp-content/uploads/2015/09/sarthak-navjivan-iTZOPe7BpTM-unsplash.jpg', caption = "party"
     )
 
     post4 = Post(
-        user_id = 3, image = 'https://app-amazon-pro.s3.us-west-2.amazonaws.com/imageedit_2_4521847632.jpg', caption = "hey"
+        user_id = 3, image = 'https://imageio.forbes.com/specials-images/imageserve/628e7c0d5acb09ecc3d266ae/soccer-new/0x0.jpg?format=jpg&height=1080&width=1920', caption = "soccer"
     )
 
 
