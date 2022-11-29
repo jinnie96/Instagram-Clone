@@ -86,6 +86,7 @@ def newPost():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        print("SUBMIT")
         if "image" not in request.files:
             return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
@@ -97,7 +98,6 @@ def newPost():
         image.filename = get_unique_filename(image.filename)
 
         upload = upload_file_to_s3(image)
-
         if "url" not in upload:
             return upload, 400
 
