@@ -1,0 +1,65 @@
+/* ------------------- Footer Container ------------------- */
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 50px 0;
+}
+
+
+/* ------------------- Footer: Names ------------------- */
+.footer-names {
+    width: 353.5px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.names {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px;
+
+    list-style: none;
+    font-size: 12px;
+    color: #8E8E8E;
+}
+
+.names a {
+    text-decoration: none;
+    font-size: 10px;
+    color: #acacac;
+}
+
+
+
+/* ------------------- Footer: About ------------------- */
+.footer-about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 10px;
+}
+
+.footer-about a {
+    text-decoration: none;
+    padding: 0 0 1px 2px;
+    font-size: 11px;
+    color: #8E8E8E;
+}
+
+#footer-logo {
+    width: 20px;
+    height: auto;
+    padding-right: 2px;
+}

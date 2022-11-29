@@ -1,1 +1,0 @@
-{"name": "IMG_2290.jpeg", "lastModified": 1641763502000, "lastModifiedDate": "2022-01-09T21:25:02.000Z", "webkitRelativePath": "", "size": 3336449, "type": "image/jpeg", "filename": "9702916e54a1443fa7212ad6fc6bdf8a.jpeg"}
