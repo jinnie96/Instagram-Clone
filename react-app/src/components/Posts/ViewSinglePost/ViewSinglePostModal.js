@@ -88,16 +88,16 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
 
     if (userId === post.user_id) owned = true;
 
-    if (owned) {
-        field = <div>
-            {post.caption}
-            <button id='edit-comment' onClick={handleEdit}><i className="far fa-edit"></i></button>
-        </div>
-    } else {
-        field = <div>
-            {post.caption}
-        </div>
-    }
+    // if (owned) {
+    //     field = <div>
+    //         {post.caption}
+    //         <button id='edit-comment' onClick={handleEdit}><i className="far fa-edit"></i></button>
+    //     </div>
+    // } else {
+    //     field = <div>
+    //         {post.caption}
+    //     </div>
+    // }
 
     if (editPost) {
         field = <form className="confirm-edit-caption-form" onSubmit={handleCaptionSubmit}>
@@ -136,7 +136,17 @@ const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
                     <NavLink to={`/profile/${post.user_id}`} id='single-username'>
                         {userprof.username}
                     </NavLink>
-                    <div id='single-caption-comments'><b>{userprof.username}</b>{field}</div>
+                    <div id='single-caption-comments'><b>{userprof.username}</b>    if (owned) {
+        field = <div>
+            {post.caption}
+            <button id='edit-comment' onClick={handleEdit}><i className="far fa-edit"></i></button>
+        </div>
+    } else {
+        field = <div>
+            {post.caption}
+        </div>
+    }
+</div>
                     {post.user_id === userId && (
                         <button id="deleteBtn" onClick={() => handleDelete()}><i className="fas fa-trash-alt"></i></button>
                     )}
