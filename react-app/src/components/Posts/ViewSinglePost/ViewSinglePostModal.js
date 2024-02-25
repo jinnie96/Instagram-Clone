@@ -11,7 +11,8 @@ import './ViewSinglePost.css';
 
 
 const ViewSinglePost = ({ post, setUpdate1, setShowModal }) => {
-    const history = useHistory()
+    // const history = useHistory()
+    console.log(post)
     const dispatch = useDispatch();
     const userId = useSelector(state => {
         if (state.session.user) {
